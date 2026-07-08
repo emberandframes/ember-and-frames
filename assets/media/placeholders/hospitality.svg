@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" role="img" aria-label="Hospitality photography — coming soon">
+  <defs>
+    <linearGradient id="hbg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F1E4D0"/>
+      <stop offset="0.55" stop-color="#E4C296"/>
+      <stop offset="1" stop-color="#C97B3A"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#hbg)"/>
+
+  <!-- sun / soft light -->
+  <circle cx="400" cy="300" r="118" fill="#FBF7F1" fill-opacity="0.20"/>
+  <circle cx="400" cy="300" r="74" fill="#FBF7F1" fill-opacity="0.24"/>
+
+  <!-- subtle frame -->
+  <rect x="46" y="46" width="708" height="908" fill="none" stroke="#3A2A1E" stroke-opacity="0.20" stroke-width="3"/>
+
+  <g fill="none" stroke="#2E241C" stroke-opacity="0.86" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <!-- horizon -->
+    <line x1="150" y1="712" x2="650" y2="712"/>
+
+    <!-- villa: pitched roof over a simple body -->
+    <path d="M286 560 L400 470 L514 560"/>
+    <path d="M318 560 L318 712"/>
+    <path d="M482 560 L482 712"/>
+
+    <!-- arched doorway -->
+    <path d="M372 712 L372 636 a28 28 0 0 1 56 0 L428 712"/>
+
+    <!-- windows -->
+    <rect x="338" y="600" width="34" height="40" rx="2"/>
+    <rect x="428" y="600" width="34" height="40" rx="2"/>
+
+    <!-- palm to the side -->
+    <path d="M566 712 C560 660 556 618 560 578"/>
+    <path d="M560 582 C536 566 512 566 494 582"/>
+    <path d="M560 582 C584 566 608 566 626 582"/>
+    <path d="M560 578 C548 552 528 538 506 534"/>
+    <path d="M560 578 C572 552 592 538 614 534"/>
+  </g>
+
+  <!-- ember accent -->
+  <circle cx="400" cy="470" r="9" fill="#B05C3A"/>
+</svg>

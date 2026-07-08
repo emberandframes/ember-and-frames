@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" role="img" aria-label="Product photography — coming soon">
+  <defs>
+    <linearGradient id="pbg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F1E4D0"/>
+      <stop offset="0.55" stop-color="#E4C296"/>
+      <stop offset="1" stop-color="#C97B3A"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#pbg)"/>
+
+  <!-- soft light -->
+  <circle cx="400" cy="300" r="118" fill="#FBF7F1" fill-opacity="0.20"/>
+  <circle cx="400" cy="300" r="74" fill="#FBF7F1" fill-opacity="0.24"/>
+
+  <!-- subtle frame -->
+  <rect x="46" y="46" width="708" height="908" fill="none" stroke="#3A2A1E" stroke-opacity="0.20" stroke-width="3"/>
+
+  <g fill="none" stroke="#2E241C" stroke-opacity="0.86" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <!-- shelf line -->
+    <line x1="150" y1="712" x2="650" y2="712"/>
+
+    <!-- tall bottle -->
+    <path d="M320 712 L320 520 L336 496 L336 470 L364 470 L364 496 L380 520 L380 712 Z"/>
+    <line x1="320" y1="560" x2="380" y2="560"/>
+
+    <!-- rounded jar -->
+    <path d="M430 712 L430 578 a46 46 0 0 1 92 0 L522 712"/>
+    <rect x="452" y="536" width="48" height="26" rx="4"/>
+
+    <!-- small box (front) -->
+    <rect x="360" y="626" width="120" height="86" rx="3"/>
+    <line x1="420" y1="626" x2="420" y2="712"/>
+  </g>
+
+  <!-- ember accent -->
+  <circle cx="476" cy="560" r="9" fill="#B05C3A"/>
+</svg>

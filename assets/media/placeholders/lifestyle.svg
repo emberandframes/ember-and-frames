@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" role="img" aria-label="Lifestyle photography — coming soon">
+  <defs>
+    <linearGradient id="lbg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F1E4D0"/>
+      <stop offset="0.55" stop-color="#E4C296"/>
+      <stop offset="1" stop-color="#C97B3A"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#lbg)"/>
+
+  <!-- soft light -->
+  <circle cx="400" cy="290" r="118" fill="#FBF7F1" fill-opacity="0.20"/>
+  <circle cx="400" cy="290" r="74" fill="#FBF7F1" fill-opacity="0.24"/>
+
+  <!-- subtle frame -->
+  <rect x="46" y="46" width="708" height="908" fill="none" stroke="#3A2A1E" stroke-opacity="0.20" stroke-width="3"/>
+
+  <g fill="none" stroke="#2E241C" stroke-opacity="0.86" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <!-- ground line -->
+    <line x1="150" y1="770" x2="650" y2="770"/>
+
+    <!-- figure one (taller) -->
+    <circle cx="336" cy="470" r="46"/>
+    <path d="M282 770 L282 610 a54 54 0 0 1 108 0 L390 770"/>
+
+    <!-- figure two (shorter, half-behind) -->
+    <circle cx="470" cy="520" r="40"/>
+    <path d="M424 770 L424 648 a46 46 0 0 1 92 0 L516 770"/>
+  </g>
+
+  <!-- ember accent -->
+  <circle cx="336" cy="470" r="9" fill="#B05C3A"/>
+</svg>
