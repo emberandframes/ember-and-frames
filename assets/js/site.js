@@ -404,10 +404,17 @@
           return imageTile(it.src, alt);
         }).join("");
         var note = c.note ? '<p class="brief-text reveal" style="max-width:640px;margin:0 auto 28px;text-align:center">' + c.note + "</p>" : "";
+        var briefBlock = (c.brief || c.vision)
+          ? '<div class="brief reveal">' +
+              (c.brief ? "<div><div class=\"brief-label\">The Brief</div><div class=\"brief-text\">" + c.brief + "</div></div>" : "") +
+              (c.vision ? "<div><div class=\"brief-label\">The Vision</div><div class=\"brief-text\">" + c.vision + "</div></div>" : "") +
+            "</div>"
+          : "";
         return (
           '<div class="tab-panel' + (i === 0 ? " is-active" : "") + '" role="tabpanel" id="' + scope + '-panel-c' + i +
             '" aria-labelledby="' + scope + '-tab-c' + i + '" tabindex="0" data-panel="c' + i + '">' +
             note +
+            briefBlock +
             '<div class="grid' + (c.reels ? " grid--reels" : "") + '">' + items + "</div>" +
           "</div>"
         );

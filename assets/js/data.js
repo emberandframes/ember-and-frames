@@ -395,13 +395,13 @@ window.EF = {
       {
         title: "Studio 512", meta: ["Music studio", "Hyderabad", "2025"],
         role: "Photography &amp; lighting",
-        blurb: "A full-service recording facility with five rooms: two live rooms, a control room, an isolation booth, and a rehearsal space. We shot entirely under the studio\u2019s own red lighting, its ambience, not ours. The brief was to make the gear look as good as it sounds.",
+        blurb: "A full-service recording facility with five rooms: two live rooms, a control room, an isolation booth, and a rehearsal space. We lit the rooms in red to match Studio 512\u2019s own brand palette, keeping the frames in the studio\u2019s mood rather than ours. The brief was to make the gear look as good as it sounds.",
         photos: ["s5","s1","s2","s13","s8","s11","s9","s17","s3","s15","s10","s6","s12","s7","s4","s16","s18","s14"]
       },
       {
         title: "R\u00fc Craft Bar", meta: ["Restaurant &amp; bar", "Hyderabad", "2025"],
         role: "Photography",
-        blurb: "A warm, layered restaurant space built around handwoven lanterns, raw plaster walls, and a boulder that was simply left where it stood. We shot before service and again at peak, so the room reads both as a space and as the place it becomes when it is full.",
+        blurb: "A warm, layered restaurant space built around handwoven lanterns, raw plaster walls, and a boulder that was simply left where it stood. We shot it as the light shifted through the evening, so the room reads both as a crafted space and for the warm, layered mood it settles into after dark.",
         photos: ["r4","r2","r1","r6","r5","r3","r7"]
       },
       {
@@ -437,6 +437,8 @@ window.EF = {
       {
         title: "Arti Sonthalia",
         note: "Discoveri Oaks, Hyderabad",
+        brief: "Arti wanted her time with the students captured as it happened, and a steady stream of content for her personal Instagram \u2014 the kind of frames she could post to show parents and children why a reading habit matters early.",
+        vision: "We followed her across school visits and award ceremonies, then went closer and quieter, documenting her writing process, her favourite books, and the inspirations and motivations that keep her at the page.",
         items: [
           { type: "video", src: "assets/media/events/Videos/Arthi%20Sonthalia/Discoveri%20Oaks%201.mp4", poster: "assets/media/events/Videos/Arthi%20Sonthalia/Discoveri%20Oaks%201.jpg" },
           { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02765.jpg" },
@@ -464,6 +466,8 @@ window.EF = {
       {
         title: "Festival of Play",
         note: "",
+        brief: "Two days, one marketplace, everything at once. Every brand at the stalls, the expert sessions recorded in full, and each event across both days \u2014 the performances, the branding and decor, and children at play with their parents. Star Papaya\u2019s products and stalls, and the play space itself, all needed their own frames.",
+        vision: "We assigned a dedicated photo and video person to every event, so nothing overlapped and nothing was missed. A shared shot list mapped every piece of footage the content needed, and every member of the team carried a copy \u2014 keeping the whole floor in step across both days.",
         items: [
           { type: "photo", src: "assets/media/events/Photos/Festival%20of%20Play/DSC00228.JPG" },
           { type: "photo", src: "assets/media/events/Photos/Festival%20of%20Play/DSC00733.JPG" },
@@ -479,6 +483,8 @@ window.EF = {
         title: "You Can Sit With Us",
         note: "A tiffin centre, reimagined for one night",
         reels: true,
+        brief: "A full record of the night as it was built: the setups and the games, the dishes and cocktails made for each seating, the brand and drinks sponsors, and the chefs at work in prep before the doors opened.",
+        vision: "Then the candid half \u2014 guests enjoying the room, the kitchen in motion, plating and cocktail-making, service, and the games and reactions as they landed. Photo and film both, so there was more than enough for socials and to sell the next edition.",
         items: [
           { type: "video", src: "assets/media/events/Videos/You%20Can%20Sit%20With%20Us/A%20tiffin%20center%20transformed%20into%20something%20otherworldly.%20A%20glimpse%20into%20the%20world%20we%20reimagined%2C.mp4", poster: "assets/media/events/Videos/You%20Can%20Sit%20With%20Us/A%20tiffin%20center%20transformed%20into%20something%20otherworldly.%20A%20glimpse%20into%20the%20world%20we%20reimagined%2C.jpg" },
           { type: "video", src: "assets/media/events/Videos/You%20Can%20Sit%20With%20Us/You%20Can%20Sit%20With%20Us%20dinner%20experiences%20are%20anything%20but%20conventional.%20We%20transform%20the%20ordinary%20.mp4", poster: "assets/media/events/Videos/You%20Can%20Sit%20With%20Us/You%20Can%20Sit%20With%20Us%20dinner%20experiences%20are%20anything%20but%20conventional.%20We%20transform%20the%20ordinary%20.jpg" },
