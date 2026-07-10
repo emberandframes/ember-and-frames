@@ -293,13 +293,16 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
 .brief-label { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--label-ink); margin-bottom: 10px; }
 .brief-text { font-size: 14.5px; line-height: 1.8; color: rgba(42,42,37,0.8); font-weight: 300; }
 
-/* Uniform aligned-row grid — fixed-count rows so bottoms stay flush and no
-   image is ever orphaned in a row of its own (replaces ragged CSS-columns
-   masonry). Tiles share a portrait 4:5 ratio; images cover-fit the tile. */
-.grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
-.grid .item { position: relative; overflow: hidden; cursor: zoom-in; background: var(--warm); }
-.grid:not(.grid--reels) .item { aspect-ratio: 4 / 5; }
-.grid .item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease, opacity 0.5s ease; }
+/* Photo galleries render as CSS-columns masonry so every image keeps its
+   natural aspect ratio. This is what keeps the burned-in brand watermark a
+   consistent on-screen size across the whole gallery: a fixed-ratio cover
+   crop scales each source by a different amount, which made the mark grow on
+   landscape frames and shrink (or clip) on tall ones. Natural sizing means
+   every image is scaled by the same factor (column width), so the mark — a
+   fixed ~14% of each image's width — always renders at the same size. */
+.grid { columns: 5; column-gap: 6px; }
+.grid .item { position: relative; overflow: hidden; cursor: zoom-in; background: var(--warm); break-inside: avoid; margin: 0 0 6px; display: block; }
+.grid .item img { width: 100%; height: auto; display: block; transition: transform 0.6s ease, opacity 0.5s ease; }
 .grid .item:hover img { transform: scale(1.03); }
 .grid .item.play::after {
   content: '▶'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
@@ -308,11 +311,11 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
 }
 .grid .item.play:hover::after { background: rgba(30,30,25,0.32); }
 
-/* Reels grid (portrait 9/16) — true row-based grid so every row holds a
-   consistent count (no vertical column-flow leaving orphaned rows). */
+/* Reels grid (portrait 9/16) — every reel shares one ratio, so a uniform
+   row-based grid keeps rows tidy without ever affecting watermark size. */
 .grid--reels { columns: auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; align-items: start; }
-.grid--reels .item { aspect-ratio: 9/16; margin-bottom: 0; }
-.grid--reels .item img { height: 100%; object-fit: cover; }
+.grid--reels .item { aspect-ratio: 9/16; margin: 0; }
+.grid--reels .item img { width: 100%; height: 100%; object-fit: cover; }
 
 img[data-lazy] { opacity: 0; }
 img[data-lazy].loaded { opacity: 1; }
@@ -529,7 +532,7 @@ summary:focus-visible,
 }
 @media (max-width: 1024px) {
   :root { --pad-x: 40px; }
-  .grid { grid-template-columns: repeat(4, 1fr); }
+  .grid { columns: 4; }
   .grid--reels { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 900px) {
@@ -542,7 +545,7 @@ summary:focus-visible,
   .process-steps { grid-template-columns: 1fr 1fr; gap: 24px; }
   .brief { grid-template-columns: 1fr; gap: 22px; }
   .industries { grid-template-columns: 1fr 1fr; }
-  .grid { grid-template-columns: repeat(3, 1fr); }
+  .grid { columns: 3; }
   .grid--reels { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 680px) {
@@ -551,7 +554,7 @@ summary:focus-visible,
   .strip { gap: 7px 18px; padding: 13px 20px; }
   .strip .dot { display: none; }
   .logo-wall img { height: 87px !important; }
-  .grid { grid-template-columns: repeat(2, 1fr); }
+  .grid { columns: 2; }
   .grid--reels { grid-template-columns: repeat(2, 1fr); }
   .contact-card { grid-template-columns: 1fr; gap: 20px; text-align: center; padding: 30px 32px; }
   .contact-item { align-items: center; }
@@ -571,6 +574,6 @@ summary:focus-visible,
   .wa-fab-label { display: none; }
 }
 @media (max-width: 420px) {
-  .grid { grid-template-columns: 1fr; }
+  .grid { columns: 1; }
   .grid--reels { grid-template-columns: 1fr; }
 }
