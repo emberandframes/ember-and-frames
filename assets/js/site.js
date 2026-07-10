@@ -546,6 +546,28 @@
     lb.querySelector(".lightbox-next").addEventListener("click", function (e) { e.stopPropagation(); lbStep(1); });
     lb.addEventListener("click", function (e) { if (e.target === lb) lbClose(); });
 
+    // Touch swipe (mobile): a mostly-horizontal drag steps through the group.
+    var swipeX = 0, swipeY = 0, swiping = false;
+    lb.addEventListener("touchstart", function (e) {
+      if (!e.touches || e.touches.length !== 1) { swiping = false; return; }
+      // leave video controls (scrubbing) alone
+      if (e.target && e.target.closest && e.target.closest("video")) { swiping = false; return; }
+      swiping = true;
+      swipeX = e.touches[0].clientX;
+      swipeY = e.touches[0].clientY;
+    }, { passive: true });
+    lb.addEventListener("touchend", function (e) {
+      if (!swiping || LB.list.length < 2) return;
+      swiping = false;
+      var t = (e.changedTouches && e.changedTouches[0]) || null;
+      if (!t) return;
+      var dx = t.clientX - swipeX;
+      var dy = t.clientY - swipeY;
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+        lbStep(dx < 0 ? 1 : -1);
+      }
+    }, { passive: true });
+
     function focusables() {
       return Array.prototype.filter.call(
         lb.querySelectorAll(".lightbox-close, .lightbox-prev, .lightbox-next, .lightbox-stage video"),

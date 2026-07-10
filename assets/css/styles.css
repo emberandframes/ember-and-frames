@@ -138,8 +138,9 @@ body.menu-open .hamburger span:nth-child(3) { transform: translateY(-8px) rotate
 /* Mobile menu */
 .mobile-menu {
   position: fixed; inset: 0; z-index: 190; background: var(--off-white);
-  display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 8px;
-  opacity: 0; visibility: hidden; transition: opacity 0.3s; padding: 40px;
+  display: flex; flex-direction: column; justify-content: flex-start; align-items: center; gap: 8px;
+  opacity: 0; visibility: hidden; transition: opacity 0.3s;
+  padding: calc(var(--nav-h) + 30px) 40px 48px; overflow-y: auto;
 }
 body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
 .mobile-menu .mm-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin: 18px 0 4px; }
@@ -292,10 +293,13 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
 .brief-label { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--label-ink); margin-bottom: 10px; }
 .brief-text { font-size: 14.5px; line-height: 1.8; color: rgba(42,42,37,0.8); font-weight: 300; }
 
-/* Masonry via CSS columns — matches the F&B standalone (5-col, tight gap) */
-.grid { columns: 5; column-gap: 6px; }
-.grid .item { break-inside: avoid; margin-bottom: 6px; position: relative; overflow: hidden; cursor: zoom-in; background: var(--warm); }
-.grid .item img { width: 100%; height: auto; transition: transform 0.6s ease, opacity 0.5s ease; }
+/* Uniform aligned-row grid — fixed-count rows so bottoms stay flush and no
+   image is ever orphaned in a row of its own (replaces ragged CSS-columns
+   masonry). Tiles share a portrait 4:5 ratio; images cover-fit the tile. */
+.grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.grid .item { position: relative; overflow: hidden; cursor: zoom-in; background: var(--warm); }
+.grid:not(.grid--reels) .item { aspect-ratio: 4 / 5; }
+.grid .item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease, opacity 0.5s ease; }
 .grid .item:hover img { transform: scale(1.03); }
 .grid .item.play::after {
   content: '▶'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
@@ -304,9 +308,10 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
 }
 .grid .item.play:hover::after { background: rgba(30,30,25,0.32); }
 
-/* Reels grid (portrait 9/16) */
-.grid--reels { columns: 4; }
-.grid--reels .item { aspect-ratio: 9/16; }
+/* Reels grid (portrait 9/16) — true row-based grid so every row holds a
+   consistent count (no vertical column-flow leaving orphaned rows). */
+.grid--reels { columns: auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; align-items: start; }
+.grid--reels .item { aspect-ratio: 9/16; margin-bottom: 0; }
 .grid--reels .item img { height: 100%; object-fit: cover; }
 
 img[data-lazy] { opacity: 0; }
@@ -340,7 +345,7 @@ img[data-lazy].loaded { opacity: 1; }
 .coming .eyebrow { display: block; margin-bottom: 18px; }
 .coming h2 { margin-bottom: 20px; }
 .coming p { font-size: 16px; line-height: 1.8; color: rgba(42,42,37,0.76); font-weight: 300; max-width: 600px; margin: 0 auto 14px; }
-.coming .coming-note { font-family: var(--display); font-style: italic; font-size: 21px; color: var(--charcoal); margin: 26px 0; }
+.coming .coming-note { font-family: var(--display); font-style: italic; font-size: 21px; color: var(--charcoal); margin: 26px auto; }
 .coming-teaser { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 44px 0; }
 .coming-teaser .t {
   aspect-ratio: 3/4; overflow: hidden; position: relative; background: var(--warm);
@@ -524,11 +529,12 @@ summary:focus-visible,
 }
 @media (max-width: 1024px) {
   :root { --pad-x: 40px; }
-  .grid { columns: 4; }
-  .grid--reels { columns: 3; }
+  .grid { grid-template-columns: repeat(4, 1fr); }
+  .grid--reels { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 900px) {
-  .hero { grid-template-columns: 1fr; max-height: none; }
+  .hero { grid-template-columns: 1fr; max-height: none; min-height: auto; margin-top: 0; }
+  .hero-left { padding: 40px var(--pad-x) 28px; justify-content: flex-start; }
   .hero-left::after { display: none; }
   .hero-media { grid-template-rows: 1fr; grid-template-columns: 1fr; aspect-ratio: 4/3; }
   .hero-media-sub { display: none; }
@@ -536,13 +542,17 @@ summary:focus-visible,
   .process-steps { grid-template-columns: 1fr 1fr; gap: 24px; }
   .brief { grid-template-columns: 1fr; gap: 22px; }
   .industries { grid-template-columns: 1fr 1fr; }
-  .grid { columns: 3; }
-  .grid--reels { columns: 3; }
+  .grid { grid-template-columns: repeat(3, 1fr); }
+  .grid--reels { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 680px) {
   :root { --pad-x: 20px; --nav-h: 64px; }
-  .grid { columns: 2; }
-  .grid--reels { columns: 2; }
+  .hero-left { padding: 28px var(--pad-x) 22px; }
+  .strip { gap: 7px 18px; padding: 13px 20px; }
+  .strip .dot { display: none; }
+  .logo-wall img { height: 87px !important; }
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .grid--reels { grid-template-columns: repeat(2, 1fr); }
   .contact-card { grid-template-columns: 1fr; gap: 20px; text-align: center; padding: 30px 32px; }
   .contact-item { align-items: center; }
   .form-row { grid-template-columns: 1fr; }
@@ -551,12 +561,16 @@ summary:focus-visible,
   .coming-teaser { grid-template-columns: 1fr 1fr; }
   .footer { grid-template-columns: 1fr; justify-items: center; gap: 10px; text-align: center; padding-bottom: 82px; }
   .footer .footer-brand, .footer [data-top] { justify-self: center; }
-  .lightbox { --gutter: 54px; }
-  .lightbox-prev { left: 8px; } .lightbox-next { right: 8px; }
+  .lightbox { --gutter: 14px; }
+  .lightbox-media { max-height: 72vh; }
+  .lightbox-nav { top: auto; bottom: 18px; transform: none; }
+  .lightbox-prev { left: auto; right: calc(50% + 10px); }
+  .lightbox-next { left: calc(50% + 10px); right: auto; }
   .wa-fab { width: 52px; height: 52px; bottom: 16px; right: 16px; }
   .wa-fab svg { width: 28px; height: 28px; }
   .wa-fab-label { display: none; }
 }
 @media (max-width: 420px) {
-  .grid, .grid--reels { columns: 1; }
+  .grid { grid-template-columns: 1fr; }
+  .grid--reels { grid-template-columns: 1fr; }
 }
