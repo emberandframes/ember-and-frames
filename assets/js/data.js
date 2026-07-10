@@ -80,9 +80,9 @@ window.EF = {
       heading: 'From plate to <em>post</em>.',
       note: "Full-day and monthly retainers. Packages tailored to the brief.",
       items: [
-        { name: "Restaurants, Bars &amp; Hotels", desc: "Full menu shoots, ambience, and the little details that make a place feel like itself." },
-        { name: "Brand &amp; Packaging",          desc: "Campaign imagery and product shots that hold up on a shelf and on a screen." },
-        { name: "Social Content",                desc: "Reels and stills built for the feed, shot in batches so you are never scrambling for posts." },
+        { name: "Restaurants, Bars &amp; Hotels", desc: "Complete visual library for restaurants, bars and hotels: signature dishes, detail shots, ambience and the team in action." },
+        { name: "Brand &amp; Packaging",          desc: "Product photography with mood-driven styling for FMCG, gourmet and speciality food brands." },
+        { name: "Social Content",                desc: "Ongoing content for the brands we work with, paced to keep feeds consistent, fresh and on-brand." },
         { name: "Editorial &amp; Cookbooks",     desc: "Long-form food stories and recipe photography with a proper narrative thread." }
       ]
     },
@@ -92,7 +92,7 @@ window.EF = {
       note: "Day rates and project pricing. Packages tailored to the space.",
       items: [
         { name: "Residential &amp; Show Flats",   desc: "Homes and show flats shot the way they are meant to be lived in, patient with the light." },
-        { name: "Hospitality &amp; Retail",       desc: "Restaurants, bars, and stores captured with the mood that makes people want to walk in." },
+        { name: "Hospitality &amp; Retail",       desc: "Resorts and hotels framed for the escape they promise. Luxury and boutique stores styled for the walk-in moment. Every space shot with the mood that turns a glance into a visit." },
         { name: "Studios &amp; Workspaces",       desc: "Offices, studios, and creative spaces framed clean and honest about the materials." },
         { name: "Architecture &amp; Developers",  desc: "Facades, structures, and detail work for teams who care about the craft." }
       ]
@@ -102,10 +102,10 @@ window.EF = {
       heading: 'From first guest to final <em>frame</em>.',
       note: "Coverage by the day or the event. Photo, film, or both.",
       items: [
-        { name: "Celebrations &amp; Weddings", desc: "The big moments and the quiet ones, covered the way the night actually felt." },
-        { name: "Brand Experiences",          desc: "Launches, pop-ups, and activations documented for the recap and the archive." },
-        { name: "Portraits",                   desc: "Candid and considered portraits of the people who make the room." },
-        { name: "Film &amp; Reels",            desc: "Short films and social cuts that hold the energy long after the lights come up." }
+        { name: "Brand Launches &amp; Activations", desc: "Product drops, pop-ups, and experiential moments — captured for the recap and the archive." },
+        { name: "Corporate &amp; Conferences",      desc: "Summits, offsites, and conferences, documented with the polish stakeholders expect and the detail that makes people actually watch the recap." },
+        { name: "Cultural &amp; Editorial Events",  desc: "Exhibitions, showcases, panels, and press previews — shot with the eye for detail that makes for a strong story afterward." },
+        { name: "Social &amp; Community Events",    desc: "Community gatherings, cultural moments, and shared experiences — framed with the warmth and energy that hold a room together." }
       ]
     },
     hospitality: {
