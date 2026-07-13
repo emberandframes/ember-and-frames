@@ -34,7 +34,7 @@ window.EF = {
   /* ---------- Shared: ABOUT ---------- */
   about: {
     heading: 'We make pictures worth <em>keeping</em>.',
-    lede: "Ember <span class=\"brand-amp\">&amp;</span> Frames is a photography and film studio in Hyderabad. We work across food, spaces, and the people and moments that fill them, and we try to make the everyday feel worth holding on to.",
+    lede: "Ember <span class=\"brand-amp\">&amp;</span> Frames is a content studio in Hyderabad. We make photographs and films, and manage the social presence that carries them, across food, spaces, and the people and moments that fill them, working to make the everyday feel worth holding on to.",
     body: "A good photograph does more than record a thing. It carries the warmth of a kitchen, the calm of a well made room, the buzz of a good night out. Across food and beverage, interiors and architecture, events and lifestyle, our job is to catch that feeling and hand it back to you in frames you are proud to put your name to. We shoot on location, style with intention, and edit so the work looks like you, never like a stock catalogue.",
     process: [
       { name: "Brief &amp; Discovery",  desc: "A short call to understand the brand, the space, and the mood. We follow up with a shot list and references before the shoot." },
@@ -55,18 +55,17 @@ window.EF = {
   /* ---------- Shared: ENQUIRE (merged pills from every portfolio) ---------- */
   enquire: {
     heading: 'Send <em>a quick brief</em>',
-    sub: "Tell us about your project in a few lines. We reply within two working days.",
+    sub: "Tell us about your project in a few lines. We read every message and reply within two working days.",
     pills: [
-      "Menu &amp; Food Shoot",
+      { label: "Food &amp; Beverage", key: "fnb" },
+      { label: "Interiors &amp; Architecture", key: "interiors" },
+      { label: "Events", key: "events" },
+      { label: "Hospitality", key: "hospitality" },
+      { label: "Lifestyle", key: "lifestyle" },
+      { label: "Products", key: "products" },
+      "Branding &amp; Strategy",
+      "Social Media Management",
       "Brand Campaign",
-      "Social Content",
-      "Reels &amp; Video",
-      "Interiors &amp; Architecture",
-      "Hospitality",
-      "Event Coverage",
-      "Lifestyle",
-      "Product &amp; Packaging",
-      "Editorial / Cookbook",
       "Other"
     ]
   },
@@ -102,10 +101,10 @@ window.EF = {
       heading: 'From first guest to final <em>frame</em>.',
       note: "Coverage by the day or the event. Photo, film, or both.",
       items: [
-        { name: "Brand Launches &amp; Activations", desc: "Product drops, pop-ups, and experiential moments — captured for the recap and the archive." },
+        { name: "Brand Launches &amp; Activations", desc: "Product drops, pop-ups, and experiential moments, captured for the recap and the archive." },
         { name: "Corporate &amp; Conferences",      desc: "Summits, offsites, and conferences, documented with the polish stakeholders expect and the detail that makes people actually watch the recap." },
-        { name: "Cultural &amp; Editorial Events",  desc: "Exhibitions, showcases, panels, and press previews — shot with the eye for detail that makes for a strong story afterward." },
-        { name: "Social &amp; Community Events",    desc: "Community gatherings, cultural moments, and shared experiences — framed with the warmth and energy that hold a room together." }
+        { name: "Cultural &amp; Editorial Events",  desc: "Exhibitions, showcases, panels, and press previews, shot with the eye for detail that makes for a strong story afterward." },
+        { name: "Social &amp; Community Events",    desc: "Community gatherings, cultural moments, and shared experiences, framed with the warmth and energy that hold a room together." }
       ]
     },
     hospitality: {
@@ -124,10 +123,10 @@ window.EF = {
       heading: 'From candid to <em>campaign</em>.',
       note: "Sessions and content days. Packages tailored to the brief.",
       items: [
-        { name: "Personal &amp; Portraits", desc: "Relaxed, natural portraits for people and the brands built around them." },
-        { name: "Brand Faces",             desc: "Founders, teams, and talent, shot to feel human, not corporate." },
-        { name: "Content &amp; Reels",      desc: "Batches of stills and short video, made for the feed and the site." },
-        { name: "Editorial",                desc: "Story-led shoots with a proper narrative thread from first frame to last." }
+        { name: "Brand Faces",          desc: "Founders, teams, and talent, shot to feel human, not corporate." },
+        { name: "Product in Context",   desc: "Everyday objects and spaces styled and shot the way people actually live with them." },
+        { name: "Editorial",            desc: "Story-led shoots with a proper narrative thread, from first frame to last." },
+        { name: "World-Building",        desc: "Full scenes and settings styled from the ground up, so a brand's aesthetic reads as one cohesive story." }
       ]
     },
     products: {
@@ -235,6 +234,7 @@ window.EF = {
       "assets/media/fnb/Light/Ru%20and%20Kinru/DSC05484.jpg",
     ],
     lunar: [
+      "assets/media/fnb/Light/Lunar%20Cafe/DSC03584.jpg",
       "assets/media/fnb/Light/Lunar%20Cafe/DSC03801.jpg",
       "assets/media/fnb/Light/Lunar%20Cafe/DSC03429.jpg",
       "assets/media/fnb/Light/Lunar%20Cafe/DSC03311.jpg",
@@ -375,7 +375,6 @@ window.EF = {
     filmstrip: [
       "assets/media/interiors/p5.jpg",
       "assets/media/interiors/r1.jpg",
-      "assets/media/interiors/s5.jpg",
       "assets/media/interiors/o1.jpg",
       "assets/media/interiors/p2.jpg",
       "assets/media/interiors/r4.jpg",
@@ -436,11 +435,14 @@ window.EF = {
     collections: [
       {
         title: "Arti Sonthalia",
-        note: "Discoveri Oaks, Hyderabad",
-        brief: "Arti wanted her time with the students captured as it happened, and a steady stream of content for her personal Instagram \u2014 the kind of frames she could post to show parents and children why a reading habit matters early.",
+        brief: "Arti wanted her time with the students captured as it happened, and a steady stream of content for her personal Instagram, the kind of frames she could post to show parents and children why a reading habit matters early.",
         vision: "We followed her across school visits and award ceremonies, then went closer and quieter, documenting her writing process, her favourite books, and the inspirations and motivations that keep her at the page.",
+        videos: [
+          { src: "assets/media/events/Videos/Arthi%20Sonthalia/Arti%20Reel%201%20final.mp4", poster: "assets/media/events/Videos/Arthi%20Sonthalia/Arti%20Reel%201%20final.jpg", alt: "Arti Sonthalia reel" },
+          { src: "assets/media/events/Videos/Arthi%20Sonthalia/Discoveri%20Oaks%201.mp4", poster: "assets/media/events/Videos/Arthi%20Sonthalia/Discoveri%20Oaks%201.jpg", alt: "Discoveri Oaks session" },
+          { src: "assets/media/events/Videos/Arthi%20Sonthalia/Discoveri%20Oaks%202.mp4", poster: "assets/media/events/Videos/Arthi%20Sonthalia/Discoveri%20Oaks%202.jpg", alt: "Discoveri Oaks session" }
+        ],
         items: [
-          { type: "video", src: "assets/media/events/Videos/Arthi%20Sonthalia/Discoveri%20Oaks%201.mp4", poster: "assets/media/events/Videos/Arthi%20Sonthalia/Discoveri%20Oaks%201.jpg" },
           { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02765.jpg" },
           { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02772.jpg" },
           { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02781.jpg" },
@@ -448,7 +450,6 @@ window.EF = {
           { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02785.jpg" },
           { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02795.jpg" },
           { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02804.jpg" },
-          { type: "video", src: "assets/media/events/Videos/Arthi%20Sonthalia/Discoveri%20Oaks%202.mp4", poster: "assets/media/events/Videos/Arthi%20Sonthalia/Discoveri%20Oaks%202.jpg" },
           { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02797.jpg" },
           { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02820.jpg" },
           { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02806.jpg" },
@@ -466,8 +467,8 @@ window.EF = {
       {
         title: "Festival of Play",
         note: "",
-        brief: "Two days, one marketplace, everything at once. Every brand at the stalls, the expert sessions recorded in full, and each event across both days \u2014 the performances, the branding and decor, and children at play with their parents. Star Papaya\u2019s products and stalls, and the play space itself, all needed their own frames.",
-        vision: "We assigned a dedicated photo and video person to every event, so nothing overlapped and nothing was missed. A shared shot list mapped every piece of footage the content needed, and every member of the team carried a copy \u2014 keeping the whole floor in step across both days.",
+        brief: "Two days, one marketplace, everything at once. Every brand at the stalls, the expert sessions recorded in full, and each event across both days: the performances, the branding and decor, and children at play with their parents. Star Papaya\u2019s products and stalls, and the play space itself, all needed their own frames.",
+        vision: "We assigned a dedicated photo and video person to every event, so nothing overlapped and nothing was missed. A shared shot list mapped every piece of footage the content needed, and every member of the team carried a copy, keeping the whole floor in step across both days.",
         items: [
           { type: "photo", src: "assets/media/events/Photos/Festival%20of%20Play/DSC00228.JPG" },
           { type: "photo", src: "assets/media/events/Photos/Festival%20of%20Play/DSC00733.JPG" },
@@ -481,10 +482,9 @@ window.EF = {
       },
       {
         title: "You Can Sit With Us",
-        note: "A tiffin centre, reimagined for one night",
         reels: true,
         brief: "A full record of the night as it was built: the setups and the games, the dishes and cocktails made for each seating, the brand and drinks sponsors, and the chefs at work in prep before the doors opened.",
-        vision: "Then the candid half \u2014 guests enjoying the room, the kitchen in motion, plating and cocktail-making, service, and the games and reactions as they landed. Photo and film both, so there was more than enough for socials and to sell the next edition.",
+        vision: "Then the candid half: guests enjoying the room, the kitchen in motion, plating and cocktail-making, service, and the games and reactions as they landed. Photo and film both, so there was more than enough for socials and to sell the next edition.",
         items: [
           { type: "video", src: "assets/media/events/Videos/You%20Can%20Sit%20With%20Us/A%20tiffin%20center%20transformed%20into%20something%20otherworldly.%20A%20glimpse%20into%20the%20world%20we%20reimagined%2C.mp4", poster: "assets/media/events/Videos/You%20Can%20Sit%20With%20Us/A%20tiffin%20center%20transformed%20into%20something%20otherworldly.%20A%20glimpse%20into%20the%20world%20we%20reimagined%2C.jpg" },
           { type: "video", src: "assets/media/events/Videos/You%20Can%20Sit%20With%20Us/You%20Can%20Sit%20With%20Us%20dinner%20experiences%20are%20anything%20but%20conventional.%20We%20transform%20the%20ordinary%20.mp4", poster: "assets/media/events/Videos/You%20Can%20Sit%20With%20Us/You%20Can%20Sit%20With%20Us%20dinner%20experiences%20are%20anything%20but%20conventional.%20We%20transform%20the%20ordinary%20.jpg" },
@@ -501,23 +501,23 @@ window.EF = {
      ===================================================================== */
   hospitality: {
     teasers: [
-      "assets/media/interiors/p5.jpg",
-      "assets/media/interiors/r1.jpg",
-      "assets/media/interiors/o1.jpg"
+      "assets/media/placeholders/hospitality-1.svg",
+      "assets/media/placeholders/hospitality-2.svg",
+      "assets/media/placeholders/hospitality-3.svg"
     ]
   },
   lifestyle: {
     teasers: [
-      "assets/media/events/Photos/Festival%20of%20Play/DSC00744.JPG",
-      "assets/media/events/Photos/Arthi%20Sonthalia/DSC02801.jpg",
-      "assets/media/events/Photos/Festival%20of%20Play/DSC00922.JPG"
+      "assets/media/placeholders/lifestyle-1.svg",
+      "assets/media/placeholders/lifestyle-2.svg",
+      "assets/media/placeholders/lifestyle-3.svg"
     ]
   },
   products: {
     teasers: [
-      "assets/media/fnb/Light/Concu%20Hamper/DSC06786.jpg",
-      "assets/media/fnb/Light/Concu%20Hamper/DSC06763.jpg",
-      "assets/media/fnb/Light/Concu%20Hamper/DSC06718.jpg"
+      "assets/media/placeholders/products-1.svg",
+      "assets/media/placeholders/products-2.svg",
+      "assets/media/placeholders/products-3.svg"
     ]
   }
 };

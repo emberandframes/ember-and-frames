@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img" aria-label="Products, a cosmetic jar">
+  <defs>
+    <linearGradient id="p3bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F1E4D0"/>
+      <stop offset="0.55" stop-color="#E4C296"/>
+      <stop offset="1" stop-color="#C97B3A"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#p3bg)"/>
+  <circle cx="300" cy="230" r="96" fill="#FBF7F1" fill-opacity="0.20"/>
+  <circle cx="300" cy="230" r="60" fill="#FBF7F1" fill-opacity="0.24"/>
+  <rect x="34" y="34" width="532" height="732" fill="none" stroke="#3A2A1E" stroke-opacity="0.20" stroke-width="3"/>
+  <g fill="none" stroke="#2E241C" stroke-opacity="0.86" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <!-- shelf -->
+    <line x1="150" y1="580" x2="450" y2="580"/>
+    <!-- jar body -->
+    <rect x="252" y="458" width="96" height="122" rx="14"/>
+    <!-- lid -->
+    <rect x="246" y="428" width="108" height="34" rx="8"/>
+    <!-- label accent -->
+    <line x1="252" y1="518" x2="348" y2="518"/>
+  </g>
+  <circle cx="300" cy="500" r="8" fill="#B05C3A"/>
+</svg>

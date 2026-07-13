@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img" aria-label="Lifestyle, two people together">
+  <defs>
+    <linearGradient id="l2bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F1E4D0"/>
+      <stop offset="0.55" stop-color="#E4C296"/>
+      <stop offset="1" stop-color="#C97B3A"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#l2bg)"/>
+  <circle cx="300" cy="230" r="96" fill="#FBF7F1" fill-opacity="0.20"/>
+  <circle cx="300" cy="230" r="60" fill="#FBF7F1" fill-opacity="0.24"/>
+  <rect x="34" y="34" width="532" height="732" fill="none" stroke="#3A2A1E" stroke-opacity="0.20" stroke-width="3"/>
+  <g fill="none" stroke="#2E241C" stroke-opacity="0.86" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <!-- ground -->
+    <line x1="130" y1="600" x2="470" y2="600"/>
+    <!-- figure one (taller) -->
+    <circle cx="250" cy="352" r="42"/>
+    <path d="M206 600 L206 452 a44 44 0 0 1 88 0 L294 600"/>
+    <!-- figure two (shorter) -->
+    <circle cx="366" cy="392" r="36"/>
+    <path d="M326 600 L326 500 a40 40 0 0 1 80 0 L406 600"/>
+  </g>
+  <circle cx="250" cy="352" r="8" fill="#B05C3A"/>
+</svg>

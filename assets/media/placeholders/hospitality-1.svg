@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img" aria-label="Hospitality, a suite with a soft bedside glow">
+  <defs>
+    <linearGradient id="h1bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F1E4D0"/>
+      <stop offset="0.55" stop-color="#E4C296"/>
+      <stop offset="1" stop-color="#C97B3A"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#h1bg)"/>
+  <circle cx="300" cy="230" r="96" fill="#FBF7F1" fill-opacity="0.20"/>
+  <circle cx="300" cy="230" r="60" fill="#FBF7F1" fill-opacity="0.24"/>
+  <rect x="34" y="34" width="532" height="732" fill="none" stroke="#3A2A1E" stroke-opacity="0.20" stroke-width="3"/>
+  <g fill="none" stroke="#2E241C" stroke-opacity="0.86" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <!-- pendant light -->
+    <line x1="300" y1="286" x2="300" y2="330"/>
+    <path d="M278 330 L322 330 L314 364 L286 364 Z"/>
+    <!-- bed -->
+    <line x1="120" y1="580" x2="480" y2="580"/>
+    <rect x="176" y="392" width="26" height="188"/>
+    <rect x="202" y="474" width="236" height="56" rx="6"/>
+    <rect x="214" y="440" width="66" height="34" rx="10"/>
+    <line x1="352" y1="474" x2="352" y2="530"/>
+    <line x1="214" y1="530" x2="214" y2="580"/>
+    <line x1="428" y1="530" x2="428" y2="580"/>
+  </g>
+  <circle cx="300" cy="376" r="8" fill="#B05C3A"/>
+</svg>
