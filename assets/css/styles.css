@@ -201,6 +201,8 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
 
 .hero-media { position: relative; overflow: hidden; display: grid; grid-template-rows: 3fr 2fr; min-height: 0; }
 .hero-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero-media img.hero-shot { cursor: zoom-in; transition: transform 0.6s ease; }
+.hero-media img.hero-shot:hover { transform: scale(1.03); }
 .hero-media-main { position: relative; overflow: hidden; background: var(--warm); min-height: 0; }
 .hero-media-sub { display: grid; grid-template-columns: 1fr 1fr; min-height: 0; }
 .hero-media-sub > div { position: relative; overflow: hidden; background: var(--cream-soft); border-top: 2px solid var(--off-white); min-height: 0; }
@@ -237,7 +239,7 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
 .filmstrip::-webkit-scrollbar { display: none; }
 .filmstrip .frame {
   flex: 0 0 auto; width: clamp(240px, 26vw, 340px); aspect-ratio: 4/5;
-  overflow: hidden; scroll-snap-align: start; background: var(--warm); cursor: zoom-in;
+  position: relative; overflow: hidden; scroll-snap-align: start; background: var(--warm); cursor: zoom-in;
 }
 .filmstrip .frame img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
 .filmstrip .frame:hover img { transform: scale(1.04); }
@@ -293,17 +295,22 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
 .brief-label { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--label-ink); margin-bottom: 10px; }
 .brief-text { font-size: 14.5px; line-height: 1.8; color: rgba(42,42,37,0.8); font-weight: 300; }
 
-/* Photo galleries render as CSS-columns masonry so every image keeps its
-   natural aspect ratio. This is what keeps the burned-in brand watermark a
-   consistent on-screen size across the whole gallery: a fixed-ratio cover
-   crop scales each source by a different amount, which made the mark grow on
-   landscape frames and shrink (or clip) on tall ones. Natural sizing means
-   every image is scaled by the same factor (column width), so the mark — a
-   fixed ~14% of each image's width — always renders at the same size. */
-.grid { columns: 5; column-gap: 6px; }
-.grid .item { position: relative; overflow: hidden; cursor: zoom-in; background: var(--warm); break-inside: avoid; margin: 0 0 6px; display: block; }
+/* Photo galleries are a masonry layout with a fixed column count. The columns
+   come from grid-template-columns: repeat(5, 1fr) (responsive below), so every
+   category always shows the same number of photos per row. The masonry packing
+   comes from grid-auto-rows: 1px plus a per-tile grid-row span that site.js sets
+   from each image's height — tiles stack tight in their column with no
+   height-mismatch white space, while natural aspect ratios are preserved (no
+   cropping). Reels (.grid--reels) share one ratio and opt out below. The brand
+   watermark is baked into the image files themselves (white corner mark), so it
+   survives download; no CSS overlay is drawn on photo tiles. */
+.grid { display: grid; grid-template-columns: repeat(5, 1fr); column-gap: 6px; row-gap: 0; grid-auto-rows: 1px; align-items: start; }
+.grid .item { position: relative; overflow: hidden; cursor: zoom-in; background: var(--warm); margin: 0; display: block; }
 .grid .item img { width: 100%; height: auto; display: block; transition: transform 0.6s ease, opacity 0.5s ease; }
 .grid .item:hover img { transform: scale(1.03); }
+/* Brand watermark is baked into each photo file (white corner mark) so it can't
+   be stripped by downloading. Video tiles (.play) carry their own burned-in
+   mark and show a play glyph instead. */
 .grid .item.play::after {
   content: '▶'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
   color: rgba(255,255,255,0.9); font-size: 30px; background: rgba(30,30,25,0.18); transition: background 0.2s;
@@ -313,7 +320,7 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
 
 /* Reels grid (portrait 9/16) — every reel shares one ratio, so a uniform
    row-based grid keeps rows tidy without ever affecting watermark size. */
-.grid--reels { columns: auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; align-items: start; }
+.grid--reels { columns: auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; grid-auto-rows: auto; align-items: start; }
 .grid--reels .item { aspect-ratio: 9/16; margin: 0; }
 .grid--reels .item img { width: 100%; height: 100%; object-fit: cover; }
 
@@ -353,9 +360,9 @@ img[data-lazy].loaded { opacity: 1; }
 .coming-teaser .t {
   aspect-ratio: 3/4; overflow: hidden; position: relative; background: var(--warm);
 }
-.coming-teaser .t img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.15) brightness(0.9); transition: transform 0.7s; }
+.coming-teaser .t img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s; }
 .coming-teaser .t:hover img { transform: scale(1.05); }
-.coming-teaser .t::after { content: ''; position: absolute; inset: 0; background: rgba(42,42,37,0.12); }
+.coming-teaser .t::after { content: ''; position: absolute; inset: 0; background: rgba(42,42,37,0.04); }
 .coming .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
 
 /* =====================================================================
@@ -420,6 +427,15 @@ img[data-lazy].loaded { opacity: 1; }
 }
 .pill:hover { border-color: var(--olive); color: var(--olive); }
 .pill[aria-pressed="true"] { background: var(--charcoal); color: var(--off-white); border-color: var(--charcoal); }
+.pill--cat::after { content: "+"; margin-left: 7px; font-size: 12px; font-weight: 600; opacity: 0.55; }
+.pill--cat[aria-expanded="true"]::after { content: "\2013"; }
+.subpill-wrap { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.subpill-group { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 12px 14px; border-left: 2px solid var(--terracotta); background: rgba(176,92,58,0.06); border-radius: 0 10px 10px 0; }
+.subpill-group[hidden] { display: none; }
+.subpill-cap { flex-basis: 100%; font-family: var(--body); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--terracotta); }
+.pill--sub { font-size: 10.5px; padding: 8px 15px; }
+body.motion-on .subpill-group:not([hidden]) { animation: subPop 0.26s ease both; }
+@keyframes subPop { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: none; } }
 .form-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 6px; }
 .btn-form { font-family: var(--body); font-size: 11px; font-weight: 400; letter-spacing: 3.5px; text-transform: uppercase; padding: 15px 34px; border-radius: 40px; cursor: pointer; transition: all 0.22s; border: 1px solid var(--charcoal); }
 .btn-form.solid { background: var(--charcoal); color: var(--off-white); }
@@ -496,6 +512,154 @@ img[data-lazy].loaded { opacity: 1; }
 }
 
 /* =====================================================================
+   MOTION EFFECTS (page-scoped scroll / hover / cursor animations)
+   ---------------------------------------------------------------------
+   Injected + wired by site.js enhanceMotion(). Progressive enhancement:
+   the pre-animation states live behind JS-added classes (.rf, .dev-tile,
+   .duo, .grain, .torch) or body.motion-on, and JS only adds those when the
+   visitor has NOT requested reduced motion — so with no JS, or with
+   reduce-motion, every image renders clean and static.
+   ===================================================================== */
+
+/* --- Ken Burns — F&B gallery, slow zoom + pan on scroll-in (replays) --- */
+body.motion-on[data-page="fnb"] .grid .item.kb img { transform-origin: 60% 40%; }
+body.motion-on[data-page="fnb"] .grid .item.kb.in img {
+  animation: kenTile 7s ease-in-out both;
+}
+@keyframes kenTile {
+  0%   { transform: scale(1.03) translate(0, 0); }
+  100% { transform: scale(1.14) translate(-3%, -2%); }
+}
+
+/* --- Rack Focus — Interiors gallery, blur pulls sharp on scroll-in (replays) --- */
+body.motion-on[data-page="interiors"] .grid .item.rf img {
+  filter: blur(15px) brightness(1.05);
+  transition: filter 1.4s ease;
+}
+body.motion-on[data-page="interiors"] .grid .item.rf.in img { filter: none; }
+
+/* --- Darkroom "Develop" — Events gallery, on scroll-in (replays).
+   Mirrors the Events standalone portfolio darkroom effect exactly. --- */
+body[data-page="events"] .grid .item.dev-tile { background: #e9e5da; }
+body[data-page="events"] .grid .item.dev-tile img {
+  transform: scale(1.06);
+  filter: contrast(.3) brightness(1.7) saturate(.15) sepia(.1);
+  transition: filter 3.4s cubic-bezier(.4,0,.2,1), transform 3.4s cubic-bezier(.4,0,.2,1);
+}
+body[data-page="events"] .grid .item.dev-tile.developed img { transform: none; filter: none; }
+body[data-page="events"] .grid .item.dev-tile .bath {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(150deg, #f4f0e8, #e7e3d9); opacity: 1; transition: opacity 3.4s ease;
+}
+body[data-page="events"] .grid .item.dev-tile.developed .bath { opacity: 0; }
+body[data-page="events"] .grid .item.dev-tile .cast {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: rgba(95,122,156,.30); opacity: 1; transition: opacity 3.4s ease;
+}
+body[data-page="events"] .grid .item.dev-tile.developed .cast { opacity: 0; }
+body[data-page="events"] .grid .item.dev-tile .sheen {
+  position: absolute; top: -30%; left: -60%; width: 48%; height: 160%; z-index: 3; pointer-events: none;
+  background: linear-gradient(105deg, transparent, rgba(255,255,255,.55), transparent);
+  transform: translateX(0) rotate(9deg); opacity: 0;
+}
+body[data-page="events"] .grid .item.dev-tile.developing .sheen { animation: devSweep 2.6s ease forwards; }
+@keyframes devSweep {
+  0%   { opacity: 0; transform: translateX(0) rotate(9deg); }
+  22%  { opacity: .85; }
+  100% { opacity: 0; transform: translateX(360%) rotate(9deg); }
+}
+
+/* --- Duotone → Colour — Lifestyle teasers, on scroll-in (replays) --- */
+body[data-page="lifestyle"] .coming-teaser .t.duo img {
+  filter: sepia(.85) saturate(1.9) hue-rotate(-12deg) brightness(.92) contrast(1.06);
+  transition: filter 2.2s ease;
+}
+body[data-page="lifestyle"] .coming-teaser .t.duo.in img { filter: none; }
+body[data-page="lifestyle"] .coming-teaser .t.duo .tint {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(160deg, rgba(201,123,58,.35), rgba(30,20,12,.28));
+  mix-blend-mode: multiply; opacity: 1; transition: opacity 2.2s ease;
+}
+body[data-page="lifestyle"] .coming-teaser .t.duo.in .tint { opacity: 0; }
+
+/* --- Film Grain Dissolve — Hospitality teasers, on scroll-in (replays) --- */
+body[data-page="hospitality"] .coming-teaser .t.grain img {
+  filter: contrast(1.15) brightness(.9) saturate(.7); transform: scale(1.04);
+  transition: filter 2.4s ease, transform 2.4s ease;
+}
+body[data-page="hospitality"] .coming-teaser .t.grain.in img { filter: none; transform: none; }
+body[data-page="hospitality"] .coming-teaser .t.grain .noise {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: .95; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 170px; transition: opacity 2.4s ease;
+}
+body[data-page="hospitality"] .coming-teaser .t.grain.in .noise { opacity: 0; }
+
+/* --- Cursor Spotlight — Products teasers, warm torch follows the pointer --- */
+body[data-page="products"] .coming-teaser .t.torch { cursor: crosshair; }
+body[data-page="products"] .coming-teaser .t.torch .mask {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: radial-gradient(circle 110px at var(--mx, 50%) var(--my, 50%),
+    rgba(20,16,12,0) 0, rgba(20,16,12,0) 62px, rgba(18,14,10,0.86) 150px);
+  transition: background 0.12s ease;
+}
+
+/* --- Film Sprocket Pan — Ember filmstrips: charcoal reel panel that hugs
+   the frames with terracotta sprocket perforations on the top AND bottom
+   edges (symmetric, thin). The nav buttons sit below the reel on the section
+   background, unchanged. The sprocket graphic is static (always on); the
+   continuous projector pan (JS) needs motion-on. --- */
+.filmstrip-reel { position: relative; background: var(--charcoal); border-radius: 2px; }
+.filmstrip-reel .filmstrip { padding-top: 6px; padding-bottom: 6px; }
+.filmstrip-reel::before, .filmstrip-reel::after {
+  content: ""; position: absolute; left: 0; right: 0; height: 15px; z-index: 2; pointer-events: none;
+  background-color: var(--charcoal);
+  background-image: repeating-linear-gradient(90deg, transparent 0 6px, rgba(176,92,58,0.8) 6px 22px, transparent 22px 28px);
+  background-size: 100% 8px; background-position: center; background-repeat: no-repeat;
+}
+.filmstrip-reel::before { top: 0; }
+.filmstrip-reel::after { bottom: 0; }
+.filmstrip-nav { margin-top: 16px; }
+body.motion-on .filmstrip { scroll-snap-type: none; }
+
+/* --- Ember Accent — faint ember sparks drifting up behind the header type.
+   Header colour + layout stay exactly as designed; only the sparks are added. --- */
+.nav-sparks { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.nav .nav-logo, .nav .nav-links, .nav .hamburger { position: relative; z-index: 1; }
+.nav .spark {
+  position: absolute; bottom: -10px; width: calc(var(--sz, 5px) * 1.7); height: calc(var(--sz, 5px) * 1.7);
+  background: radial-gradient(circle at 50% 42%, #FFECC2 0%, #F2892E 46%, #D34A1C 100%);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Cpath%20d='M50%200Q50%2050%20100%2050Q50%2050%2050%20100Q50%2050%200%2050Q50%2050%2050%200Z'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Cpath%20d='M50%200Q50%2050%20100%2050Q50%2050%2050%20100Q50%2050%200%2050Q50%2050%2050%200Z'/%3E%3C/svg%3E") center / contain no-repeat;
+  filter: drop-shadow(0 0 5px rgba(240,130,45,0.98)) drop-shadow(0 0 11px rgba(211,74,28,0.6)); opacity: 0;
+}
+body.motion-on .nav .spark { animation: navRise var(--d, 6s) linear infinite; animation-delay: var(--delay, 0s); }
+@keyframes navRise {
+  0%   { opacity: 0; transform: translateY(0) scale(.6) rotate(0deg); }
+  10%  { opacity: 1; }
+  82%  { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-80px) scale(1.15) rotate(55deg); }
+}
+
+/* Ember Accent — the wordmark ampersand glows warmly in the header. */
+.nav-logo .brand-amp { color: var(--ember); text-shadow: 0 0 9px rgba(240,135,46,0.9), 0 0 20px rgba(211,74,28,0.6), 0 0 32px rgba(211,74,28,0.4); }
+body.motion-on .nav-logo .brand-amp { animation: ampGlow 3.2s ease-in-out infinite; }
+@keyframes ampGlow {
+  0%, 100% { text-shadow: 0 0 8px rgba(240,135,46,0.75), 0 0 18px rgba(211,74,28,0.5); }
+  50%      { text-shadow: 0 0 16px rgba(255,175,80,0.98), 0 0 34px rgba(211,74,28,0.7), 0 0 50px rgba(211,74,28,0.45); }
+}
+
+/* Motion effects never override an explicit reduced-motion preference. */
+@media (prefers-reduced-motion: reduce) {
+  body[data-page] .grid .item img,
+  body[data-page] .coming-teaser .t img { filter: none !important; transform: none !important; animation: none !important; }
+  .dev-tile .bath, .dev-tile .cast, .dev-tile .sheen,
+  .coming-teaser .t.duo .tint, .coming-teaser .t.grain .noise { opacity: 0 !important; }
+  .nav .spark { animation: none !important; opacity: 0 !important; }
+  .torch .mask { background: transparent !important; }
+}
+
+/* =====================================================================
    KEYBOARD FOCUS (visible ring on every interactive element)
    ===================================================================== */
 a:focus-visible,
@@ -532,7 +696,7 @@ summary:focus-visible,
 }
 @media (max-width: 1024px) {
   :root { --pad-x: 40px; }
-  .grid { columns: 4; }
+  .grid { grid-template-columns: repeat(4, 1fr); }
   .grid--reels { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 900px) {
@@ -545,7 +709,7 @@ summary:focus-visible,
   .process-steps { grid-template-columns: 1fr 1fr; gap: 24px; }
   .brief { grid-template-columns: 1fr; gap: 22px; }
   .industries { grid-template-columns: 1fr 1fr; }
-  .grid { columns: 3; }
+  .grid { grid-template-columns: repeat(3, 1fr); }
   .grid--reels { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 680px) {
@@ -554,7 +718,7 @@ summary:focus-visible,
   .strip { gap: 7px 18px; padding: 13px 20px; }
   .strip .dot { display: none; }
   .logo-wall img { height: 87px !important; }
-  .grid { columns: 2; }
+  .grid { grid-template-columns: repeat(2, 1fr); }
   .grid--reels { grid-template-columns: repeat(2, 1fr); }
   .contact-card { grid-template-columns: 1fr; gap: 20px; text-align: center; padding: 30px 32px; }
   .contact-item { align-items: center; }
@@ -574,6 +738,6 @@ summary:focus-visible,
   .wa-fab-label { display: none; }
 }
 @media (max-width: 420px) {
-  .grid { columns: 1; }
+  .grid { grid-template-columns: 1fr; }
   .grid--reels { grid-template-columns: 1fr; }
 }

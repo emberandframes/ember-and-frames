@@ -1,6 +1,6 @@
 # Ember &amp; Frames
 
-The unified studio site for Ember &amp; Frames, a photography and film studio in
+The unified studio site for Ember &amp; Frames, a content studio in
 Hyderabad. One website, one design system, with a page for each industry we
 shoot for: F&amp;B, Interiors &amp; Architecture, Events, and more on the way.
 
@@ -40,6 +40,25 @@ The galleries are data driven. A container like
 `<div class="grid" data-gallery="fnb.fnbGalleries.ru"></div>` is filled at load
 from the matching array in `data.js`. To change the work on show, you edit the
 paths in `data.js` and nothing else.
+
+## The enquiry form
+
+The contact section injects a short enquiry form (also from `site.js`). It never
+POSTs to a server: on submit it composes a pre-filled brief and hands off to the
+visitor's own app — **Send Enquiry** opens their mail client to
+`hello@emberandframes.com`, and **Send via WhatsApp** opens `wa.me/918447402780`
+with the same brief as text.
+
+The "What do you need?" pills read from `enquire.pills` in `data.js`. Six of them
+are industry categories — Food &amp; Beverage, Interiors &amp; Architecture,
+Events, Hospitality, Lifestyle, and Products — and each is written as
+`{ label, key }`, where `key` matches an entry in the `services` object. Clicking
+a category pill expands a nested set of sub-pills built from that category's
+"What We Offer" headings, so a visitor can narrow the brief with no extra copy to
+maintain. The remaining pills (Branding &amp; Strategy, Social Media Management,
+Brand Campaign, Other) are plain strings with no nested set. Collapsing a
+category clears its sub-selections, and every pressed pill — parent or child — is
+rolled into the "Looking for:" line of the enquiry.
 
 ## Adding or changing media
 
@@ -82,5 +101,8 @@ Push this folder to a repository and enable Pages on the default branch. The
 - Fonts: Cormorant Garamond for display, DM Sans for body.
 - Palette lives in the `:root` block at the top of `styles.css`. Change a colour
   once there and it updates across the whole site.
+- Header accent: a faint trail of ember sparks drifts up behind the
+  wordmark, and the ampersand glows warmly. Both are pure CSS in `styles.css`
+  and are switched off under `prefers-reduced-motion`.
 - Voice: warm, plain, and human. Say it the way you would to a client over
   coffee.

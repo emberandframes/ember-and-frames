@@ -205,9 +205,24 @@
 
   function buildEnquire() {
     var e = EF.enquire; if (!e) return;
+    var svc = EF.services || {};
+    var subGroups = "";
     var pills = (e.pills || []).map(function (p) {
-      return '<button type="button" class="pill" aria-pressed="false">' + p + "</button>";
+      if (typeof p === "string") {
+        return '<button type="button" class="pill" aria-pressed="false">' + p + "</button>";
+      }
+      var cat = svc[p.key];
+      var subs = (cat && cat.items ? cat.items : []).map(function (it) {
+        return '<button type="button" class="pill pill--sub" aria-pressed="false">' + it.name + "</button>";
+      }).join("");
+      if (subs) {
+        subs += '<button type="button" class="pill pill--sub" aria-pressed="false">Other</button>';
+        subGroups += '<div class="subpill-group" data-for="' + p.key + '" role="group" aria-label="' + p.label + ' \u2014 what we offer" hidden>' +
+          '<span class="subpill-cap">' + p.label + "</span>" + subs + "</div>";
+      }
+      return '<button type="button" class="pill pill--cat" data-key="' + p.key + '" aria-pressed="false" aria-expanded="false">' + p.label + "</button>";
     }).join("");
+    var subWrap = subGroups ? '<div class="subpill-wrap">' + subGroups + "</div>" : "";
     var form = h(
       '<section class="enquire" id="enquire">' +
         '<div class="enquire-head reveal">' +
@@ -225,7 +240,7 @@
             '<div class="form-field"><label for="ef-brand">Brand / Project</label><input id="ef-brand" type="text" name="brand" required></div>' +
           "</div>" +
           '<div class="form-field" role="group" aria-labelledby="ef-need-label"><label id="ef-need-label">What do you need? <span class="form-hint">(pick any)</span></label>' +
-            '<div class="pill-group">' + pills + "</div></div>" +
+            '<div class="pill-group">' + pills + "</div>" + subWrap + "</div>" +
           '<div class="form-field"><label for="ef-message">Tell us a little more</label><textarea id="ef-message" name="message" rows="4" placeholder="Dates, location, references, budget range, whatever helps."></textarea></div>' +
           '<div class="form-actions">' +
             '<button type="submit" class="btn-form solid">Send Enquiry</button>' +
@@ -274,6 +289,25 @@
     );
     mount("lightbox", lb, true);
     wireLightbox(lb);
+  }
+
+  /* Make the page hero images open in the shared lightbox. Each .hero-media
+     <img> is tagged as a tile (data-full/data-alt + button semantics) so the
+     existing lightbox picks it up; the images in one hero block open as a
+     navigable group. Runs on static markup, so no data layer changes needed. */
+  function enhanceHeroes() {
+    each(qsa(".hero-media"), function (media) {
+      each(media.querySelectorAll("img"), function (img) {
+        if (img.hasAttribute("data-full")) return;
+        var src = img.getAttribute("src") || img.src;
+        if (!src) return;
+        img.setAttribute("data-full", src);
+        img.setAttribute("data-alt", img.getAttribute("alt") || "");
+        img.setAttribute("role", "button");
+        img.setAttribute("tabindex", "0");
+        img.classList.add("hero-shot");
+      });
+    });
   }
 
   /* place a built element into its [data-region] slot, or fall back
@@ -410,12 +444,26 @@
               (c.vision ? "<div><div class=\"brief-label\">The Vision</div><div class=\"brief-text\">" + c.vision + "</div></div>" : "") +
             "</div>"
           : "";
+        var reels = (c.videos || []).map(function (v) {
+          return videoTile(v.poster, v.src, v.alt || c.title);
+        }).join("");
+        var mainGrid = '<div class="grid' + (c.reels ? " grid--reels" : "") + '">' + items + "</div>";
+        var body = reels
+          ? '<div class="tabgroup" data-tabscope>' +
+              '<div class="subtabs">' +
+                '<button class="subtab is-active" data-tab="ph">Photos</button>' +
+                '<button class="subtab" data-tab="rl">Reels</button>' +
+              "</div>" +
+              '<div class="subpanel is-active" data-panel="ph">' + mainGrid + "</div>" +
+              '<div class="subpanel" data-panel="rl"><div class="grid grid--reels">' + reels + "</div></div>" +
+            "</div>"
+          : mainGrid;
         return (
           '<div class="tab-panel' + (i === 0 ? " is-active" : "") + '" role="tabpanel" id="' + scope + '-panel-c' + i +
             '" aria-labelledby="' + scope + '-tab-c' + i + '" tabindex="0" data-panel="c' + i + '">' +
             note +
             briefBlock +
-            '<div class="grid' + (c.reels ? " grid--reels" : "") + '">' + items + "</div>" +
+            body +
           "</div>"
         );
       }).join("");
@@ -432,6 +480,7 @@
     });
 
     wireLazy();
+    each(qsa(".grid"), layoutMasonry);
   }
 
   /* =====================================================================
@@ -440,8 +489,45 @@
   function wireLazy() {
     each(qsa("img[data-lazy]"), function (img) {
       if (img.complete && img.naturalWidth) { img.classList.add("loaded"); return; }
-      img.addEventListener("load", function () { img.classList.add("loaded"); });
-      img.addEventListener("error", function () { img.classList.add("loaded"); });
+      img.addEventListener("load", function () { img.classList.add("loaded"); scheduleMasonry(); });
+      img.addEventListener("error", function () { img.classList.add("loaded"); scheduleMasonry(); });
+    });
+  }
+
+  /* =====================================================================
+     MASONRY (fixed column count, gap-free vertical packing)
+     Photo grids keep a consistent number of columns via
+     grid-template-columns: repeat(N, 1fr) and use grid-auto-rows: 1px. Each
+     tile is given a grid-row span equal to its rendered height (plus the
+     gutter), so tiles pack tight down their column with no height-mismatch
+     white space while every category keeps the same column count. Reels
+     (.grid--reels) share one aspect ratio and opt out. Runs after render, on
+     each image load, on tab switch, and on resize.
+     ===================================================================== */
+  var MASONRY_GAP = 6;      // vertical gutter between stacked tiles (px)
+  var MASONRY_RATIO = 1.5;  // height/width estimate before an image has loaded (2:3)
+
+  function layoutMasonry(grid) {
+    if (!grid || grid.classList.contains("grid--reels")) return;
+    var items = grid.children;
+    if (!items.length) return;
+    for (var i = 0; i < items.length; i++) {
+      var item = items[i];
+      var w = item.getBoundingClientRect().width;
+      if (!w) return; // grid not visible (e.g. inactive tab) — skip; relaid out when shown
+      var img = item.querySelector("img");
+      var ratio = (img && img.naturalWidth) ? (img.naturalHeight / img.naturalWidth) : MASONRY_RATIO;
+      item.style.gridRowEnd = "span " + (Math.ceil(w * ratio) + MASONRY_GAP);
+    }
+  }
+
+  var masonryScheduled = false;
+  function scheduleMasonry() {
+    if (masonryScheduled) return;
+    masonryScheduled = true;
+    window.requestAnimationFrame(function () {
+      masonryScheduled = false;
+      each(qsa(".grid"), layoutMasonry);
     });
   }
 
@@ -466,6 +552,7 @@
         if (p.closest("[data-tabscope]") !== scope) return;
         p.classList.toggle("is-active", p.getAttribute("data-panel") === key);
       });
+      scheduleMasonry();
     });
   }
 
@@ -610,7 +697,7 @@
       if (!t || !t.closest) return null;
       var node = t.closest("[data-full], [data-video]");
       if (!node) return null;
-      var container = node.closest(".grid, .filmstrip");
+      var container = node.closest(".grid, .filmstrip, .hero-media");
       return container ? { node: node, container: container } : null;
     }
 
@@ -646,13 +733,211 @@
   }
 
   /* =====================================================================
+     MOTION EFFECTS (page-scoped scroll / hover / cursor animations)
+     ---------------------------------------------------------------------
+     Progressive enhancement. Nothing runs when the visitor prefers reduced
+     motion — images then render in their clean, final state. Otherwise this
+     adds body.motion-on (gates the CSS-only Ken Burns hover + header sparks),
+     injects the per-effect overlay elements, and wires IntersectionObserver
+     triggers that replay each scroll-in effect on every entry (matching the
+     Events standalone darkroom behaviour).
+     ===================================================================== */
+  function enhanceMotion() {
+    if (prefersReduced()) return;
+    BODY.classList.add("motion-on");
+    buildNavSparks();
+    wireFilmstripPan();
+    wireEntranceEffects();
+  }
+
+  /* small overlay span injected into an effect host */
+  function fxOverlay(host, cls) {
+    var o = document.createElement("span");
+    o.className = cls;
+    o.setAttribute("aria-hidden", "true");
+    host.appendChild(o);
+    return o;
+  }
+
+  /* observe a set of elements; onEnter fires each time one scrolls in, onExit
+     each time it leaves — so entrance effects replay on every pass. */
+  function observeReplay(els, onEnter, onExit, opts) {
+    if (!els.length) return;
+    if (!("IntersectionObserver" in window)) { each(els, onEnter); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) onEnter(en.target);
+        else onExit(en.target);
+      });
+    }, opts || { threshold: 0.2, rootMargin: "0px 0px -6% 0px" });
+    each(els, function (el) { io.observe(el); });
+  }
+
+  /* Ember Accent — faint ember sparks drifting up behind the header type. */
+  function buildNavSparks() {
+    var nav = document.querySelector(".nav");
+    if (!nav || nav.querySelector(".nav-sparks")) return;
+    var specs = [
+      { left:  6, d: 6.0, delay: 0.0, sz: 5.0 },
+      { left: 13, d: 7.2, delay: 1.1, sz: 6.0 },
+      { left: 21, d: 5.4, delay: 0.5, sz: 4.5 },
+      { left: 29, d: 8.0, delay: 2.0, sz: 5.5 },
+      { left: 37, d: 6.4, delay: 1.4, sz: 5.0 },
+      { left: 45, d: 7.6, delay: 0.8, sz: 6.0 },
+      { left: 52, d: 5.8, delay: 2.4, sz: 4.5 },
+      { left: 60, d: 6.8, delay: 1.7, sz: 5.5 },
+      { left: 68, d: 7.0, delay: 0.3, sz: 5.0 },
+      { left: 75, d: 6.2, delay: 1.9, sz: 6.0 },
+      { left: 82, d: 7.8, delay: 1.0, sz: 4.5 },
+      { left: 90, d: 5.6, delay: 2.2, sz: 5.5 },
+      { left: 96, d: 6.6, delay: 0.6, sz: 5.0 }
+    ];
+    var box = document.createElement("span");
+    box.className = "nav-sparks";
+    box.setAttribute("aria-hidden", "true");
+    specs.forEach(function (s) {
+      var sp = document.createElement("span");
+      sp.className = "spark";
+      sp.style.left = s.left + "%";
+      sp.style.setProperty("--d", s.d + "s");
+      sp.style.setProperty("--delay", s.delay + "s");
+      sp.style.setProperty("--sz", s.sz + "px");
+      box.appendChild(sp);
+    });
+    nav.insertBefore(box, nav.firstChild);
+  }
+
+  /* Film Sprocket Pan — gentle projector-style ping-pong across each ember
+     filmstrip. Runs continuously (no hover pause); it yields for a moment only
+     when the visitor drives the strip manually (nav buttons, wheel, touch) so
+     the nav and lightbox keep working, then resumes on its own. */
+  function wireFilmstripPan() {
+    each(qsa(".filmstrip"), function (strip) {
+      if (!strip.children.length) return;
+      var wrap = strip.closest(".filmstrip-wrap") || strip;
+      var dir = 1, manualUntil = 0;
+      function yieldPan() { manualUntil = (window.performance ? performance.now() : Date.now()) + 900; }
+      strip.addEventListener("wheel", yieldPan, { passive: true });
+      strip.addEventListener("touchstart", yieldPan, { passive: true });
+      strip.addEventListener("touchmove", yieldPan, { passive: true });
+      each(qsa("[data-dir]", wrap), function (b) { b.addEventListener("click", yieldPan); });
+      function step() {
+        window.requestAnimationFrame(step);
+        if ((window.performance ? performance.now() : Date.now()) < manualUntil) return;
+        var max = strip.scrollWidth - strip.clientWidth;
+        if (max <= 4) return;
+        var next = strip.scrollLeft + dir * 0.45;
+        if (next >= max) { next = max; dir = -1; }
+        else if (next <= 0) { next = 0; dir = 1; }
+        strip.scrollLeft = next;
+      }
+      window.requestAnimationFrame(step);
+    });
+  }
+
+  /* Per-page scroll-in / cursor effects on the work galleries + teasers. */
+  function wireEntranceEffects() {
+    function tiles() {
+      var out = [];
+      each(qsa(".grid .item"), function (it) {
+        if (!it.classList.contains("play")) out.push(it);
+      });
+      return out;
+    }
+    function teasers() { return Array.prototype.slice.call(qsa(".coming-teaser .t")); }
+    function addIn(el) { el.classList.add("in"); }
+    function rmIn(el) { el.classList.remove("in"); }
+
+    if (PAGE === "fnb") {
+      var kb = tiles();
+      each(kb, function (el) { el.classList.add("kb"); });
+      observeReplay(kb, addIn, rmIn);
+      return;
+    }
+
+    if (PAGE === "interiors") {
+      var rf = tiles();
+      each(rf, function (el) { el.classList.add("rf"); });
+      observeReplay(rf, addIn, rmIn);
+      return;
+    }
+
+    if (PAGE === "events") {
+      var dev = tiles();
+      each(dev, function (el) {
+        el.classList.add("dev-tile");
+        fxOverlay(el, "cast");
+        fxOverlay(el, "bath");
+        fxOverlay(el, "sheen");
+      });
+      observeReplay(dev, developTile, undevelopTile, { threshold: 0.15 });
+      return;
+    }
+
+    if (PAGE === "lifestyle") {
+      var duo = teasers();
+      each(duo, function (el) { el.classList.add("duo"); fxOverlay(el, "tint"); });
+      observeReplay(duo, addIn, rmIn);
+      return;
+    }
+
+    if (PAGE === "hospitality") {
+      var grain = teasers();
+      each(grain, function (el) { el.classList.add("grain"); fxOverlay(el, "noise"); });
+      observeReplay(grain, addIn, rmIn);
+      return;
+    }
+
+    if (PAGE === "products") {
+      each(teasers(), function (el) {
+        el.classList.add("torch");
+        fxOverlay(el, "mask");
+        el.addEventListener("mousemove", function (e) {
+          var r = el.getBoundingClientRect();
+          el.style.setProperty("--mx", ((e.clientX - r.left) / r.width * 100) + "%");
+          el.style.setProperty("--my", ((e.clientY - r.top) / r.height * 100) + "%");
+        });
+        el.addEventListener("mouseleave", function () {
+          el.style.setProperty("--mx", "50%");
+          el.style.setProperty("--my", "50%");
+        });
+      });
+    }
+  }
+
+  /* Darkroom develop / undevelop — mirrors the Events standalone portfolio. */
+  function developTile(el) {
+    el.classList.add("developing");
+    void el.offsetWidth; /* reflow so the sheen sweep restarts */
+    el.classList.add("developed");
+    if (el._devT) clearTimeout(el._devT);
+    el._devT = setTimeout(function () { el.classList.remove("developing"); }, 2600);
+  }
+  function undevelopTile(el) {
+    if (el._devT) { clearTimeout(el._devT); el._devT = null; }
+    el.classList.remove("developing");
+    el.classList.remove("developed");
+  }
+
+  /* =====================================================================
      ENQUIRE FORM
      ===================================================================== */
   function wireForm(form) {
     each(form.querySelectorAll(".pill"), function (pill) {
       pill.addEventListener("click", function () {
-        var on = pill.getAttribute("aria-pressed") === "true";
-        pill.setAttribute("aria-pressed", on ? "false" : "true");
+        var nowOn = pill.getAttribute("aria-pressed") !== "true";
+        pill.setAttribute("aria-pressed", nowOn ? "true" : "false");
+        var key = pill.getAttribute("data-key");
+        if (!key) return;
+        var sub = form.querySelector('.subpill-group[data-for="' + key + '"]');
+        if (!sub) return;
+        sub.hidden = !nowOn;
+        pill.setAttribute("aria-expanded", nowOn ? "true" : "false");
+        if (!nowOn) {
+          each(sub.querySelectorAll('.pill[aria-pressed="true"]'), function (sp) {
+            sp.setAttribute("aria-pressed", "false");
+          });
+        }
       });
     });
 
@@ -702,14 +987,14 @@
       window.location.href = "mailto:" + SITE.email +
         "?subject=" + encodeURIComponent(subject) +
         "&body=" + encodeURIComponent(body);
-      status("Opening your email app. If nothing happens, write to us at " + SITE.email + ".");
+      status("Opening your email. Please send the pre-filled message to complete your enquiry. We’ll reply within two working days.");
     });
 
     form.querySelector("[data-wa]").addEventListener("click", function () {
       var d = validate(); if (!d) return;
       var msg = "Hi " + (SITE.name || "Ember & Frames") + "! I would like to enquire.\n\n" + compose(d);
       window.open("https://wa.me/" + SITE.whatsapp + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
-      status("Opening WhatsApp with your brief ready to send.");
+      status("Opening WhatsApp. Please send the pre-filled message to complete your enquiry. We’ll reply within two working days.");
     });
   }
 
@@ -780,11 +1065,14 @@
     buildEnquire();
     buildFooter();
     buildLightbox();
+    enhanceHeroes();
     buildWaFab();
     wireTabs();
     wireFilmstrip();
     wireReveal();
+    enhanceMotion();
     wireAnchors();
+    window.addEventListener("resize", scheduleMasonry, { passive: true });
   }
 
   if (document.readyState === "loading") {

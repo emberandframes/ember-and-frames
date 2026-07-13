@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img" aria-label="Hospitality, a poolside lounger under a parasol">
+  <defs>
+    <linearGradient id="h2bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F1E4D0"/>
+      <stop offset="0.55" stop-color="#E4C296"/>
+      <stop offset="1" stop-color="#C97B3A"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#h2bg)"/>
+  <circle cx="300" cy="230" r="96" fill="#FBF7F1" fill-opacity="0.20"/>
+  <circle cx="300" cy="230" r="60" fill="#FBF7F1" fill-opacity="0.24"/>
+  <rect x="34" y="34" width="532" height="732" fill="none" stroke="#3A2A1E" stroke-opacity="0.20" stroke-width="3"/>
+  <g fill="none" stroke="#2E241C" stroke-opacity="0.86" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <!-- ground -->
+    <line x1="110" y1="560" x2="490" y2="560"/>
+    <!-- sun lounger -->
+    <line x1="150" y1="430" x2="196" y2="496"/>
+    <line x1="196" y1="496" x2="356" y2="496"/>
+    <line x1="216" y1="496" x2="216" y2="560"/>
+    <line x1="346" y1="496" x2="346" y2="560"/>
+    <!-- parasol -->
+    <path d="M360 318 Q430 266 500 318"/>
+    <line x1="360" y1="318" x2="500" y2="318"/>
+    <line x1="430" y1="318" x2="430" y2="560"/>
+  </g>
+  <circle cx="430" cy="300" r="8" fill="#B05C3A"/>
+</svg>
