@@ -407,6 +407,7 @@ img[data-lazy].loaded { opacity: 1; }
 .enquire { padding: 70px var(--pad-x) 84px; background: var(--warm); text-align: center; border-top: 1px solid var(--line-strong); }
 .enquire-head { max-width: 720px; margin: 0 auto 34px; }
 .enquire-head p { font-weight: 300; font-size: 16px; font-style: italic; color: rgba(42,42,37,0.78); margin-top: 10px; }
+.enquire-head .eyebrow { font-size: 17px; }
 .contact-form { max-width: 660px; margin: 0 auto; text-align: left; display: flex; flex-direction: column; gap: 20px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .form-field { display: flex; flex-direction: column; gap: 6px; }
@@ -522,13 +523,13 @@ body.motion-on .subpill-group:not([hidden]) { animation: subPop 0.26s ease both;
    ===================================================================== */
 
 /* --- Ken Burns — F&B gallery, slow zoom + pan on scroll-in (replays) --- */
-body.motion-on[data-page="fnb"] .grid .item.kb img { transform-origin: 60% 40%; }
+body.motion-on[data-page="fnb"] .grid .item.kb img { transform-origin: var(--kb-ox, 60%) var(--kb-oy, 40%); }
 body.motion-on[data-page="fnb"] .grid .item.kb.in img {
   animation: kenTile 7s ease-in-out both;
 }
 @keyframes kenTile {
   0%   { transform: scale(1.03) translate(0, 0); }
-  100% { transform: scale(1.14) translate(-3%, -2%); }
+  100% { transform: scale(1.14) translate(var(--kb-tx, -3%), var(--kb-ty, -2%)); }
 }
 
 /* --- Rack Focus — Interiors gallery, blur pulls sharp on scroll-in (replays) --- */
@@ -602,6 +603,15 @@ body[data-page="products"] .coming-teaser .t.torch .mask {
   background: radial-gradient(circle 110px at var(--mx, 50%) var(--my, 50%),
     rgba(20,16,12,0) 0, rgba(20,16,12,0) 62px, rgba(18,14,10,0.86) 150px);
   transition: background 0.12s ease;
+}
+/* On touch devices there is no pointer to follow, so the torch becomes a
+   drag-to-reveal spotlight: the teaser sits clean at rest and the dark mask
+   only lights up while a finger drags across it (paired with the products
+   touch handlers in site.js). */
+@media (hover: none) and (pointer: coarse) {
+  body[data-page="products"] .coming-teaser .t.torch { cursor: default; }
+  body[data-page="products"] .coming-teaser .t.torch .mask { opacity: 0; transition: background 0.12s ease, opacity 0.25s ease; }
+  body[data-page="products"] .coming-teaser .t.torch.is-touching .mask { opacity: 1; }
 }
 
 /* --- Film Sprocket Pan — Ember filmstrips: charcoal reel panel that hugs
@@ -703,8 +713,7 @@ summary:focus-visible,
   .hero { grid-template-columns: 1fr; max-height: none; min-height: auto; margin-top: 0; }
   .hero-left { padding: 40px var(--pad-x) 28px; justify-content: flex-start; }
   .hero-left::after { display: none; }
-  .hero-media { grid-template-rows: 1fr; grid-template-columns: 1fr; aspect-ratio: 4/3; }
-  .hero-media-sub { display: none; }
+  .hero-media { aspect-ratio: 4/5; }
   .services { grid-template-columns: 1fr; gap: 30px; }
   .process-steps { grid-template-columns: 1fr 1fr; gap: 24px; }
   .brief { grid-template-columns: 1fr; gap: 22px; }

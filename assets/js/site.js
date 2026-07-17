@@ -213,7 +213,7 @@
       }
       var cat = svc[p.key];
       var subs = (cat && cat.items ? cat.items : []).map(function (it) {
-        return '<button type="button" class="pill pill--sub" aria-pressed="false">' + it.name + "</button>";
+        return '<button type="button" class="pill pill--sub" aria-pressed="false">' + (it.pill || it.name) + "</button>";
       }).join("");
       if (subs) {
         subs += '<button type="button" class="pill pill--sub" aria-pressed="false">Other</button>';
@@ -595,6 +595,12 @@
       media = document.createElement("video");
       media.src = item.src;
       media.controls = true;
+      /* Strip the native "more options" overflow menu (download / playback-rate
+         / picture-in-picture / remote-playback) so the reels player shows only
+         the core transport controls. */
+      media.controlsList = "nodownload noplaybackrate noremoteplayback";
+      media.setAttribute("controlsList", "nodownload noplaybackrate noremoteplayback");
+      media.disablePictureInPicture = true;
       media.autoplay = true;
       media.playsInline = true;
       media.setAttribute("playsinline", "");
@@ -807,15 +813,16 @@
     nav.insertBefore(box, nav.firstChild);
   }
 
-  /* Film Sprocket Pan — gentle projector-style ping-pong across each ember
-     filmstrip. Runs continuously (no hover pause); it yields for a moment only
-     when the visitor drives the strip manually (nav buttons, wheel, touch) so
-     the nav and lightbox keep working, then resumes on its own. */
+  /* Film Sprocket Pan — gentle one-way loop across each ember filmstrip: it
+     drifts to the end, then snaps back to the start and runs again. Runs
+     continuously (no hover pause); it yields for a moment only when the visitor
+     drives the strip manually (nav buttons, wheel, touch) so the nav and
+     lightbox keep working, then resumes on its own. */
   function wireFilmstripPan() {
     each(qsa(".filmstrip"), function (strip) {
       if (!strip.children.length) return;
       var wrap = strip.closest(".filmstrip-wrap") || strip;
-      var dir = 1, manualUntil = 0;
+      var manualUntil = 0;
       function yieldPan() { manualUntil = (window.performance ? performance.now() : Date.now()) + 900; }
       strip.addEventListener("wheel", yieldPan, { passive: true });
       strip.addEventListener("touchstart", yieldPan, { passive: true });
@@ -826,9 +833,8 @@
         if ((window.performance ? performance.now() : Date.now()) < manualUntil) return;
         var max = strip.scrollWidth - strip.clientWidth;
         if (max <= 4) return;
-        var next = strip.scrollLeft + dir * 0.45;
-        if (next >= max) { next = max; dir = -1; }
-        else if (next <= 0) { next = 0; dir = 1; }
+        var next = strip.scrollLeft + 0.405;
+        if (next >= max) { next = 0; }
         strip.scrollLeft = next;
       }
       window.requestAnimationFrame(step);
@@ -850,7 +856,15 @@
 
     if (PAGE === "fnb") {
       var kb = tiles();
-      each(kb, function (el) { el.classList.add("kb"); });
+      each(kb, function (el) {
+        el.classList.add("kb");
+        /* Randomise each tile's Ken Burns origin + pan direction so the grid
+           no longer zooms in unison — every photo drifts its own way. */
+        el.style.setProperty("--kb-ox", (30 + Math.round(Math.random() * 40)) + "%");
+        el.style.setProperty("--kb-oy", (30 + Math.round(Math.random() * 40)) + "%");
+        el.style.setProperty("--kb-tx", (Math.random() * 6 - 3).toFixed(1) + "%");
+        el.style.setProperty("--kb-ty", (Math.random() * 6 - 3).toFixed(1) + "%");
+      });
       observeReplay(kb, addIn, rmIn);
       return;
     }
@@ -892,15 +906,30 @@
       each(teasers(), function (el) {
         el.classList.add("torch");
         fxOverlay(el, "mask");
-        el.addEventListener("mousemove", function (e) {
+        function moveTorch(clientX, clientY) {
           var r = el.getBoundingClientRect();
-          el.style.setProperty("--mx", ((e.clientX - r.left) / r.width * 100) + "%");
-          el.style.setProperty("--my", ((e.clientY - r.top) / r.height * 100) + "%");
-        });
+          el.style.setProperty("--mx", ((clientX - r.left) / r.width * 100) + "%");
+          el.style.setProperty("--my", ((clientY - r.top) / r.height * 100) + "%");
+        }
+        el.addEventListener("mousemove", function (e) { moveTorch(e.clientX, e.clientY); });
         el.addEventListener("mouseleave", function () {
           el.style.setProperty("--mx", "50%");
           el.style.setProperty("--my", "50%");
         });
+        /* Touch: no cursor, so drag the spotlight instead. The .is-touching
+           class lights the mask up (see the touch media query) and each move
+           tracks the finger. */
+        function touchTorch(e) {
+          var t = e.touches && e.touches[0]; if (!t) return;
+          moveTorch(t.clientX, t.clientY);
+        }
+        el.addEventListener("touchstart", function (e) {
+          el.classList.add("is-touching");
+          touchTorch(e);
+        }, { passive: true });
+        el.addEventListener("touchmove", touchTorch, { passive: true });
+        el.addEventListener("touchend", function () { el.classList.remove("is-touching"); });
+        el.addEventListener("touchcancel", function () { el.classList.remove("is-touching"); });
       });
     }
   }
@@ -984,10 +1013,24 @@
       var d = validate(); if (!d) return;
       var subject = "Project enquiry from " + d.name + " (" + d.brand + ")";
       var body = compose(d);
-      window.location.href = "mailto:" + SITE.email +
+      var mailto = "mailto:" + SITE.email +
         "?subject=" + encodeURIComponent(subject) +
         "&body=" + encodeURIComponent(body);
-      status("Opening your email. Please send the pre-filled message to complete your enquiry. We’ll reply within two working days.");
+      var gmail = "https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(SITE.email) +
+        "&su=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(body);
+      /* Try the visitor's email app. When no mail handler is registered (common
+         on browsers where Gmail is the webmail of choice), the mailto quietly
+         does nothing — so always surface a one-click "compose in Gmail" link,
+         built via DOM with encoded params (no innerHTML), as the fallback. */
+      var s = form.querySelector(".form-status");
+      s.textContent = "Opening your email app. If nothing opens, ";
+      var a = document.createElement("a");
+      a.href = gmail; a.target = "_blank"; a.rel = "noopener noreferrer";
+      a.textContent = "compose in Gmail";
+      s.appendChild(a);
+      s.appendChild(document.createTextNode(" instead. We\u2019ll reply within two working days."));
+      window.location.href = mailto;
     });
 
     form.querySelector("[data-wa]").addEventListener("click", function () {
