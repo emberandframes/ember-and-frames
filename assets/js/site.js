@@ -345,11 +345,14 @@
       '" data-full="' + escAttr(src) + '" data-alt="' + escAttr(a) +
       '" role="button" tabindex="0">' + imgTag(src, a) + "</div>";
   }
-  /* Filmstrip frame — same behaviour, different class hook. */
+  /* Filmstrip frame — same behaviour, different class hook. Frames eager-load
+     (not lazy) so they're painted before the auto-pan brings them on-screen;
+     lazy loading made them pop in late as the strip scrolled. */
   function frameTile(src, alt) {
     var a = alt || "";
+    var img = '<img loading="eager" decoding="async" src="' + escAttr(src) + '" alt="' + escAttr(a) + '">';
     return '<div class="frame" data-full="' + escAttr(src) + '" data-alt="' + escAttr(a) +
-      '" role="button" tabindex="0">' + imgTag(src, a) + "</div>";
+      '" role="button" tabindex="0">' + img + "</div>";
   }
   /* Video tile — the poster is decorative; the button label conveys the action. */
   function videoTile(posterSrc, videoSrc, alt) {
@@ -579,6 +582,7 @@
   function collectFrom(container) {
     var out = [];
     each(container.querySelectorAll("[data-full], [data-video]"), function (node) {
+      if (node.hasAttribute("data-clone")) return;   // skip filmstrip loop duplicates
       var alt = node.getAttribute("data-alt") || "";
       if (node.hasAttribute("data-video")) out.push({ type: "video", src: node.getAttribute("data-video"), alt: alt });
       else out.push({ type: "image", src: node.getAttribute("data-full"), alt: alt });
@@ -595,12 +599,9 @@
       media = document.createElement("video");
       media.src = item.src;
       media.controls = true;
-      /* Strip the native "more options" overflow menu (download / playback-rate
-         / picture-in-picture / remote-playback) so the reels player shows only
-         the core transport controls. */
-      media.controlsList = "nodownload noplaybackrate noremoteplayback";
-      media.setAttribute("controlsList", "nodownload noplaybackrate noremoteplayback");
-      media.disablePictureInPicture = true;
+      /* Leave the native controls intact — including the "more options" overflow
+         menu (download / playback speed / picture-in-picture) — so the player
+         matches the standalone portfolios (fnb standalone reference). */
       media.autoplay = true;
       media.playsInline = true;
       media.setAttribute("playsinline", "");
@@ -691,10 +692,23 @@
 
     // open a tile's group in the lightbox, starting at the clicked node
     function openFromNode(node, container) {
+      // A clicked filmstrip loop-clone maps back to its real twin (same src) so
+      // the lightbox opens at the correct, de-duplicated index.
+      if (node.hasAttribute("data-clone")) {
+        var key = node.getAttribute("data-video") || node.getAttribute("data-full");
+        var twin = null;
+        each(container.querySelectorAll("[data-full], [data-video]"), function (n) {
+          if (twin || n.hasAttribute("data-clone")) return;
+          if ((n.getAttribute("data-video") || n.getAttribute("data-full")) === key) twin = n;
+        });
+        if (twin) node = twin;
+      }
       var list = collectFrom(container);
-      var idx = 0;
-      each(container.querySelectorAll("[data-full], [data-video]"), function (n, k) {
+      var idx = 0, k = 0;
+      each(container.querySelectorAll("[data-full], [data-video]"), function (n) {
+        if (n.hasAttribute("data-clone")) return;
         if (n === node) idx = k;
+        k++;
       });
       lbOpen(list, idx);
     }
@@ -814,14 +828,32 @@
   }
 
   /* Film Sprocket Pan — gentle one-way loop across each ember filmstrip: it
-     drifts to the end, then snaps back to the start and runs again. Runs
-     continuously (no hover pause); it yields for a moment only when the visitor
-     drives the strip manually (nav buttons, wheel, touch) so the nav and
-     lightbox keep working, then resumes on its own. */
+     drifts continuously and wraps seamlessly (the frames are duplicated once, so
+     rewinding by one set is invisible — no snap-back). Runs continuously (no
+     hover pause); it yields for a moment only when the visitor drives the strip
+     manually (nav buttons, wheel, touch) so the nav and lightbox keep working,
+     then resumes on its own. */
   function wireFilmstripPan() {
     each(qsa(".filmstrip"), function (strip) {
       if (!strip.children.length) return;
       var wrap = strip.closest(".filmstrip-wrap") || strip;
+
+      /* Duplicate the frames once so the one-way pan wraps without a visible
+         jump: once the strip has scrolled exactly one original set, we rewind by
+         that set width. The pixels on screen are identical at that instant, so
+         the loop is seamless (replaces the old hard scrollLeft = 0 reset).
+         Clones are inert — skipped by the lightbox and the a11y/tab tree. */
+      if (strip.getAttribute("data-looped") !== "1") {
+        Array.prototype.slice.call(strip.children).forEach(function (node) {
+          var clone = node.cloneNode(true);
+          clone.setAttribute("data-clone", "");
+          clone.setAttribute("aria-hidden", "true");
+          clone.setAttribute("tabindex", "-1");
+          strip.appendChild(clone);
+        });
+        strip.setAttribute("data-looped", "1");
+      }
+
       var manualUntil = 0;
       function yieldPan() { manualUntil = (window.performance ? performance.now() : Date.now()) + 900; }
       strip.addEventListener("wheel", yieldPan, { passive: true });
@@ -831,10 +863,13 @@
       function step() {
         window.requestAnimationFrame(step);
         if ((window.performance ? performance.now() : Date.now()) < manualUntil) return;
-        var max = strip.scrollWidth - strip.clientWidth;
-        if (max <= 4) return;
+        var frames = strip.children;
+        var firstClone = frames[frames.length >> 1];   // clones are the second half
+        if (!firstClone) return;
+        var span = firstClone.offsetLeft - frames[0].offsetLeft;   // one original set width
+        if (span <= 4) return;                          // not laid out yet
         var next = strip.scrollLeft + 0.405;
-        if (next >= max) { next = 0; }
+        if (next >= firstClone.offsetLeft) next -= span;
         strip.scrollLeft = next;
       }
       window.requestAnimationFrame(step);
