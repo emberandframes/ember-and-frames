@@ -35,7 +35,7 @@ window.EF = {
   about: {
     heading: 'We make pictures worth <em>keeping</em>.',
     lede: "Ember <span class=\"brand-amp\">&amp;</span> Frames is a content studio in Hyderabad. We make photographs and films, and manage the social presence that carries them, across food, spaces, and the people and moments that fill them, working to make the everyday feel worth holding on to.",
-    body: "A good photograph does more than record a thing. It carries the warmth of a kitchen, the calm of a well made room, the buzz of a good night out. Across food and beverage, interiors and architecture, events and lifestyle, our job is to catch that feeling and hand it back to you in frames you are proud to put your name to. We shoot on location, style with intention, and edit so the work looks like you, never like a stock catalogue.",
+    body: "A good photograph does more than record a thing. It carries the warmth of a kitchen, the calm of a well made room, the buzz of a good night out. Across food and beverage, interiors and architecture, events and lifestyle, hospitality and products, our job is to catch that feeling and hand it back to you in frames you are proud to put your name to. We shoot on location, style with intention, and edit so the work looks like you, never like a stock catalogue.",
     process: [
       { name: "Brief &amp; Discovery",  desc: "A short call to understand the brand, the space, and the mood. We follow up with a shot list and references before the shoot." },
       { name: "Conceptualisation",       desc: "Props, surfaces, light, and a running order. Most of the good stuff is decided long before the camera comes out." },
@@ -91,7 +91,7 @@ window.EF = {
       note: "Day rates and project pricing. Packages tailored to the space.",
       items: [
         { name: "Residential &amp; Show Flats",   desc: "Homes and show flats shot the way they are meant to be lived in, patient with the light." },
-        { name: "Hospitality &amp; Retail",       desc: "Resorts and hotels framed for the escape they promise. Luxury and boutique stores styled for the walk-in moment. Every space shot with the mood that turns a glance into a visit." },
+        { name: "Hospitality &amp; Retail",       pill: "Retail Interiors", desc: "Resorts and hotels framed for the escape they promise. Luxury and boutique stores styled for the walk-in moment. Every space shot with the mood that turns a glance into a visit." },
         { name: "Studios &amp; Workspaces",       desc: "Offices, studios, and creative spaces framed clean and honest about the materials." },
         { name: "Architecture &amp; Developers",  desc: "Facades, structures, and detail work for teams who care about the craft." }
       ]
@@ -114,7 +114,7 @@ window.EF = {
       items: [
         { name: "Hotels &amp; Resorts",     desc: "Full property coverage, from the arrival to the view, shot with warmth and honest light." },
         { name: "Rooms &amp; Suites",       desc: "Interiors that make a room feel like somewhere you would rather be." },
-        { name: "Restaurants &amp; Bars",   desc: "On-property dining and drinks, styled to match the house." },
+        { name: "Restaurants &amp; Bars",   desc: "On-property dining and drinks, styled to match the space." },
         { name: "Amenities &amp; Details",  desc: "Spas, pools, and the small touches that turn a booking into a stay." }
       ]
     },
@@ -423,13 +423,13 @@ window.EF = {
      ===================================================================== */
   events: {
     filmstrip: [
-      "assets/media/events/Photos/Arthi%20Sonthalia/DSC02835.jpg",
+      "assets/media/events/Photos/Arti%20Sonthalia/DSC02835.jpg",
       "assets/media/events/Photos/Festival%20of%20Play/DSC00744.JPG",
-      "assets/media/events/Photos/Arthi%20Sonthalia/DSC02801.jpg",
+      "assets/media/events/Photos/Arti%20Sonthalia/DSC02801.jpg",
       "assets/media/events/Photos/Festival%20of%20Play/DSC00510.JPG",
-      "assets/media/events/Photos/Arthi%20Sonthalia/DSC02817.jpg",
+      "assets/media/events/Photos/Arti%20Sonthalia/DSC02817.jpg",
       "assets/media/events/Photos/Festival%20of%20Play/DSC00922.JPG",
-      "assets/media/events/Photos/Arthi%20Sonthalia/DSC02788.jpg",
+      "assets/media/events/Photos/Arti%20Sonthalia/DSC02788.jpg",
       "assets/media/events/Photos/Festival%20of%20Play/DSC00342.JPG"
     ],
     collections: [
@@ -438,30 +438,30 @@ window.EF = {
         brief: "Arti wanted her time with the students captured as it happened, and a steady stream of content for her personal Instagram, the kind of frames she could post to show parents and children why a reading habit matters early.",
         vision: "We followed her across school visits and award ceremonies, then went closer and quieter, documenting her writing process, her favourite books, and the inspirations and motivations that keep her at the page.",
         videos: [
-          { src: "assets/media/events/Videos/Arthi%20Sonthalia/Arti%20Reel%201%20final.mp4", poster: "assets/media/events/Videos/Arthi%20Sonthalia/Arti%20Reel%201%20final.jpg", alt: "Arti Sonthalia reel" },
-          { src: "assets/media/events/Videos/Arthi%20Sonthalia/Discoveri%20Oaks%201.mp4", poster: "assets/media/events/Videos/Arthi%20Sonthalia/Discoveri%20Oaks%201.jpg", alt: "Discoveri Oaks session" },
-          { src: "assets/media/events/Videos/Arthi%20Sonthalia/Discoveri%20Oaks%202.mp4", poster: "assets/media/events/Videos/Arthi%20Sonthalia/Discoveri%20Oaks%202.jpg", alt: "Discoveri Oaks session" }
+          { src: "assets/media/events/Videos/Arti%20Sonthalia/Arti%20Reel%201%20final.mp4", poster: "assets/media/events/Videos/Arti%20Sonthalia/Arti%20Reel%201%20final.jpg", alt: "Arti Sonthalia reel" },
+          { src: "assets/media/events/Videos/Arti%20Sonthalia/Discoveri%20Oaks%201.mp4", poster: "assets/media/events/Videos/Arti%20Sonthalia/Discoveri%20Oaks%201.jpg", alt: "Discoveri Oaks session" },
+          { src: "assets/media/events/Videos/Arti%20Sonthalia/Discoveri%20Oaks%202.mp4", poster: "assets/media/events/Videos/Arti%20Sonthalia/Discoveri%20Oaks%202.jpg", alt: "Discoveri Oaks session" }
         ],
         items: [
-          { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02765.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02772.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02781.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02770.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02785.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02795.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02804.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02797.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02820.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02806.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02831.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02810.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02823.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02776.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02840.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02835.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02817.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02801.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arthi%20Sonthalia/DSC02788.jpg" }
+          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02765.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02772.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02781.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02770.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02785.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02795.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02804.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02797.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02820.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02806.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02831.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02810.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02823.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02776.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02840.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02835.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02817.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02801.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02788.jpg" }
         ]
       },
       {
@@ -484,7 +484,7 @@ window.EF = {
         title: "You Can Sit With Us",
         reels: true,
         brief: "A full record of the night as it was built: the setups and the games, the dishes and cocktails made for each seating, the brand and drinks sponsors, and the chefs at work in prep before the doors opened.",
-        vision: "Then the candid half: guests enjoying the room, the kitchen in motion, plating and cocktail-making, service, and the games and reactions as they landed. Photo and film both, so there was more than enough for socials and to sell the next edition.",
+        vision: "We also caught the candid side of the night: guests enjoying the room, the kitchen in motion, plating and cocktail-making, service, and the games and reactions as they landed. Photo and film both, so there was more than enough for socials and to sell the next edition.",
         items: [
           { type: "video", src: "assets/media/events/Videos/You%20Can%20Sit%20With%20Us/A%20tiffin%20center%20transformed%20into%20something%20otherworldly.%20A%20glimpse%20into%20the%20world%20we%20reimagined%2C.mp4", poster: "assets/media/events/Videos/You%20Can%20Sit%20With%20Us/A%20tiffin%20center%20transformed%20into%20something%20otherworldly.%20A%20glimpse%20into%20the%20world%20we%20reimagined%2C.jpg" },
           { type: "video", src: "assets/media/events/Videos/You%20Can%20Sit%20With%20Us/You%20Can%20Sit%20With%20Us%20dinner%20experiences%20are%20anything%20but%20conventional.%20We%20transform%20the%20ordinary%20.mp4", poster: "assets/media/events/Videos/You%20Can%20Sit%20With%20Us/You%20Can%20Sit%20With%20Us%20dinner%20experiences%20are%20anything%20but%20conventional.%20We%20transform%20the%20ordinary%20.jpg" },
