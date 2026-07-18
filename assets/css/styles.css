@@ -631,6 +631,11 @@ body[data-page="products"] .coming-teaser .t.torch .mask {
 .filmstrip-reel::after { bottom: 0; }
 .filmstrip-nav { margin-top: 16px; }
 body.motion-on .filmstrip { scroll-snap-type: none; }
+/* While the lightbox is open, its native <video> ⋮ (overflow) menu will not
+   open in Chromium if any on-page scroll container is stuck at
+   scroll-snap-type:none. The strip sits fully behind the opaque lightbox, so
+   restoring its snap here is invisible and lets the video menu pop up. */
+body.motion-on.lb-open .filmstrip { scroll-snap-type: x mandatory; }
 
 /* --- Ember Accent — faint ember sparks drifting up behind the header type.
    Header colour + layout stay exactly as designed; only the sparks are added. --- */
