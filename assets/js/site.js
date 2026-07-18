@@ -622,6 +622,7 @@
     LB.list = list; LB.i = i;
     LB.trigger = document.activeElement;
     LB.el.classList.add("open");
+    BODY.classList.add("lb-open");
     BODY.style.overflow = "hidden";
     lbRender();
     var closeBtn = LB.el.querySelector(".lightbox-close");
@@ -629,6 +630,7 @@
   }
   function lbClose() {
     LB.el.classList.remove("open");
+    BODY.classList.remove("lb-open");
     LB.stage.innerHTML = "";
     BODY.style.overflow = "";
     if (LB.trigger && typeof LB.trigger.focus === "function") LB.trigger.focus();
