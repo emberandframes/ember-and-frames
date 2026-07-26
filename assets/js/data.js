@@ -12,9 +12,9 @@ window.EF = {
     tagline: "Warm. Intentional. Unforgettable.",
     city: "Hyderabad, India",
     email: "hello@emberandframes.com",
-    phoneDisplay: "+91 84474 02780",
-    phoneTel: "+918447402780",
-    whatsapp: "918447402780",
+    phoneDisplay: "+91 99894 65578",
+    phoneTel: "+919989465578",
+    whatsapp: "919989465578",
     instagram: "https://www.instagram.com/emberandframes",
     instagramHandle: "@emberandframes",
     year: "2026"

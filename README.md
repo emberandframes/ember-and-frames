@@ -46,7 +46,7 @@ paths in `data.js` and nothing else.
 The contact section injects a short enquiry form (also from `site.js`). It never
 POSTs to a server: on submit it composes a pre-filled brief and hands off to the
 visitor's own app — **Send Enquiry** opens their mail client to
-`hello@emberandframes.com`, and **Send via WhatsApp** opens `wa.me/918447402780`
+`hello@emberandframes.com`, and **Send via WhatsApp** opens `wa.me/919989465578`
 with the same brief as text.
 
 The "What do you need?" pills read from `enquire.pills` in `data.js`. Six of them
