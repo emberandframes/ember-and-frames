@@ -456,6 +456,7 @@ body.motion-on .subpill-group:not([hidden]) { animation: subPop 0.26s ease both;
 .footer .footer-copy { font-size: 10.5px; letter-spacing: 2px; text-transform: none; color: rgba(245,235,215,0.6); font-weight: 300; }
 .footer .footer-tagline { justify-self: center; text-align: center; font-size: 10.5px; letter-spacing: 3px; color: var(--gold); white-space: nowrap; }
 .footer [data-top] { justify-self: end; }
+.footer [data-consent] { grid-column: 1 / -1; justify-self: center; font-size: 10px; letter-spacing: 2px; color: rgba(245,235,215,0.45); }
 .footer a:hover { color: var(--gold); }
 
 /* =====================================================================

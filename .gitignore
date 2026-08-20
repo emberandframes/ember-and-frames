@@ -1,0 +1,49 @@
+# This repository is public and every tracked file is served to visitors.
+# Nothing below belongs in it. The brand strategy workspace is a separate,
+# unversioned folder; only the two form pages and fonts.css ever cross over.
+
+# Credentials
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+credentials.json
+client_secret*.json
+service-account*.json
+*.gs
+
+# Brand strategy material that belongs outside this repo
+Worklog/
+worklog/
+Pricing*/
+Guidelines*/
+*Master-Tracker*
+*_Backend*
+*.xlsx
+*.pptx
+*.docx
+
+# Backups and scratch
+*.bak
+*.orig
+*.old
+*~
+*.BEFORE_*
+_scratch/
+_drafts/
+
+# OS and editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Dependencies and build noise
+node_modules/
+__pycache__/
+*.pyc
+*.log

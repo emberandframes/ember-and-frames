@@ -43,6 +43,12 @@
   function each(list, fn) { Array.prototype.forEach.call(list, fn); }
   function qsa(sel, root) { return (root || document).querySelectorAll(sel); }
 
+  /* Measurement is optional chrome: if ef-pixel.js is absent or the visitor
+     declined, this is a no-op and nothing downstream needs to care. */
+  function track(name, customData, identity) {
+    if (window.EFPixel) window.EFPixel.track(name, customData, identity);
+  }
+
   var LOGO = 'Ember <span class="brand-amp">&amp;</span> Frames';
   var TAB_UID = 0;
 
@@ -268,6 +274,7 @@
         "</span>" +
         (tagline ? '<span class="footer-tagline">' + tagline + "</span>" : "") +
         '<a href="#top" data-top>Back to top \u2191</a>' +
+        '<a href="#" data-consent>Cookie settings</a>' +
       "</footer>"
     );
     mount("footer", footer);
@@ -275,6 +282,11 @@
     if (top) top.addEventListener("click", function (ev) {
       ev.preventDefault();
       window.scrollTo({ top: 0, behavior: scrollBehavior() });
+    });
+    var consent = footer.querySelector("[data-consent]");
+    if (consent) consent.addEventListener("click", function (ev) {
+      ev.preventDefault();
+      if (window.EFPixel) window.EFPixel.consent.reset();
     });
   }
 
@@ -1048,6 +1060,12 @@
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var d = validate(); if (!d) return;
+      track("Lead", {
+        content_name: "Enquiry form",
+        content_category: PAGE,
+        contact_method: "email",
+        looking_for: d.looking.join(", ")
+      }, { email: d.email, phone: d.phone });
       var subject = "Project enquiry from " + d.name + " (" + d.brand + ")";
       var body = compose(d);
       var mailto = "mailto:" + SITE.email +
@@ -1072,6 +1090,12 @@
 
     form.querySelector("[data-wa]").addEventListener("click", function () {
       var d = validate(); if (!d) return;
+      track("Lead", {
+        content_name: "Enquiry form",
+        content_category: PAGE,
+        contact_method: "whatsapp",
+        looking_for: d.looking.join(", ")
+      }, { email: d.email, phone: d.phone });
       var msg = "Hi " + (SITE.name || "Ember & Frames") + "! I would like to enquire.\n\n" + compose(d);
       window.open("https://wa.me/" + SITE.whatsapp + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
       status("Opening WhatsApp. Please send the pre-filled message to complete your enquiry. We’ll reply within two working days.");
@@ -1118,6 +1142,26 @@
   }
 
   /* =====================================================================
+     OUTBOUND CONTACT TRACKING
+     ===================================================================== */
+  function wireOutboundContacts() {
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest("a[href]");
+      if (!a) return;
+      var href = a.getAttribute("href") || "";
+      if (href.indexOf("mailto:") === 0) {
+        track("Contact", { contact_method: "email", content_category: PAGE });
+      } else if (href.indexOf("https://wa.me/") === 0) {
+        track("Contact", {
+          contact_method: "whatsapp",
+          content_category: PAGE,
+          content_name: a.classList.contains("wa-fab") ? "Floating button" : "Contact section"
+        });
+      }
+    });
+  }
+
+  /* =====================================================================
      SMOOTH ANCHORS (account for sticky header)
      ===================================================================== */
   function wireAnchors() {
@@ -1152,6 +1196,7 @@
     wireReveal();
     enhanceMotion();
     wireAnchors();
+    wireOutboundContacts();
     window.addEventListener("resize", scheduleMasonry, { passive: true });
   }
 
