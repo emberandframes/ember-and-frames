@@ -235,6 +235,13 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
 .filmstrip {
   display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
   padding: 4px var(--pad-x) 20px; scrollbar-width: none;
+  /* iOS Safari treats a horizontal drag that reaches the end of a scroller as its
+     back/forward page gesture, which reads as the strip refusing to scroll.
+     `contain` keeps the swipe inside the strip. `touch-action` states the axis so
+     the gesture is handed to the compositor immediately. */
+  overscroll-behavior-x: contain;
+  touch-action: pan-x;
+  -webkit-overflow-scrolling: touch;
 }
 .filmstrip::-webkit-scrollbar { display: none; }
 .filmstrip .frame {

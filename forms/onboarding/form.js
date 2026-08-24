@@ -94,11 +94,18 @@
     if(window.EFPixel) window.EFPixel.track('CompleteRegistration',{content_name:FORM_NAME,content_category:'Onboarding',status:true},{email:d.email,phone:d.phone});
     setStatus('Sending your details','busy');
     if(window.EF_FORM_ENDPOINT){
+      /* mode:'no-cors' makes the response opaque, so a rejection here does NOT mean the POST
+         failed. Apps Script answers /exec with a redirect, and the browser can reject after the
+         server has already accepted and saved the submission. Falling back to a download plus a
+         mail draft at that point asks the client to send us answers we already have. Only the
+         offline copy of this form, which carries no endpoint, still falls back. */
       fetch(window.EF_FORM_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(d)})
-        .then(function(){ sent(); }).catch(function(){ fallback(d); });
+        .then(function(){ sent(true); }).catch(function(){ sent(false); });
     } else { fallback(d); }
   }
-  function sent(){ try{ localStorage.removeItem(STORAGE); }catch(e){} setStatus('Sent. Thank you. We\u2019ve received your details and saved a copy. We\u2019ll be in touch shortly.','ok'); }
+  /* The saved draft is cleared only when the request actually resolved, so an unconfirmed send
+     leaves the client's answers on their device rather than throwing them away. */
+  function sent(confirmed){ if(confirmed){ try{ localStorage.removeItem(STORAGE); }catch(e){} } setStatus('Your answers have been submitted. Thank you. We will be in touch shortly.','ok'); }
   var IS_MOBILE=/Android|iPhone|iPad|iPod|Mobile|Silk/i.test(navigator.userAgent||'');
   function fallback(d){
     var full=asText(d);
