@@ -105,7 +105,10 @@
   }
   /* The saved draft is cleared only when the request actually resolved, so an unconfirmed send
      leaves the client's answers on their device rather than throwing them away. */
-  function sent(confirmed){ if(confirmed){ try{ localStorage.removeItem(STORAGE); }catch(e){} } setStatus('Your answers have been submitted. Thank you. We will be in touch shortly.','ok'); }
+  function sent(confirmed){
+    if(confirmed){ try{ localStorage.removeItem(STORAGE); }catch(e){} setStatus('Your answers have been submitted. Thank you. We will be in touch shortly.','ok'); return; }
+    setStatus('We could not confirm this submission. Your answers are still saved on this device. Please check your connection and contact us before sending again.','busy');
+  }
   var IS_MOBILE=/Android|iPhone|iPad|iPod|Mobile|Silk/i.test(navigator.userAgent||'');
   function fallback(d){
     var full=asText(d);
