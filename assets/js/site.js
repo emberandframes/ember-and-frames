@@ -869,11 +869,30 @@
       }
 
       var manualUntil = 0;
-      function yieldPan() { manualUntil = (window.performance ? performance.now() : Date.now()) + 900; }
-      strip.addEventListener("wheel", yieldPan, { passive: true });
-      strip.addEventListener("touchstart", yieldPan, { passive: true });
-      strip.addEventListener("touchmove", yieldPan, { passive: true });
-      each(qsa("[data-dir]", wrap), function (b) { b.addEventListener("click", yieldPan); });
+      var selfScroll = false;
+      var pos = -1;
+      /* iOS runs momentum scrolling on the compositor and keeps moving the strip for a second or
+         more after the last touchmove. Writing scrollLeft during that window CANCELS the fling,
+         which is what made the strip feel stuck or snap back on iPhone: the old yield lasted 900ms
+         from touchmove, so the pan resumed mid-flight.
+         The scroll event is the signal that survives momentum, but it fires asynchronously and
+         several of our own writes coalesce into one, so a value comparison misreads our drift as
+         the visitor. A flag set immediately before each write attributes it exactly. */
+      function yieldPan(ms) {
+        var now = window.performance ? performance.now() : Date.now();
+        var until = now + (ms || 1200);
+        if (until > manualUntil) manualUntil = until;
+        pos = -1;                                   // resync to wherever the visitor left it
+      }
+      strip.addEventListener("wheel", function () { yieldPan(); }, { passive: true });
+      each(["touchstart", "touchmove", "touchend", "touchcancel", "pointerdown"], function (evt) {
+        strip.addEventListener(evt, function () { yieldPan(2000); }, { passive: true });
+      });
+      strip.addEventListener("scroll", function () {
+        if (selfScroll) { selfScroll = false; return; }
+        yieldPan();
+      }, { passive: true });
+      each(qsa("[data-dir]", wrap), function (b) { b.addEventListener("click", function () { yieldPan(); }); });
       function step() {
         window.requestAnimationFrame(step);
         if ((window.performance ? performance.now() : Date.now()) < manualUntil) return;
@@ -882,9 +901,14 @@
         if (!firstClone) return;
         var span = firstClone.offsetLeft - frames[0].offsetLeft;   // one original set width
         if (span <= 4) return;                          // not laid out yet
-        var next = strip.scrollLeft + 0.405;
-        if (next >= firstClone.offsetLeft) next -= span;
-        strip.scrollLeft = next;
+        /* The position is accumulated HERE, not read back off the element. A browser that reports
+           scrollLeft as a whole number swallows a 0.405px step entirely, so reading it back each
+           frame pins the strip at its starting offset and the pan never moves at all. */
+        if (pos < 0) pos = strip.scrollLeft;
+        pos += 0.405;
+        if (pos >= firstClone.offsetLeft) pos -= span;
+        selfScroll = true;
+        strip.scrollLeft = pos;
       }
       window.requestAnimationFrame(step);
     });
