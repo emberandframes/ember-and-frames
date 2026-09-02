@@ -1,41 +1,146 @@
 /* =====================================================================
-   Ember & Frames — Unified Studio Site
+   Ember & Frames, unified studio site
    Shared design system
    ---------------------------------------------------------------------
-   Palette built around the F&B portfolio (loved) with the brand ember
-   accent from the identity guide. One tight, warm, editorial system.
+   Palette built around the F&B portfolio with the brand ember accent from
+   the identity guide. One tight, warm, editorial system.
    ===================================================================== */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
+/* Both families are served from this repository rather than fonts.gstatic.com, so
+   they arrive with the page and no visitor has to contact a third party to read it.
+   Each file is the variable latin cut, which is why one covers every weight.
+   See assets/fonts/README.txt for provenance and licensing. */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('../fonts/cormorant-garamond-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('../fonts/cormorant-garamond-latin-italic.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 300 500;
+  font-display: swap;
+  src: url('../fonts/dm-sans-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-style: italic;
+  font-weight: 300 500;
+  font-display: swap;
+  src: url('../fonts/dm-sans-latin-italic.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Stand-ins for the brief moment before the real faces paint, and for any machine
+   that cannot load them. Garamond and Palatino are old-style serifs like Cormorant,
+   so the substitution reads as a change of weight rather than a change of typeface.
+
+   One face per installed font, because a single size-adjust cannot serve a list:
+   measured against the live webfont, Garamond needs 97.9%, Palatino 87.8% and
+   Times 94.4%. Sharing one number would leave two of the three visibly wrong.
+   The stack below tries them in order and each carries its own metrics.
+
+   Numbers are measured, not estimated: width ratio against the real face at the
+   weight that dominates each family (600 display, 400 body), then ascent and
+   descent scaled by the inverse so the line box matches. Re-measure with
+   skills/launch-qa/scripts/font-metrics.mjs if either family changes. */
+@font-face {
+  font-family: 'Cormorant Fallback Garamond';
+  src: local('Garamond'), local('EB Garamond');
+  size-adjust: 97.93%;
+  ascent-override: 94.76%;
+  descent-override: 29.41%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Cormorant Fallback Palatino';
+  src: local('Palatino Linotype'), local('Book Antiqua'), local('Palatino');
+  size-adjust: 87.82%;
+  ascent-override: 105.67%;
+  descent-override: 32.79%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Cormorant Fallback Times';
+  src: local('Times New Roman'), local('Times');
+  size-adjust: 94.36%;
+  ascent-override: 98.35%;
+  descent-override: 30.52%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'DM Sans Fallback Segoe';
+  src: local('Segoe UI');
+  size-adjust: 94.71%;
+  ascent-override: 104.74%;
+  descent-override: 32.94%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'DM Sans Fallback Arial';
+  src: local('Arial'), local('Helvetica');
+  size-adjust: 93.43%;
+  ascent-override: 106.18%;
+  descent-override: 33.39%;
+  line-gap-override: 0%;
+}
+
 :root {
-  /* Brand palette — Ember & Frames identity guide (gold retained as-is) */
-  --off-white:  #F5EFE6;   /* Parchment — page background, breathing space */
-  --warm:       #ECE0CE;   /* warm sand — contrast blocks (hero, contact, cards) */
-  --cream-soft: #FBF7F1;   /* lifted parchment — secondary surfaces */
-  --olive:      #B05C3A;   /* retired olive-green → Terracotta accent — hover, strips */
-  --gold:       #C9A84C;   /* metallic accent — labels, dividers, focus */
-  --charcoal:   #1E1E1E;   /* Charcoal — primary text & dark sections */
-  --muted:      #5F6B6E;   /* Slate — secondary text & metadata */
-  --ember:      #C97B3A;   /* Ember Amber — signature accent: ampersand, key CTAs, highlights */
-  --terracotta: #B05C3A;   /* Terracotta — warm secondary accent */
-  --light-ember:#D49A5E;   /* Light Ember — highlights, hovers, soft fills */
-  --label-ink:  #8F4E22;   /* Burnt amber — small labels on light backgrounds (AA contrast) */
+  /* Brand palette, from the Ember & Frames identity guide. */
+  --off-white:  #F5EFE6;   /* parchment, page background */
+  --warm:       #ECE0CE;   /* warm sand, contrast blocks: hero, contact, cards */
+  --cream-soft: #FBF7F1;   /* lifted parchment, secondary surfaces */
+  --gold:       #C9A84C;   /* metallic accent, dividers and rules only */
+  --charcoal:   #1E1E1E;   /* primary text and dark sections */
+  --muted:      #5F6B6E;   /* slate, secondary text and metadata */
+  --ember:      #C97B3A;   /* signature accent: ampersand, key CTAs, highlights */
+  --terracotta: #B05C3A;   /* warm secondary accent, and the focus ring */
+  --light-ember:#D49A5E;   /* highlights, hovers, soft fills */
+  --label-ink:  #8F4E22;   /* burnt amber, the AA-safe choice for small text on light */
+  --strip-band: #A35334;   /* the terracotta band, taken down just far enough that the
+                              cream lettering on it clears AA at 4.57:1. Cream stays
+                              cream; lightening the text instead would have washed it
+                              out to white and lost the warmth. */
+
+  /* The palette used to be olive green. When it moved to terracotta the hex changed
+     but the variable name did not, so roughly thirty rules still say --olive and mean
+     terracotta. Aliasing it here rather than repeating the hex means there is one
+     place to change, and no chance of the two drifting apart. Prefer --terracotta in
+     new rules; --olive stays only so old ones do not all have to be rewritten. */
+  --olive: var(--terracotta);
 
   --line:       rgba(201,168,76,0.18);
   --line-strong:rgba(201,168,76,0.4);
 
-  --display: 'Cormorant Garamond', Georgia, serif;
-  --body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --display: 'Cormorant Garamond', 'Cormorant Fallback Garamond', 'Cormorant Fallback Palatino', 'Cormorant Fallback Times', Georgia, serif;
+  --body: 'DM Sans', 'DM Sans Fallback Segoe', 'DM Sans Fallback Arial', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
   --pad-x: 56px;
-  --nav-h: 74px;
+  --nav-h: 76px;
   --maxw: 1280px;
 }
 
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 html, body { width: 100%; max-width: 100%; overflow-x: clip; }
 @supports not (overflow-x: clip) { html, body { overflow-x: hidden; } }
+
+/* site.js replaces this slot with the real header. Reserving its height keeps
+   the page from jumping down the moment that happens. */
+[data-region="header"] { min-height: var(--nav-h); }
 
 body {
   background: var(--off-white);
@@ -93,8 +198,10 @@ h2 em, h1 em { font-style: italic; color: var(--olive); }
 .nav {
   position: sticky; top: 0; z-index: 200;
   display: flex; justify-content: space-between; align-items: center;
-  padding: 18px var(--pad-x);
-  min-height: var(--nav-h);
+  padding: 0 var(--pad-x);
+  /* Fixed rather than min-height: padding plus the tallest child used to push this
+     past --nav-h, so the reserved slot under-shot and the page jumped on load. */
+  height: var(--nav-h);
   background: rgba(236, 224, 206, 0.92);
   -webkit-backdrop-filter: blur(14px) saturate(1.2); backdrop-filter: blur(14px) saturate(1.2);
   border-bottom: 1px solid var(--line-strong);
@@ -126,11 +233,12 @@ h2 em, h1 em { font-style: italic; color: var(--olive); }
 }
 .nav-pill:hover { background: var(--charcoal); color: var(--off-white) !important; }
 
-.hamburger { display: none; background: none; border: none; cursor: pointer; width: 30px; height: 22px; position: relative; }
-.hamburger span { position: absolute; left: 0; height: 1.5px; width: 100%; background: var(--charcoal); transition: transform 0.25s, opacity 0.25s; }
-.hamburger span:nth-child(1) { top: 2px; }
-.hamburger span:nth-child(2) { top: 10px; }
-.hamburger span:nth-child(3) { top: 18px; }
+/* 30x22 of bars inside a 44px box: the visual stays, the touch target clears 24px. */
+.hamburger { display: none; background: none; border: none; cursor: pointer; width: 44px; height: 44px; position: relative; padding: 11px 7px; }
+.hamburger span { position: absolute; left: 7px; height: 1.5px; width: 30px; background: var(--charcoal); transition: transform 0.25s, opacity 0.25s; }
+.hamburger span:nth-child(1) { top: 13px; }
+.hamburger span:nth-child(2) { top: 21px; }
+.hamburger span:nth-child(3) { top: 29px; }
 body.menu-open .hamburger span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
 body.menu-open .hamburger span:nth-child(2) { opacity: 0; }
 body.menu-open .hamburger span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
@@ -179,7 +287,7 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
 }
 .hero.hero--solo .hero-left::after { display: none; }
 .hero-tag {
-  font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold);
+  font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: var(--label-ink);
   margin-bottom: 28px; display: flex; align-items: center; gap: 16px;
 }
 .hero-tag::after { content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--gold); opacity: 0.4; }
@@ -194,6 +302,14 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
 .hero.hero--solo .hero-desc { margin-left: auto; margin-right: auto; }
 .hero-cta { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
 .hero.hero--solo .hero-cta { justify-content: center; }
+/* Side by side, these two pills land within a few pixels of the available width on a
+   phone, so they fit on one line in one typeface and wrap to two in another, and the
+   hero jumps when the webfont arrives. Stacking below 480px makes the height the same
+   whichever face is in use, and gives a bigger touch target. */
+@media (max-width: 480px) {
+  .hero-cta { flex-direction: column; align-items: stretch; gap: 12px; }
+  .hero-cta .btn-primary, .hero-cta .btn-ghost { text-align: center; }
+}
 .hero-bio {
   font-family: var(--body); font-weight: 300; font-size: 14.5px; line-height: 1.8;
   color: rgba(42,42,37,0.72); max-width: 480px; margin-top: 30px;
@@ -212,10 +328,12 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
    INGREDIENT / DISCIPLINE STRIP
    ===================================================================== */
 .strip {
-  background: var(--terracotta); padding: 14px var(--pad-x); margin-top: 16px; display: flex; gap: 34px;
+  background: var(--strip-band); padding: 14px var(--pad-x); margin-top: 16px; display: flex; gap: 34px;
   align-items: center; justify-content: center; flex-wrap: wrap;
 }
 .strip span { font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase; color: rgba(250,246,240,0.92); white-space: nowrap; }
+/* Separator only. It is aria-hidden in the markup, so it carries no meaning and
+   is not held to a text contrast ratio. */
 .strip .dot { color: var(--gold); font-size: 6px; }
 
 /* =====================================================================
@@ -277,7 +395,7 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
 .tabs { display: flex; gap: 0; justify-content: center; flex-wrap: wrap; border-bottom: 1px solid rgba(201,168,76,0.22); }
 .tab {
   padding: 14px 30px; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; cursor: pointer;
-  color: rgba(42,42,37,0.45); border-bottom: 2px solid transparent; margin-bottom: -1px;
+  color: rgba(42,42,37,0.68); border-bottom: 2px solid transparent; margin-bottom: -1px;
   background: none; border-top: none; border-left: none; border-right: none; font-family: var(--body);
   transition: color 0.25s, border-color 0.25s;
 }
@@ -286,7 +404,7 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
 .subtabs { display: flex; gap: 0; justify-content: center; border-bottom: 1px solid rgba(201,168,76,0.15); margin-top: 4px; }
 .subtab {
   padding: 10px 26px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
-  color: rgba(42,42,37,0.5); border-bottom: 2px solid transparent; margin-bottom: -1px;
+  color: rgba(42,42,37,0.68); border-bottom: 2px solid transparent; margin-bottom: -1px;
   background: none; border-top: none; border-left: none; border-right: none; font-family: var(--body);
   transition: color 0.2s, border-color 0.2s;
 }
@@ -306,7 +424,7 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
    come from grid-template-columns: repeat(5, 1fr) (responsive below), so every
    category always shows the same number of photos per row. The masonry packing
    comes from grid-auto-rows: 1px plus a per-tile grid-row span that site.js sets
-   from each image's height — tiles stack tight in their column with no
+   from each image's height. Tiles stack tight in their column with no
    height-mismatch white space, while natural aspect ratios are preserved (no
    cropping). Reels (.grid--reels) share one ratio and opt out below. The brand
    watermark is baked into the image files themselves (white corner mark), so it
@@ -319,13 +437,16 @@ body.menu-open .mobile-menu { opacity: 1; visibility: visible; }
    be stripped by downloading. Video tiles (.play) carry their own burned-in
    mark and show a play glyph instead. */
 .grid .item.play::after {
-  content: '▶'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  /* Escaped rather than literal: the raw triangle was corrupted once already by a
+     save that wrote UTF-8 back out as a single-byte codepage, and it rendered as
+     three Latin letters on every video tile. An escape cannot be re-encoded. */
+  content: '\25B6'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
   color: rgba(255,255,255,0.9); font-size: 30px; background: rgba(30,30,25,0.18); transition: background 0.2s;
   pointer-events: none;
 }
 .grid .item.play:hover::after { background: rgba(30,30,25,0.32); }
 
-/* Reels grid (portrait 9/16) — every reel shares one ratio, so a uniform
+/* Reels grid (portrait 9/16). Every reel shares one ratio, so a uniform
    row-based grid keeps rows tidy without ever affecting watermark size. */
 .grid--reels { columns: auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; grid-auto-rows: auto; align-items: start; }
 .grid--reels .item { aspect-ratio: 9/16; margin: 0; }
@@ -360,10 +481,14 @@ img[data-lazy].loaded { opacity: 1; }
 .coming { padding: 92px var(--pad-x); text-align: center; background: var(--cream-soft); }
 .coming-inner { max-width: 720px; margin: 0 auto; }
 .coming .eyebrow { display: block; margin-bottom: 18px; }
-.coming h2 { margin-bottom: 20px; }
+/* These pages have no hero, so their lead line is the page h1. Hold it at h2 scale. */
+.coming h1 { font-size: clamp(34px, 4.4vw, 56px); line-height: 1.04; letter-spacing: -0.5px; font-weight: 500; }
+.coming h1, .coming h2 { margin-bottom: 20px; }
 .coming p { font-size: 16px; line-height: 1.8; color: rgba(42,42,37,0.76); font-weight: 300; max-width: 600px; margin: 0 auto 14px; }
 .coming .coming-note { font-family: var(--display); font-style: italic; font-size: 21px; color: var(--charcoal); margin: 26px auto; }
 .coming-teaser { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 44px 0; }
+/* site.js fills this. Reserving the box stops the copy above it jumping when it does. */
+.coming-teaser:empty { aspect-ratio: 2.3; }
 .coming-teaser .t {
   aspect-ratio: 3/4; overflow: hidden; position: relative; background: var(--warm);
 }
@@ -404,7 +529,7 @@ img[data-lazy].loaded { opacity: 1; }
 .contact-item { display: flex; flex-direction: column; gap: 6px; }
 .contact-item-label { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--label-ink); }
 .contact-item-value { font-weight: 300; font-size: 16px; }
-.contact-item a { text-decoration: none; transition: color 0.2s; }
+.contact-item a { text-decoration: none; transition: color 0.2s; display: inline-block; padding: 2px 0; }
 .contact-item a:hover { color: var(--olive); }
 .contact-item--full { grid-column: 1 / -1; align-items: center; text-align: center; }
 
@@ -457,13 +582,14 @@ body.motion-on .subpill-group:not([hidden]) { animation: subPop 0.26s ease both;
    ===================================================================== */
 .footer { background: var(--charcoal); padding: 26px var(--pad-x); display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; }
 .footer span, .footer a { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(245,235,215,0.62); font-weight: 300; text-decoration: none; }
+.footer a { display: inline-block; padding: 4px 2px; }
 .footer .footer-brand { justify-self: start; display: inline-flex; align-items: baseline; gap: 12px; }
 .footer .footer-wordmark { font-family: var(--display); font-size: 20px; letter-spacing: 0.01em; text-transform: none; font-weight: 400; color: var(--off-white); }
 .footer .footer-wordmark .brand-amp { font-size: 1em; letter-spacing: 0.01em; text-transform: none; color: var(--ember); font-style: italic; font-weight: 500; }
 .footer .footer-copy { font-size: 10.5px; letter-spacing: 2px; text-transform: none; color: rgba(245,235,215,0.6); font-weight: 300; }
 .footer .footer-tagline { justify-self: center; text-align: center; font-size: 10.5px; letter-spacing: 3px; color: var(--gold); white-space: nowrap; }
 .footer [data-top] { justify-self: end; }
-.footer [data-consent] { grid-column: 1 / -1; justify-self: center; font-size: 10px; letter-spacing: 2px; color: rgba(245,235,215,0.45); }
+.footer [data-consent] { grid-column: 1 / -1; justify-self: center; font-size: 10px; letter-spacing: 2px; color: rgba(245,235,215,0.55); }
 .footer a:hover { color: var(--gold); }
 
 /* =====================================================================
@@ -526,11 +652,11 @@ body.motion-on .subpill-group:not([hidden]) { animation: subPop 0.26s ease both;
    Injected + wired by site.js enhanceMotion(). Progressive enhancement:
    the pre-animation states live behind JS-added classes (.rf, .dev-tile,
    .duo, .grain, .torch) or body.motion-on, and JS only adds those when the
-   visitor has NOT requested reduced motion — so with no JS, or with
+   visitor has NOT requested reduced motion, so with no JS, or with
    reduce-motion, every image renders clean and static.
    ===================================================================== */
 
-/* --- Ken Burns — F&B gallery, slow zoom + pan on scroll-in (replays) --- */
+/* --- Ken Burns. F&B gallery, slow zoom and pan on scroll-in (replays) --- */
 body.motion-on[data-page="fnb"] .grid .item.kb img { transform-origin: var(--kb-ox, 60%) var(--kb-oy, 40%); }
 body.motion-on[data-page="fnb"] .grid .item.kb.in img {
   animation: kenTile 7s ease-in-out both;
@@ -540,14 +666,14 @@ body.motion-on[data-page="fnb"] .grid .item.kb.in img {
   100% { transform: scale(1.14) translate(var(--kb-tx, -3%), var(--kb-ty, -2%)); }
 }
 
-/* --- Rack Focus — Interiors gallery, blur pulls sharp on scroll-in (replays) --- */
+/* --- Rack Focus. Interiors gallery, blur pulls sharp on scroll-in (replays) --- */
 body.motion-on[data-page="interiors"] .grid .item.rf img {
   filter: blur(15px) brightness(1.05);
   transition: filter 1.4s ease;
 }
 body.motion-on[data-page="interiors"] .grid .item.rf.in img { filter: none; }
 
-/* --- Darkroom "Develop" — Events gallery, on scroll-in (replays).
+/* --- Darkroom "Develop". Events gallery, on scroll-in (replays).
    Mirrors the Events standalone portfolio darkroom effect exactly. --- */
 body[data-page="events"] .grid .item.dev-tile { background: #e9e5da; }
 body[data-page="events"] .grid .item.dev-tile img {
@@ -578,7 +704,7 @@ body[data-page="events"] .grid .item.dev-tile.developing .sheen { animation: dev
   100% { opacity: 0; transform: translateX(360%) rotate(9deg); }
 }
 
-/* --- Duotone → Colour — Lifestyle teasers, on scroll-in (replays) --- */
+/* --- Duotone to colour. Lifestyle teasers, on scroll-in (replays) --- */
 body[data-page="lifestyle"] .coming-teaser .t.duo img {
   filter: sepia(.85) saturate(1.9) hue-rotate(-12deg) brightness(.92) contrast(1.06);
   transition: filter 2.2s ease;
@@ -591,7 +717,7 @@ body[data-page="lifestyle"] .coming-teaser .t.duo .tint {
 }
 body[data-page="lifestyle"] .coming-teaser .t.duo.in .tint { opacity: 0; }
 
-/* --- Film Grain Dissolve — Hospitality teasers, on scroll-in (replays) --- */
+/* --- Film Grain Dissolve. Hospitality teasers, on scroll-in (replays) --- */
 body[data-page="hospitality"] .coming-teaser .t.grain img {
   filter: contrast(1.15) brightness(.9) saturate(.7); transform: scale(1.04);
   transition: filter 2.4s ease, transform 2.4s ease;
@@ -604,7 +730,7 @@ body[data-page="hospitality"] .coming-teaser .t.grain .noise {
 }
 body[data-page="hospitality"] .coming-teaser .t.grain.in .noise { opacity: 0; }
 
-/* --- Cursor Spotlight — Products teasers, warm torch follows the pointer --- */
+/* --- Cursor Spotlight. Products teasers, warm torch follows the pointer --- */
 body[data-page="products"] .coming-teaser .t.torch { cursor: crosshair; }
 body[data-page="products"] .coming-teaser .t.torch .mask {
   position: absolute; inset: 0; z-index: 2; pointer-events: none;
@@ -622,7 +748,7 @@ body[data-page="products"] .coming-teaser .t.torch .mask {
   body[data-page="products"] .coming-teaser .t.torch.is-touching .mask { opacity: 1; }
 }
 
-/* --- Film Sprocket Pan — Ember filmstrips: charcoal reel panel that hugs
+/* --- Film Sprocket Pan. Ember filmstrips: charcoal reel panel that hugs
    the frames with terracotta sprocket perforations on the top AND bottom
    edges (symmetric, thin). The nav buttons sit below the reel on the section
    background, unchanged. The sprocket graphic is static (always on); the
@@ -645,7 +771,7 @@ body.motion-on .filmstrip { scroll-snap-type: none; }
    restoring its snap here is invisible and lets the video menu pop up. */
 body.motion-on.lb-open .filmstrip { scroll-snap-type: x mandatory; }
 
-/* --- Ember Accent — faint ember sparks drifting up behind the header type.
+/* --- Ember Accent. Faint ember sparks drifting up behind the header type.
    Header colour + layout stay exactly as designed; only the sparks are added. --- */
 .nav-sparks { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
 .nav .nav-logo, .nav .nav-links, .nav .hamburger { position: relative; z-index: 1; }
@@ -664,7 +790,7 @@ body.motion-on .nav .spark { animation: navRise var(--d, 6s) linear infinite; an
   100% { opacity: 0; transform: translateY(-80px) scale(1.15) rotate(55deg); }
 }
 
-/* Ember Accent — the wordmark ampersand glows warmly in the header. */
+/* Ember Accent: the wordmark ampersand glows warmly in the header. */
 .nav-logo .brand-amp { color: var(--ember); text-shadow: 0 0 9px rgba(240,135,46,0.9), 0 0 20px rgba(211,74,28,0.6), 0 0 32px rgba(211,74,28,0.4); }
 body.motion-on .nav-logo .brand-amp { animation: ampGlow 3.2s ease-in-out infinite; }
 @keyframes ampGlow {
@@ -694,13 +820,15 @@ summary:focus-visible,
 [tabindex]:focus-visible,
 [role="button"]:focus-visible,
 [role="tab"]:focus-visible {
-  outline: 2px solid var(--ember);
+  /* Terracotta is the one accent that clears 3:1 on every surface the ring lands on,
+     parchment through to the charcoal footer. Ember does not: 2.53 on the nav. */
+  outline: 2px solid var(--terracotta);
   outline-offset: 3px;
   border-radius: 3px;
 }
 .form-field input:focus-visible,
 .form-field textarea:focus-visible {
-  outline: 2px solid var(--ember);
+  outline: 2px solid var(--terracotta);
   outline-offset: 2px;
 }
 .lightbox-close:focus-visible,
@@ -748,6 +876,7 @@ summary:focus-visible,
   .process-steps { grid-template-columns: 1fr; }
   .industries { grid-template-columns: 1fr; }
   .coming-teaser { grid-template-columns: 1fr 1fr; }
+  .coming-teaser:empty { aspect-ratio: 0.76; }
   .footer { grid-template-columns: 1fr; justify-items: center; gap: 10px; text-align: center; padding-bottom: 82px; }
   .footer .footer-brand, .footer [data-top] { justify-self: center; }
   .lightbox { --gutter: 14px; }

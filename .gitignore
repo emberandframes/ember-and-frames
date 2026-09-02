@@ -26,6 +26,11 @@ Guidelines*/
 *.pptx
 *.docx
 
+# Local authoring tooling. Reusable across projects, no part of the served site.
+# Anchored to the repository root so a future .github/agents/ stays trackable.
+/agents/
+/skills/
+
 # Backups and scratch
 *.bak
 *.orig
@@ -34,6 +39,9 @@ Guidelines*/
 *.BEFORE_*
 _scratch/
 _drafts/
+# Probe page written by skills/launch-qa/scripts/font-metrics.mjs. It deletes it
+# on a clean exit, but a killed process leaves it behind and it must never ship.
+_font-metrics.html
 
 # OS and editor
 .DS_Store

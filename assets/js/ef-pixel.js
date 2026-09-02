@@ -1,5 +1,5 @@
 /* =====================================================================
-   Ember & Frames — Meta Pixel + Conversions API bridge
+   Ember & Frames, Meta Pixel and Conversions API bridge
    ---------------------------------------------------------------------
    Consent gated. Nothing is loaded from Meta and no cookie is set until
    the visitor opts in. Events fired before that are held in memory and
@@ -137,14 +137,14 @@
     ".ef-consent button{font:inherit;font-size:13px;letter-spacing:.02em;cursor:pointer;" +
     "padding:9px 20px;border-radius:999px;border:1px solid var(--line-strong,rgba(201,168,76,.4));" +
     "background:transparent;color:inherit;transition:background .2s,color .2s,border-color .2s}" +
-    ".ef-consent button:hover{border-color:var(--ember,#C97B3A);color:var(--ember,#C97B3A)}" +
-    ".ef-consent button[data-ef-accept]{background:var(--ember,#C97B3A);border-color:var(--ember,#C97B3A);color:#fff}" +
-    ".ef-consent button[data-ef-accept]:hover{background:var(--terracotta,#B05C3A);border-color:var(--terracotta,#B05C3A);color:#fff}" +
-    ".ef-consent button:focus-visible{outline:2px solid var(--gold,#C9A84C);outline-offset:2px}" +
+    ".ef-consent button:hover{border-color:var(--label-ink,#8F4E22);color:var(--label-ink,#8F4E22)}" +
+    ".ef-consent button[data-ef-accept]{background:var(--terracotta,#B05C3A);border-color:var(--terracotta,#B05C3A);color:#fff}" +
+    ".ef-consent button[data-ef-accept]:hover{background:var(--label-ink,#8F4E22);border-color:var(--label-ink,#8F4E22);color:#fff}" +
+    ".ef-consent button:focus-visible{outline:2px solid var(--olive,#B05C3A);outline-offset:2px}" +
     ".ef-consent-open .wa-fab{display:none}" +
     ".ef-consent-link{display:block;margin:18px auto;background:none;border:0;padding:6px 10px;" +
     "font:inherit;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:inherit;" +
-    "opacity:.6;cursor:pointer;text-decoration:underline}" +
+    "opacity:.72;cursor:pointer;text-decoration:underline}" +
     ".ef-consent-link:hover{opacity:1}" +
     "@media(max-width:520px){.ef-consent{left:10px;right:10px;bottom:10px;padding:14px 16px;" +
     "font-size:13px;line-height:1.45;gap:10px}" +

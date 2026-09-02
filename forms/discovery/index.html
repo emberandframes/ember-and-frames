@@ -10,23 +10,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ember &amp; Frames · Brand Discovery Questionnaire</title>
 <style>
-:root{--ember:#C97B3A;--charcoal:#1E1E1E;--parchment:#F5EFE6;--terracotta:#B05C3A;--slate:#7D8A8F;--light-ember:#D49A5E;--paper:#FBF8F2;--ink-soft:#3A3632;--line:#E3D9C9;--display:'Cormorant Garamond',serif;--body:'DM Sans',sans-serif}
+:root{--ember:#C97B3A;--label-ink:#8F4E22;--charcoal:#1E1E1E;--parchment:#F5EFE6;--terracotta:#B05C3A;--slate:#5F6B6E;--light-ember:#D49A5E;--paper:#FBF8F2;--ink-soft:#3A3632;--line:#E3D9C9;--display:'Cormorant Garamond',serif;--body:'DM Sans',sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--body);color:var(--charcoal);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased}
 .wrap{max-width:820px;margin:0 auto;padding:0 28px}
 .cover{padding:60px 0 40px;border-bottom:1px solid var(--line)}
-.eyebrow{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--ember);font-weight:600;margin-bottom:20px}
+.eyebrow{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--label-ink);font-weight:600;margin-bottom:20px}
 .cover h1{font-family:var(--display);font-weight:600;font-size:clamp(36px,6.5vw,62px);line-height:1;letter-spacing:-.01em}
 .cover h1 .amp{font-style:italic;color:var(--ember)}
 .cover .sub{font-family:var(--display);font-style:italic;font-size:20px;color:var(--ink-soft);margin-top:13px}
 .cover .intro{font-size:15px;color:var(--ink-soft);max-width:610px;margin-top:18px}
 .toolbar{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
-.btn{font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:.02em;padding:11px 20px;border-radius:30px;border:1.5px solid var(--ember);background:var(--ember);color:#fff;cursor:pointer;transition:all .15s}
-.btn.ghost{background:transparent;color:var(--ember)}
-.btn:hover{background:var(--terracotta);border-color:var(--terracotta);color:#fff}
-.btn.ghost:hover{background:var(--parchment);color:var(--terracotta)}
+.btn{font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:.02em;padding:11px 20px;border-radius:30px;border:1.5px solid var(--terracotta);background:var(--terracotta);color:#fff;cursor:pointer;transition:all .15s}
+.btn.ghost{background:transparent;color:var(--label-ink)}
+.btn:hover{background:var(--label-ink);border-color:var(--label-ink);color:#fff}
+.btn.ghost:hover{background:var(--parchment);color:var(--label-ink)}
 section{padding:42px 0;border-bottom:1px solid var(--line)}
-.snum{font-size:12px;letter-spacing:.3em;color:var(--ember);font-weight:600;text-transform:uppercase;display:block;margin-bottom:10px}
+.snum{font-size:12px;letter-spacing:.3em;color:var(--label-ink);font-weight:600;text-transform:uppercase;display:block;margin-bottom:10px}
 h2{font-family:var(--display);font-weight:600;font-size:clamp(25px,4vw,34px);line-height:1.05;margin-bottom:6px;letter-spacing:-.01em}
 .sdesc{font-size:14px;color:var(--slate);margin-bottom:24px;max-width:640px}
 .q{margin-bottom:24px}
@@ -48,7 +48,7 @@ footer{padding:42px 0;text-align:center}
 footer .mk{font-family:var(--display);font-size:19px;font-weight:600}
 footer .mk .amp{font-style:italic;color:var(--ember)}
 footer p{font-size:12px;color:var(--slate);margin-top:7px}
-@media print{.toolbar{display:none}body{background:#fff}section{page-break-inside:avoid}textarea,input{border:1px solid #ccc}}
+@media print{.toolbar{display:none}section{page-break-inside:avoid}textarea,input{border:1px solid #ccc}}
 
 /* --- brand watermark --- */
 .ef-watermark{position:fixed;bottom:22px;right:22px;width:52px;height:52px;opacity:.85;z-index:40;pointer-events:none;filter:drop-shadow(0 2px 6px rgba(30,30,30,.10))}
@@ -221,7 +221,7 @@ input[type=email]:focus,input[type=tel]:focus{outline:none;border-color:var(--em
 <div class="hint">Bright and airy? Moody and warm? Clean and minimal? Rich and editorial?</div>
 <textarea name="style"></textarea></div>
 <div class="q"><label>Colours you love, and colours you can't stand</label><input type="text" name="colours"></div>
-<div class="q"><label>Share 3–5 reference images or accounts you'd be thrilled to look like.</label>
+<div class="q"><label>Share 3 to 5 reference images or accounts you'd be thrilled to look like.</label>
 <div class="hint">Paste links or @handles. A note on what you like about each helps even more.</div>
 <textarea name="visual_refs"></textarea></div>
 <div class="q"><label>Any visual clichés in your industry that make you cringe?</label>
@@ -241,7 +241,7 @@ input[type=email]:focus,input[type=tel]:focus{outline:none;border-color:var(--em
 </section>
 
 <section style="border-bottom:none">
-<div class="callout"><p><strong>That's everything, and thank you.</strong> When you're ready, hit <strong>Submit to Ember <span class="amp">&amp;</span> Frames</strong> at the top and it comes straight to us at <a href="mailto:hello@emberandframes.com" style="color:var(--ember)">hello@emberandframes.com</a>. We'll read every word and turn it into work that feels unmistakably yours.</p></div>
+<div class="callout"><p><strong>That's everything, and thank you.</strong> When you're ready, hit <strong>Submit to Ember <span class="amp">&amp;</span> Frames</strong> at the top and it comes straight to us at <a href="mailto:hello@emberandframes.com" style="color:var(--label-ink)">hello@emberandframes.com</a>. We'll read every word and turn it into work that feels unmistakably yours.</p></div>
 </section>
 
 <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden">
@@ -254,10 +254,11 @@ input[type=email]:focus,input[type=tel]:focus{outline:none;border-color:var(--em
 
 <footer><div class="wrap">
 <div class="mk">Ember <span class="amp">&amp;</span> Frames</div>
-<p>Brand Discovery Questionnaire · © Ember <span class="amp">&amp;</span> Frames</p>
+<p><a href="mailto:hello@emberandframes.com" style="color:var(--label-ink)">hello@emberandframes.com</a> · <a href="https://wa.me/919989465578" style="color:var(--label-ink)">+91 99894 65578</a> · <a href="https://www.instagram.com/emberandframes/" style="color:var(--label-ink)">@emberandframes</a> · <a href="https://www.emberandframes.com/" style="color:var(--label-ink)">www.emberandframes.com</a></p>
+<p>Brand Discovery Questionnaire · © <span data-year></span> Ember <span class="amp">&amp;</span> Frames</p>
 </div></footer>
 
-<script src="../../assets/js/ef-pixel.js?v=20260820" defer></script>
+<script src="../../assets/js/ef-pixel.js?v=20260902" defer></script>
 <script src="form.js" defer></script>
 </body>
 </html>
