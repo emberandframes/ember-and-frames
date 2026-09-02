@@ -16,6 +16,27 @@
   var LOADED = Date.now();
   var draftRestored = false;
 
+  /* Copyright year is filled here so no file carries a value that goes stale. */
+  var yearEl = document.querySelector("[data-year]");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* Each field pairs a plain <label> with its control. That reads correctly on
+     screen but is not programmatically associated, so a screen reader announces
+     the control with no name. Wire every pair once, here, rather than hand-
+     maintaining an id on every field. */
+  (function linkLabels() {
+    var seq = 0;
+    Array.prototype.forEach.call(document.querySelectorAll("label"), function (lab) {
+      if (lab.getAttribute("for") || lab.querySelector("input,select,textarea")) return;
+      var scope = lab.parentNode;
+      if (!scope) return;
+      var ctrl = scope.querySelector("input:not([type=radio]):not([type=checkbox]):not([type=hidden]),select,textarea");
+      if (!ctrl || ctrl === lab) return;
+      if (!ctrl.id) ctrl.id = "ef-f-" + (ctrl.name || "field") + "-" + (++seq);
+      lab.setAttribute("for", ctrl.id);
+    });
+  })();
+
   function els(){ return Array.prototype.slice.call(form.querySelectorAll('input,textarea,select')); }
   function labelFor(el){ if(el.id){ var l=form.querySelector('label[for="'+el.id+'"]'); if(l) return l.textContent.trim(); } return el.value||'on'; }
 

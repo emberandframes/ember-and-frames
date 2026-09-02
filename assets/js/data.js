@@ -1,5 +1,5 @@
 /* =====================================================================
-   Ember & Frames — Unified data layer
+   Ember & Frames, unified data layer
    ---------------------------------------------------------------------
    Single source of truth for shared copy + all portfolio media.
    To add or change work, edit the arrays below. Nothing else changes:
@@ -16,11 +16,10 @@ window.EF = {
     phoneTel: "+919989465578",
     whatsapp: "919989465578",
     instagram: "https://www.instagram.com/emberandframes",
-    instagramHandle: "@emberandframes",
-    year: "2026"
+    instagramHandle: "@emberandframes"
   },
 
-  /* Industry navigation — order matters. live:false renders a "coming soon" page.
+  /* Industry navigation. Order matters. live:false renders a "coming soon" page.
      `label` is the full name (mobile menu); `short` is the compact header label. */
   nav: [
     { key: "fnb",         label: "F&B",                       short: "F&B",         href: "fnb.html",         live: true  },
@@ -143,7 +142,7 @@ window.EF = {
   },
 
   /* =====================================================================
-     F&B — media
+     F&B media
      Hero + section copy live in fnb.html. These are the galleries.
      ===================================================================== */
   fnb: {
@@ -369,7 +368,7 @@ window.EF = {
   },
 
   /* =====================================================================
-     INTERIORS & ARCHITECTURE — projects (rendered in order)
+     INTERIORS & ARCHITECTURE, projects (rendered in order)
      ===================================================================== */
   interiors: {
     filmstrip: [
@@ -419,7 +418,7 @@ window.EF = {
   },
 
   /* =====================================================================
-     EVENTS — filmstrip + collections
+     EVENTS, filmstrip and collections
      ===================================================================== */
   events: {
     filmstrip: [
@@ -496,7 +495,7 @@ window.EF = {
   },
 
   /* =====================================================================
-     COMING SOON pages — teaser images optional. Add media arrays here
+     COMING SOON pages. Teaser images optional. Add media arrays here
      later (mirroring the live pages) and flip nav.live to true.
      ===================================================================== */
   hospitality: {

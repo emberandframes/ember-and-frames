@@ -1,5 +1,9 @@
 User-agent: *
 Allow: /
-Disallow: /forms/
+
+# The form pages carry <meta name="robots" content="noindex, nofollow">. They are
+# deliberately NOT disallowed here: a disallowed page can still be indexed from an
+# external link, and because the crawler may not fetch it, it never sees the noindex
+# that would have removed it.
 
 Sitemap: https://emberandframes.com/sitemap.xml

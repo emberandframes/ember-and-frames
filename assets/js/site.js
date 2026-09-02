@@ -1,5 +1,5 @@
 /* =====================================================================
-   Ember & Frames — site engine
+   Ember & Frames, site engine
    ---------------------------------------------------------------------
    Injects the shared chrome (header, footer, about, contact, enquire,
    lightbox), renders every gallery from the data layer, and wires the
@@ -269,7 +269,7 @@
     var footer = h(
       '<footer class="footer">' +
         '<span class="footer-brand">' +
-          '<span class="footer-copy">\u00A9 ' + (SITE.year || "") + "</span>" +
+          '<span class="footer-copy">\u00A9 ' + new Date().getFullYear() + "</span>" +
           '<span class="footer-wordmark">' + LOGO + "</span>" +
         "</span>" +
         (tagline ? '<span class="footer-tagline">' + tagline + "</span>" : "") +
@@ -357,7 +357,7 @@
       '" data-full="' + escAttr(src) + '" data-alt="' + escAttr(a) +
       '" role="button" tabindex="0">' + imgTag(src, a) + "</div>";
   }
-  /* Filmstrip frame — same behaviour, different class hook. Frames eager-load
+  /* Filmstrip frame: same behaviour, different class hook. Frames eager-load
      (not lazy) so they're painted before the auto-pan brings them on-screen;
      lazy loading made them pop in late as the strip scrolled. */
   function frameTile(src, alt) {
@@ -366,7 +366,7 @@
     return '<div class="frame" data-full="' + escAttr(src) + '" data-alt="' + escAttr(a) +
       '" role="button" tabindex="0">' + img + "</div>";
   }
-  /* Video tile — the poster is decorative; the button label conveys the action. */
+  /* Video tile: the poster is decorative; the button label conveys the action. */
   function videoTile(posterSrc, videoSrc, alt) {
     var a = alt || "";
     var label = "Play video" + (a ? ": " + a : "");
@@ -402,7 +402,7 @@
       }).join("");
     });
 
-    // Interiors projects (tabbed work grid — one tab per project)
+    // Interiors projects (tabbed work grid, one tab per project)
     each(qsa("[data-projects]"), function (host) {
       var data = getByPath(EF, host.getAttribute("data-projects"));
       if (!data || !data.projects) return;
@@ -435,7 +435,7 @@
       host.innerHTML = '<div class="tabgroup" data-tabscope><div class="tabs" role="tablist" aria-label="Projects">' + tabs + "</div>" + panels + "</div>";
     });
 
-    // Events collections (tabbed work grid — one tab per collection)
+    // Events collections (tabbed work grid, one tab per collection)
     each(qsa("[data-collections]"), function (host) {
       var cols = getByPath(EF, host.getAttribute("data-collections")) || [];
       var scope = "tg" + (++TAB_UID);
@@ -529,7 +529,7 @@
     for (var i = 0; i < items.length; i++) {
       var item = items[i];
       var w = item.getBoundingClientRect().width;
-      if (!w) return; // grid not visible (e.g. inactive tab) — skip; relaid out when shown
+      if (!w) return; // grid not visible (e.g. inactive tab); relaid out when shown
       var img = item.querySelector("img");
       var ratio = (img && img.naturalWidth) ? (img.naturalHeight / img.naturalWidth) : MASONRY_RATIO;
       item.style.gridRowEnd = "span " + (Math.ceil(w * ratio) + MASONRY_GAP);
@@ -611,8 +611,8 @@
       media = document.createElement("video");
       media.src = item.src;
       media.controls = true;
-      /* Leave the native controls intact — including the "more options" overflow
-         menu (download / playback speed / picture-in-picture) — so the player
+      /* Leave the native controls intact, including the "more options" overflow
+         menu (download / playback speed / picture-in-picture), so the player
          matches the standalone portfolios (fnb standalone reference). */
       media.autoplay = true;
       media.playsInline = true;
@@ -739,7 +739,7 @@
       var hit = tileFromEvent(e);
       if (hit) openFromNode(hit.node, hit.container);
     });
-    // tiles are exposed as buttons — activate with Enter / Space
+    // tiles are exposed as buttons, activated with Enter or Space
     document.addEventListener("keydown", function (e) {
       if (e.key !== "Enter" && e.key !== " " && e.key !== "Spacebar") return;
       var hit = tileFromEvent(e);
@@ -770,7 +770,7 @@
      MOTION EFFECTS (page-scoped scroll / hover / cursor animations)
      ---------------------------------------------------------------------
      Progressive enhancement. Nothing runs when the visitor prefers reduced
-     motion — images then render in their clean, final state. Otherwise this
+     motion. Images then render in their clean, final state. Otherwise this
      adds body.motion-on (gates the CSS-only Ken Burns hover + header sparks),
      injects the per-effect overlay elements, and wires IntersectionObserver
      triggers that replay each scroll-in effect on every entry (matching the
@@ -794,7 +794,7 @@
   }
 
   /* observe a set of elements; onEnter fires each time one scrolls in, onExit
-     each time it leaves — so entrance effects replay on every pass. */
+     each time it leaves, so entrance effects replay on every pass. */
   function observeReplay(els, onEnter, onExit, opts) {
     if (!els.length) return;
     if (!("IntersectionObserver" in window)) { each(els, onEnter); return; }
@@ -807,7 +807,7 @@
     each(els, function (el) { io.observe(el); });
   }
 
-  /* Ember Accent — faint ember sparks drifting up behind the header type. */
+  /* Ember Accent: faint ember sparks drifting up behind the header type. */
   function buildNavSparks() {
     var nav = document.querySelector(".nav");
     if (!nav || nav.querySelector(".nav-sparks")) return;
@@ -841,9 +841,9 @@
     nav.insertBefore(box, nav.firstChild);
   }
 
-  /* Film Sprocket Pan — gentle one-way loop across each ember filmstrip: it
+  /* Film Sprocket Pan: gentle one-way loop across each ember filmstrip. It
      drifts continuously and wraps seamlessly (the frames are duplicated once, so
-     rewinding by one set is invisible — no snap-back). Runs continuously (no
+     rewinding by one set is invisible, with no snap-back). Runs continuously (no
      hover pause); it yields for a moment only when the visitor drives the strip
      manually (nav buttons, wheel, touch) so the nav and lightbox keep working,
      then resumes on its own. */
@@ -856,7 +856,7 @@
          jump: once the strip has scrolled exactly one original set, we rewind by
          that set width. The pixels on screen are identical at that instant, so
          the loop is seamless (replaces the old hard scrollLeft = 0 reset).
-         Clones are inert — skipped by the lightbox and the a11y/tab tree. */
+         Clones are inert: skipped by the lightbox and the a11y/tab tree. */
       if (strip.getAttribute("data-looped") !== "1") {
         Array.prototype.slice.call(strip.children).forEach(function (node) {
           var clone = node.cloneNode(true);
@@ -932,7 +932,7 @@
       each(kb, function (el) {
         el.classList.add("kb");
         /* Randomise each tile's Ken Burns origin + pan direction so the grid
-           no longer zooms in unison — every photo drifts its own way. */
+           no longer zooms in unison, every photo drifts its own way. */
         el.style.setProperty("--kb-ox", (30 + Math.round(Math.random() * 40)) + "%");
         el.style.setProperty("--kb-oy", (30 + Math.round(Math.random() * 40)) + "%");
         el.style.setProperty("--kb-tx", (Math.random() * 6 - 3).toFixed(1) + "%");
@@ -1007,7 +1007,7 @@
     }
   }
 
-  /* Darkroom develop / undevelop — mirrors the Events standalone portfolio. */
+  /* Darkroom develop / undevelop, mirroring the Events standalone portfolio. */
   function developTile(el) {
     el.classList.add("developing");
     void el.offsetWidth; /* reflow so the sheen sweep restarts */
@@ -1100,7 +1100,7 @@
         "&body=" + encodeURIComponent(body);
       /* Try the visitor's email app. When no mail handler is registered (common
          on browsers where Gmail is the webmail of choice), the mailto quietly
-         does nothing — so always surface a one-click "compose in Gmail" link,
+         does nothing, so always surface a one-click "compose in Gmail" link,
          built via DOM with encoded params (no innerHTML), as the fallback. */
       var s = form.querySelector(".form-status");
       s.textContent = "Opening your email app. If nothing opens, ";
@@ -1143,7 +1143,7 @@
     var footer = document.querySelector(".footer");
     if (!footer) return;
     /* Only mouse-driven browsers (hover + fine pointer) lift the FAB above the footer.
-       Touch devices (phones/tablets) never lift — the FAB stays at its CSS default. */
+       Touch devices (phones and tablets) never lift; the FAB stays at its CSS default. */
     function isDesktop() {
       return !!(window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches);
     }

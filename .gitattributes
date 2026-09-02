@@ -1,0 +1,6 @@
+# core.autocrlf is on, so without this git decides text vs binary per file by
+# guessing. A font that guessed wrong would be line-ending converted and ship corrupt.
+*.woff2 binary
+*.woff  binary
+*.ttf   binary
+*.otf   binary
