@@ -50,6 +50,10 @@ desktop.ini
 .vscode/
 .idea/
 
+# Console logs, screenshots and traces from the Playwright MCP browser. Only the
+# logs were caught by *.log, so a screenshot would have shown up as committable.
+.playwright-mcp/
+
 # Dependencies and build noise
 node_modules/
 __pycache__/
