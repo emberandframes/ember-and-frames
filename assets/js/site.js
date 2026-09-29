@@ -962,7 +962,7 @@
     }
 
     if (PAGE === "lifestyle") {
-      var duo = teasers();
+      var duo = tiles();
       each(duo, function (el) { el.classList.add("duo"); fxOverlay(el, "tint"); });
       observeReplay(duo, addIn, rmIn);
       return;

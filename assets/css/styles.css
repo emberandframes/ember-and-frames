@@ -704,18 +704,18 @@ body[data-page="events"] .grid .item.dev-tile.developing .sheen { animation: dev
   100% { opacity: 0; transform: translateX(360%) rotate(9deg); }
 }
 
-/* --- Duotone to colour. Lifestyle teasers, on scroll-in (replays) --- */
-body[data-page="lifestyle"] .coming-teaser .t.duo img {
+/* --- Duotone to colour. Lifestyle gallery, on scroll-in (replays) --- */
+body[data-page="lifestyle"] .grid .item.duo img {
   filter: sepia(.85) saturate(1.9) hue-rotate(-12deg) brightness(.92) contrast(1.06);
   transition: filter 2.2s ease;
 }
-body[data-page="lifestyle"] .coming-teaser .t.duo.in img { filter: none; }
-body[data-page="lifestyle"] .coming-teaser .t.duo .tint {
+body[data-page="lifestyle"] .grid .item.duo.in img { filter: none; }
+body[data-page="lifestyle"] .grid .item.duo .tint {
   position: absolute; inset: 0; z-index: 1; pointer-events: none;
   background: linear-gradient(160deg, rgba(201,123,58,.35), rgba(30,20,12,.28));
   mix-blend-mode: multiply; opacity: 1; transition: opacity 2.2s ease;
 }
-body[data-page="lifestyle"] .coming-teaser .t.duo.in .tint { opacity: 0; }
+body[data-page="lifestyle"] .grid .item.duo.in .tint { opacity: 0; }
 
 /* --- Film Grain Dissolve. Hospitality teasers, on scroll-in (replays) --- */
 body[data-page="hospitality"] .coming-teaser .t.grain img {
@@ -803,7 +803,7 @@ body.motion-on .nav-logo .brand-amp { animation: ampGlow 3.2s ease-in-out infini
   body[data-page] .grid .item img,
   body[data-page] .coming-teaser .t img { filter: none !important; transform: none !important; animation: none !important; }
   .dev-tile .bath, .dev-tile .cast, .dev-tile .sheen,
-  .coming-teaser .t.duo .tint, .coming-teaser .t.grain .noise { opacity: 0 !important; }
+  .grid .item.duo .tint, .coming-teaser .t.grain .noise { opacity: 0 !important; }
   .nav .spark { animation: none !important; opacity: 0 !important; }
   .torch .mask { background: transparent !important; }
 }
