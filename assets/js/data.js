@@ -26,7 +26,7 @@ window.EF = {
     { key: "interiors",   label: "Interiors & Architecture",  short: "Interiors",   href: "interiors.html",   live: true  },
     { key: "events",      label: "Events",                    short: "Events",      href: "events.html",      live: true  },
     { key: "hospitality", label: "Hospitality",               short: "Hospitality", href: "hospitality.html", live: false },
-    { key: "lifestyle",   label: "Lifestyle",                 short: "Lifestyle",   href: "lifestyle.html",   live: false },
+    { key: "lifestyle",   label: "Lifestyle",                 short: "Lifestyle",   href: "lifestyle.html",   live: true  },
     { key: "products",    label: "Products",                  short: "Products",    href: "products.html",    live: false }
   ],
 
@@ -422,47 +422,18 @@ window.EF = {
      ===================================================================== */
   events: {
     filmstrip: [
-      "assets/media/events/Photos/Arti%20Sonthalia/DSC02835.jpg",
+      "assets/media/events/Photos/The%20Local%20Train/DSC_4440.jpg",
       "assets/media/events/Photos/Festival%20of%20Play/DSC00744.JPG",
-      "assets/media/events/Photos/Arti%20Sonthalia/DSC02801.jpg",
+      "assets/media/events/Photos/Benny%20Dayal/DSC_6183.jpg",
       "assets/media/events/Photos/Festival%20of%20Play/DSC00510.JPG",
-      "assets/media/events/Photos/Arti%20Sonthalia/DSC02817.jpg",
+      "assets/media/events/Photos/Lagori/DSC_5978.jpg",
       "assets/media/events/Photos/Festival%20of%20Play/DSC00922.JPG",
-      "assets/media/events/Photos/Arti%20Sonthalia/DSC02788.jpg",
-      "assets/media/events/Photos/Festival%20of%20Play/DSC00342.JPG"
+      "assets/media/events/Photos/Sunburn/DSC_0304.jpg",
+      "assets/media/events/Photos/Festival%20of%20Play/DSC00342.JPG",
+      "assets/media/events/Photos/PVNS%20Rohit/DSC09141.jpg",
+      "assets/media/events/Photos/Festival%20of%20Play/DSC00228.JPG"
     ],
     collections: [
-      {
-        title: "Arti Sonthalia",
-        brief: "Arti wanted her time with the students captured as it happened, and a steady stream of content for her personal Instagram, the kind of frames she could post to show parents and children why a reading habit matters early.",
-        vision: "We followed her across school visits and award ceremonies, then went closer and quieter, documenting her writing process, her favourite books, and the inspirations and motivations that keep her at the page.",
-        videos: [
-          { src: "assets/media/events/Videos/Arti%20Sonthalia/Arti%20Reel%201%20final.mp4", poster: "assets/media/events/Videos/Arti%20Sonthalia/Arti%20Reel%201%20final.jpg", alt: "Arti Sonthalia reel" },
-          { src: "assets/media/events/Videos/Arti%20Sonthalia/Discoveri%20Oaks%201.mp4", poster: "assets/media/events/Videos/Arti%20Sonthalia/Discoveri%20Oaks%201.jpg", alt: "Discoveri Oaks session" },
-          { src: "assets/media/events/Videos/Arti%20Sonthalia/Discoveri%20Oaks%202.mp4", poster: "assets/media/events/Videos/Arti%20Sonthalia/Discoveri%20Oaks%202.jpg", alt: "Discoveri Oaks session" }
-        ],
-        items: [
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02765.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02772.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02781.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02770.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02785.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02795.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02804.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02797.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02820.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02806.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02831.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02810.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02823.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02776.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02840.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02835.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02817.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02801.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02788.jpg" }
-        ]
-      },
       {
         title: "Festival of Play",
         note: "",
@@ -490,6 +461,213 @@ window.EF = {
           { type: "video", src: "assets/media/events/Videos/You%20Can%20Sit%20With%20Us/%F0%9F%8F%AEFor%20one%20night%2C%20a%20South%20Indian%20tiffin%20center%20vanished%20and%20in%20its%20place%2C%20a%20Japanese%20yatai%20appear.mp4", poster: "assets/media/events/Videos/You%20Can%20Sit%20With%20Us/%F0%9F%8F%AEFor%20one%20night%2C%20a%20South%20Indian%20tiffin%20center%20vanished%20and%20in%20its%20place%2C%20a%20Japanese%20yatai%20appear.jpg" },
           { type: "video", src: "assets/media/events/Videos/You%20Can%20Sit%20With%20Us/%F0%9F%92%9B%20The%20air%20was%20alive%20with%20a%20symphony%20of%20flavors%2C%20each%20note%20harmonizing%20with%20the%20hum%20of%20hands%20at%20.mp4", poster: "assets/media/events/Videos/You%20Can%20Sit%20With%20Us/%F0%9F%92%9B%20The%20air%20was%20alive%20with%20a%20symphony%20of%20flavors%2C%20each%20note%20harmonizing%20with%20the%20hum%20of%20hands%20at%20.jpg" }
         ]
+      },
+      {
+        title: "Benny Dayal",
+        brief: "A headline set on a big outdoor stage, with a full band and a lighting rig built to move. The job was the performer at full tilt, the band behind him, and the rig doing what it was built to do.",
+        vision: "We worked the pit for the close, sweaty moments and stepped back whenever the beams swept the stage, so the set reads as one show with a shape to it, from the first song to the arms-up finish.",
+        items: [
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6183.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6114.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6196.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6207.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6219.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6229.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6251.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6253.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6271.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6273.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6088.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6103.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6230.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6264.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6268.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6269.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6281.jpg" }
+        ]
+      },
+      {
+        title: "The Local Train",
+        brief: "A packed crowd and the Hindi rock band they had all come for. The frames had to carry the smoke, the colour and the noise of the night, and still give every member of the band a moment of their own.",
+        vision: "We moved between the pit, the wings and the back of the stage, catching the band against the crowd they were playing to, and let the haze and the stage colour do the rest.",
+        items: [
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_4440.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_0044.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_0079.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_0103.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_0131.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_0137.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_4448.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_4475.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_4497.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_0055.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_0097.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_0115.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_0119.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_0124.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_0127.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_0173.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_4485.jpg" }
+        ]
+      },
+      {
+        title: "Sunburn",
+        brief: "A Sunburn night: a DJ set, a performer out front, a full field and a stage built to be looked at. The coverage needed the scale of it and the people in it.",
+        vision: "Wide frames from the back for the lights and the crowd, then in tight on the artists as the sparklers went up, so the story runs from the field to the stage and back again.",
+        items: [
+          { type: "photo", src: "assets/media/events/Photos/Sunburn/DSC_0304.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Sunburn/DSC_0152.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Sunburn/DSC_0175.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Sunburn/DSC_2356.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Sunburn/DSC_2367.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Sunburn/DSC_2403.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Sunburn/WhatsApp%20Image%202026-09-13%20at%2019.40.17.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Sunburn/DSC_0043%20(2).jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Sunburn/DSC_0069.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Sunburn/DSC_0205.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Sunburn/DSC_2365.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Sunburn/DSC_2423.jpg" }
+        ]
+      },
+      {
+        title: "Lagori",
+        brief: "Lagori on a festival stage, a full band with a lot happening at once. Vocals, guitars, bass and drums were all asking for a frame, and none of them could be left out.",
+        vision: "We gave every member their moment, some in colour and some in black and white, and saved the shots of the whole band for when the lights and the smoke lined up.",
+        items: [
+          { type: "photo", src: "assets/media/events/Photos/Lagori/DSC_5978.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Lagori/DSC_5860.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Lagori/DSC_5882.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Lagori/DSC_5929.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Lagori/DSC_5934.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Lagori/DSC_5962.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Lagori/DSC_6067.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Lagori/IMG_0975.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Lagori/DSC_5946.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Lagori/DSC_5982.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Lagori/DSC_6037.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Lagori/DSC_6047.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Lagori/DSC_6053.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Lagori/DSC_6055.jpg" }
+        ]
+      },
+      {
+        title: "PVNS Rohit",
+        brief: "An evening set by PVNS Rohit and his band on a small outdoor stage lit in neon, with the audience seated close. The night was about the voice, so the frames had to stay close to it.",
+        vision: "We kept it quiet and near: the singer mid-phrase, each player in their own pool of light, and a few wide frames to show the room around them as the set built.",
+        items: [
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC08906.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC08946.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC08950.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC08953.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC08973.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC08983.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC08993.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09035.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09052.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09062.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09064.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09076.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09091.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09102.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09105.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09130.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09130-2.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09141.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09151.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09169.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09170.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09187.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09201.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09206.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09212.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09213.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09216.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09221.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09224.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09227.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09230.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09233.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09236.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09241.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09242.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09245.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09246.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09257.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09266.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09272.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09279.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09281.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09284.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09285.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09286.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09290.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09292.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09295.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09298.jpg" }
+        ]
+      }
+    ]
+  },
+
+  /* =====================================================================
+     LIFESTYLE, filmstrip and collections
+     ===================================================================== */
+  lifestyle: {
+    filmstrip: [
+      "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02835.jpg",
+      "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02801.jpg",
+      "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02817.jpg",
+      "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02788.jpg",
+      "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02840.jpg",
+      "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02765.jpg",
+      "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02810.jpg",
+      "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02823.jpg"
+    ],
+    collections: [
+      {
+        title: "Arti Sonthalia",
+        brief: "Arti wanted her time with the students captured as it happened, and a steady stream of content for her personal Instagram, the kind of frames she could post to show parents and children why a reading habit matters early.",
+        vision: "We followed her across school visits and award ceremonies, then went closer and quieter, documenting her writing process, her favourite books, and the inspirations and motivations that keep her at the page.",
+        videos: [
+          { src: "assets/media/lifestyle/Videos/Arti%20Sonthalia/Arti%20Reel%201%20final.mp4", poster: "assets/media/lifestyle/Videos/Arti%20Sonthalia/Arti%20Reel%201%20final.jpg", alt: "Arti Sonthalia reel" },
+          { src: "assets/media/lifestyle/Videos/Arti%20Sonthalia/Discoveri%20Oaks%201.mp4", poster: "assets/media/lifestyle/Videos/Arti%20Sonthalia/Discoveri%20Oaks%201.jpg", alt: "Discoveri Oaks session" },
+          { src: "assets/media/lifestyle/Videos/Arti%20Sonthalia/Discoveri%20Oaks%202.mp4", poster: "assets/media/lifestyle/Videos/Arti%20Sonthalia/Discoveri%20Oaks%202.jpg", alt: "Discoveri Oaks session" }
+        ],
+        items: [
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02765.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02772.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02781.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02770.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02785.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02795.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02804.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02797.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02820.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02806.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02831.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02810.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02823.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02776.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02840.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02835.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02817.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02801.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02788.jpg" }
+        ]
+      },
+      {
+        title: "Koh Foods",
+        reels: true,
+        brief: "Koh works with moringa and wanted reels that made it feel simple: why people call it the miracle tree, and how easily the greens fit into an ordinary day, without it sounding like one more health hack.",
+        vision: "We shot among the moringa trees and inside the kitchen where the leaves are prepared, with Koh's own people speaking to camera, then cut short vertical reels with bold lines on screen, made for the feed.",
+        items: [
+          { type: "video", src: "assets/media/lifestyle/Videos/Koh%20Foods/Moringa%20reel%201.mp4", poster: "assets/media/lifestyle/Videos/Koh%20Foods/Moringa%20reel%201.jpg" },
+          { type: "video", src: "assets/media/lifestyle/Videos/Koh%20Foods/Koh%20Reel%202.mp4", poster: "assets/media/lifestyle/Videos/Koh%20Foods/Koh%20Reel%202.jpg" },
+          { type: "video", src: "assets/media/lifestyle/Videos/Koh%20Foods/Koh%20Reel%203.mp4", poster: "assets/media/lifestyle/Videos/Koh%20Foods/Koh%20Reel%203.jpg" },
+          { type: "video", src: "assets/media/lifestyle/Videos/Koh%20Foods/KOH%20Reel%204.mp4", poster: "assets/media/lifestyle/Videos/Koh%20Foods/KOH%20Reel%204.jpg" },
+          { type: "video", src: "assets/media/lifestyle/Videos/Koh%20Foods/Koh%20reel%206.mp4", poster: "assets/media/lifestyle/Videos/Koh%20Foods/Koh%20reel%206.jpg" },
+          { type: "video", src: "assets/media/lifestyle/Videos/Koh%20Foods/Koh%20Reel%207.mp4", poster: "assets/media/lifestyle/Videos/Koh%20Foods/Koh%20Reel%207.jpg" }
+        ]
       }
     ]
   },
@@ -503,13 +681,6 @@ window.EF = {
       "assets/media/placeholders/hospitality-1.svg",
       "assets/media/placeholders/hospitality-2.svg",
       "assets/media/placeholders/hospitality-3.svg"
-    ]
-  },
-  lifestyle: {
-    teasers: [
-      "assets/media/placeholders/lifestyle-1.svg",
-      "assets/media/placeholders/lifestyle-2.svg",
-      "assets/media/placeholders/lifestyle-3.svg"
     ]
   },
   products: {
