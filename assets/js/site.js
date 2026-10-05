@@ -624,10 +624,58 @@
       media.alt = item.alt || "";
     }
     media.className = "lightbox-media";
-    LB.stage.appendChild(media);
+    LB.stage.appendChild(item.type === "video" ? media : lbTorch(media));
     var multi = LB.list.length > 1;
     LB.el.querySelector(".lightbox-prev").style.display = multi ? "" : "none";
     LB.el.querySelector(".lightbox-next").style.display = multi ? "" : "none";
+  }
+
+  /* Products spotlight on touch screens. The gallery tiles keep it off because a
+     finger there is usually scrolling, so it lives on the full-screen photo
+     instead. A quick swipe still steps through the group; pressing and holding
+     brings the spotlight up, and it follows the finger until it lifts. */
+  function lbTorch(img) {
+    if (PAGE !== "products" || !BODY.classList.contains("motion-on") ||
+        !window.matchMedia || !window.matchMedia("(hover: none) and (pointer: coarse)").matches) return img;
+    var frame = document.createElement("div");
+    frame.className = "lightbox-torch";
+    var mask = document.createElement("span");
+    mask.className = "mask";
+    frame.appendChild(img);
+    frame.appendChild(mask);
+    var hold = null, startX = 0, startY = 0;
+    function moveTo(t) {
+      var r = frame.getBoundingClientRect();
+      frame.style.setProperty("--mx", ((t.clientX - r.left) / r.width * 100) + "%");
+      frame.style.setProperty("--my", ((t.clientY - r.top) / r.height * 100) + "%");
+    }
+    function stop() {
+      if (hold) { clearTimeout(hold); hold = null; }
+      frame.classList.remove("is-touching");
+    }
+    frame.addEventListener("touchstart", function (e) {
+      LB.torchUsed = false;
+      if (!e.touches || e.touches.length !== 1) { stop(); return; }
+      var t = e.touches[0];
+      startX = t.clientX; startY = t.clientY;
+      hold = setTimeout(function () {
+        hold = null;
+        LB.torchUsed = true;   // this touch is the spotlight, not a swipe
+        moveTo(t);
+        frame.classList.add("is-touching");
+      }, 250);
+    }, { passive: true });
+    frame.addEventListener("touchmove", function (e) {
+      var t = e.touches && e.touches[0]; if (!t) return;
+      if (frame.classList.contains("is-touching")) { moveTo(t); return; }
+      // moved before the hold landed, so it is a swipe
+      if (hold && (Math.abs(t.clientX - startX) > 10 || Math.abs(t.clientY - startY) > 10)) stop();
+    }, { passive: true });
+    frame.addEventListener("touchend", stop);
+    frame.addEventListener("touchcancel", stop);
+    // a long press would otherwise raise the save-image menu over the spotlight
+    frame.addEventListener("contextmenu", function (e) { e.preventDefault(); });
+    return frame;
   }
 
   function lbOpen(list, i) {
@@ -672,6 +720,7 @@
       swipeY = e.touches[0].clientY;
     }, { passive: true });
     lb.addEventListener("touchend", function (e) {
+      if (LB.torchUsed) { LB.torchUsed = false; swiping = false; return; }
       if (!swiping || LB.list.length < 2) return;
       swiping = false;
       var t = (e.changedTouches && e.changedTouches[0]) || null;
