@@ -27,7 +27,7 @@ window.EF = {
     { key: "events",      label: "Events",                    short: "Events",      href: "events.html",      live: true  },
     { key: "hospitality", label: "Hospitality",               short: "Hospitality", href: "hospitality.html", live: false },
     { key: "lifestyle",   label: "Lifestyle",                 short: "Lifestyle",   href: "lifestyle.html",   live: true  },
-    { key: "products",    label: "Products",                  short: "Products",    href: "products.html",    live: false }
+    { key: "products",    label: "Products",                  short: "Products",    href: "products.html",    live: true  }
   ],
 
   /* ---------- Shared: ABOUT ---------- */
@@ -467,6 +467,7 @@ window.EF = {
         brief: "An evening set by PVNS Rohit and his band on a small outdoor stage lit in neon, with the audience seated close. The night was about the voice, so the frames had to stay close to it.",
         vision: "We kept it quiet and near: the singer mid-phrase, each player in their own pool of light, and a few wide frames to show the room around them as the set built.",
         items: [
+          { type: "video", src: "assets/media/events/Videos/PVNS%20Rohit/PVNS%20Rohit.mp4", poster: "assets/media/events/Videos/PVNS%20Rohit/PVNS%20Rohit.jpg", alt: "PVNS Rohit live, the film" },
           { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC08906.jpg" },
           { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC08946.jpg" },
           { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC08950.jpg" },
@@ -683,11 +684,68 @@ window.EF = {
       "assets/media/placeholders/hospitality-3.svg"
     ]
   },
+  /* =====================================================================
+     PRODUCTS, filmstrip and collections
+     ===================================================================== */
   products: {
-    teasers: [
-      "assets/media/placeholders/products-1.svg",
-      "assets/media/placeholders/products-2.svg",
-      "assets/media/placeholders/products-3.svg"
+    filmstrip: [
+      "assets/media/products/Photos/Numour/DSC05017.jpg",
+      "assets/media/products/Photos/Numour/DSC00263.jpg",
+      "assets/media/products/Photos/Numour/DSC00090.jpg",
+      "assets/media/products/Photos/Numour/DSC05057.jpg",
+      "assets/media/products/Photos/Numour/DSC05089.jpg",
+      "assets/media/products/Photos/Numour/DSC05136.jpg",
+      "assets/media/products/Photos/Numour/DSC00003.jpg",
+      "assets/media/products/Photos/Numour/DSC04999.jpg"
+    ],
+    collections: [
+      {
+        title: "Numour",
+        brief: "Numour needed stills for a whole skincare range at once: the Collagen Barrier and Dewy Mist &amp; Go sunscreens, the Damn Dewy pressed serum, the Collagen Bombshell jelly and the Lit Happens serum. Each one had to look like itself and still sit comfortably beside the others on a feed.",
+        vision: "We gave every product a setting that hints at what it does. Water and splash for the hydrating serum, ice for the jelly, low sun and a fine spray for the sunscreens, and real hands for texture and scale. Shot as one set, the range reads as a family.",
+        items: [
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00153.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC05011.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00353.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC04999.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00124.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC05030.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00090.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC05064.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC05046.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC04989.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00003.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC09975.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00011.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC05036.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC05057.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00052.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC05198.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00223.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00066.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00016.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00087.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC05136.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00029.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC05017.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00110.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC09996.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC05039.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC05065.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00095.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC09967.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC05089.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC09979.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00038.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00166.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00131.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00137.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00340.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC05112.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00096.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00263.jpg" }
+        ]
+      }
     ]
   }
 };

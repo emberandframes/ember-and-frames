@@ -44,5 +44,9 @@
   </url>
   <url>
     <loc>https://emberandframes.com/products.html</loc>
+    <image:image>
+      <image:loc>https://emberandframes.com/assets/media/products/Photos/Numour/DSC09967.jpg</image:loc>
+      <image:title>Product photography by Ember &amp; Frames</image:title>
+    </image:image>
   </url>
 </urlset>
