@@ -730,22 +730,20 @@ body[data-page="hospitality"] .coming-teaser .t.grain .noise {
 }
 body[data-page="hospitality"] .coming-teaser .t.grain.in .noise { opacity: 0; }
 
-/* --- Cursor Spotlight. Products teasers, warm torch follows the pointer --- */
-body[data-page="products"] .coming-teaser .t.torch { cursor: crosshair; }
-body[data-page="products"] .coming-teaser .t.torch .mask {
+/* --- Cursor Spotlight. Products gallery, a warm torch follows the pointer.
+   Every tile sits clean at rest and the dark mask only comes up while the
+   pointer is over that tile, so the gallery is never hidden behind it. --- */
+body[data-page="products"] .grid .item.torch .mask {
   position: absolute; inset: 0; z-index: 2; pointer-events: none;
   background: radial-gradient(circle 110px at var(--mx, 50%) var(--my, 50%),
     rgba(20,16,12,0) 0, rgba(20,16,12,0) 62px, rgba(18,14,10,0.86) 150px);
-  transition: background 0.12s ease;
+  opacity: 0; transition: background 0.12s ease, opacity 0.3s ease;
 }
-/* On touch devices there is no pointer to follow, so the torch becomes a
-   drag-to-reveal spotlight: the teaser sits clean at rest and the dark mask
-   only lights up while a finger drags across it (paired with the products
-   touch handlers in site.js). */
+body[data-page="products"] .grid .item.torch:hover .mask { opacity: 1; }
+/* On touch devices there is no pointer to follow, and a finger on the gallery
+   is usually scrolling, so the mask stays off there. */
 @media (hover: none) and (pointer: coarse) {
-  body[data-page="products"] .coming-teaser .t.torch { cursor: default; }
-  body[data-page="products"] .coming-teaser .t.torch .mask { opacity: 0; transition: background 0.12s ease, opacity 0.25s ease; }
-  body[data-page="products"] .coming-teaser .t.torch.is-touching .mask { opacity: 1; }
+  body[data-page="products"] .grid .item.torch .mask { display: none; }
 }
 
 /* --- Film Sprocket Pan. Ember filmstrips: charcoal reel panel that hugs

@@ -2,7 +2,7 @@
 
 The unified studio site for Ember &amp; Frames, a content studio in
 Hyderabad. One website, one design system, with a page for each industry we
-shoot for: F&amp;B, Interiors &amp; Architecture, Events, Lifestyle, and more on the way.
+shoot for: F&amp;B, Interiors &amp; Architecture, Events, Lifestyle, Products, and more on the way.
 
 It is a plain static site. No build step, no framework, no dependencies. Open
 `index.html` and it runs.
@@ -17,7 +17,7 @@ ember-and-frames/
   events.html           Events (live)
   hospitality.html      Coming soon
   lifestyle.html        Lifestyle (live)
-  products.html         Coming soon
+  products.html         Products (live)
   404.html              Not-found page
   favicon.svg           Site mark
   robots.txt
