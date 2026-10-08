@@ -464,8 +464,8 @@ window.EF = {
       },
       {
         title: "PVNS Rohit",
-        brief: "An evening set by PVNS Rohit and his band on a small outdoor stage lit in neon, with the audience seated close. The night was about the voice, so the frames had to stay close to it.",
-        vision: "We kept it quiet and near: the singer mid-phrase, each player in their own pool of light, and a few wide frames to show the room around them as the set built.",
+        brief: "PVNS Rohit was playing an evening set at Odeum with his band, planned as an intimate, seated show built around his voice. He wanted vlog-style videos from the night, with a set of photos alongside.",
+        vision: "We stayed close to Rohit and the band through rehearsal to catch their conversations and the practice in between. On the night the room was too loud to record those conversations cleanly, so we switched to an aftermovie, with more frames of the band in action and B-roll built around the performance.",
         items: [
           { type: "video", src: "assets/media/events/Videos/PVNS%20Rohit/PVNS%20Rohit.mp4", poster: "assets/media/events/Videos/PVNS%20Rohit/PVNS%20Rohit.jpg", alt: "PVNS Rohit live, the film" },
           { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09105.jpg" },
@@ -521,8 +521,8 @@ window.EF = {
       },
       {
         title: "Benny Dayal",
-        brief: "A headline set on a big outdoor stage, with a full band and a lighting rig built to move. The job was the performer at full tilt, the band behind him, and the rig doing what it was built to do.",
-        vision: "We worked the pit for the close, sweaty moments and stepped back whenever the beams swept the stage, so the set reads as one show with a shape to it, from the first song to the arms-up finish.",
+        brief: "Benny Dayal was headlining a festival show, and the brief was editorial-style concert coverage of him in both stills and video.",
+        vision: "We used the stage lights and his energy to catch the fun of the show. Alongside Benny, we shot every member of the band and the crowd in front of them, so the coverage shows the whole experience.",
         items: [
           { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6183.jpg" },
           { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6273.jpg" },
@@ -545,8 +545,8 @@ window.EF = {
       },
       {
         title: "The Local Train",
-        brief: "A packed crowd and the Hindi rock band they had all come for. The frames had to carry the smoke, the colour and the noise of the night, and still give every member of the band a moment of their own.",
-        vision: "We moved between the pit, the wings and the back of the stage, catching the band against the crowd they were playing to, and let the haze and the stage colour do the rest.",
+        brief: "The Local Train played to a packed crowd who knew every word. We had to get the smoke, colour and noise of the night into the frames, and still give each band member their own shot.",
+        vision: "We moved from the sides of the stage to the pit and out into the crowd to take in the full energy of the concert, and used every light that coloured the smoke to give each band member frames of their own.",
         items: [
           { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_4440.jpg" },
           { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_4497.jpg" },
@@ -569,8 +569,8 @@ window.EF = {
       },
       {
         title: "Sunburn",
-        brief: "A Sunburn night: a DJ set, a performer out front, a full field and a stage built to be looked at. The coverage needed the scale of it and the people in it.",
-        vision: "Wide frames from the back for the lights and the crowd, then in tight on the artists as the sparklers went up, so the story runs from the field to the stage and back again.",
+        brief: "Two artists shared one Sunburn set. We had to capture the energy they built together while keeping the focus on each performance, the mixes and the moves that kept the crowd going.",
+        vision: "We went into the crowd and shot from the very back to show the scale of the set, then stayed close to the decks for frames of each artist on their own.",
         items: [
           { type: "photo", src: "assets/media/events/Photos/Sunburn/DSC_0304.jpg" },
           { type: "photo", src: "assets/media/events/Photos/Sunburn/DSC_0175.jpg" },
@@ -588,8 +588,8 @@ window.EF = {
       },
       {
         title: "Lagori",
-        brief: "Lagori on a festival stage, a full band with a lot happening at once. Vocals, guitars, bass and drums were all asking for a frame, and none of them could be left out.",
-        vision: "We gave every member their moment, some in colour and some in black and white, and saved the shots of the whole band for when the lights and the smoke lined up.",
+        brief: "Lagori played with six members on stage. The brief was simple: give each of them their own focus, and catch the band's back-and-forth with the crowd.",
+        vision: "Every band member got their own moment, each frame carefully composed to show how they felt the music.",
         items: [
           { type: "photo", src: "assets/media/events/Photos/Lagori/DSC_5978.jpg" },
           { type: "photo", src: "assets/media/events/Photos/Lagori/DSC_6067.jpg" },
@@ -659,8 +659,8 @@ window.EF = {
       {
         title: "Koh Foods",
         reels: true,
-        brief: "Koh works with moringa and wanted reels that made it feel simple: why people call it the miracle tree, and how easily the greens fit into an ordinary day, without it sounding like one more health hack.",
-        vision: "We shot among the moringa trees and inside the kitchen where the leaves are prepared, with Koh's own people speaking to camera, then cut short vertical reels with bold lines on screen, made for the feed.",
+        brief: "Koh wanted to make moringa feel approachable. The reels had to explain what makes it special and how easy it is to use, in plain language and without the wellness hype.",
+        vision: "We shot among the trees and in the kitchen, let Koh's team explain it in their own words, and edited it all into quick vertical reels with clear text on screen.",
         items: [
           { type: "video", src: "assets/media/lifestyle/Videos/Koh%20Foods/Moringa%20reel%201.mp4", poster: "assets/media/lifestyle/Videos/Koh%20Foods/Moringa%20reel%201.jpg" },
           { type: "video", src: "assets/media/lifestyle/Videos/Koh%20Foods/Koh%20Reel%202.mp4", poster: "assets/media/lifestyle/Videos/Koh%20Foods/Koh%20Reel%202.jpg" },
