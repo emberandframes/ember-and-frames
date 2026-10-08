@@ -31,6 +31,10 @@ Guidelines*/
 /agents/
 /skills/
 
+# Claude Code local files: personal settings, local memory and session state.
+.claude/
+CLAUDE.local.md
+
 # Backups and scratch
 *.bak
 *.orig
