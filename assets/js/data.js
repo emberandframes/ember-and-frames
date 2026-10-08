@@ -465,7 +465,7 @@ window.EF = {
       {
         title: "PVNS Rohit",
         brief: "PVNS Rohit was playing an evening set at Odeum with his band, planned as an intimate, seated show built around his voice. He wanted vlog-style videos from the night, with a set of photos alongside.",
-        vision: "We stayed close to Rohit and the band through rehearsal to catch their conversations and the practice in between. On the night the room was too loud to record those conversations cleanly, so we switched to an aftermovie, with more frames of the band in action and B-roll built around the performance.",
+        vision: "We stayed close to Rohit and the band through sound check to capture their candid moments and the raw energy in between. Later that night we switched to recording full performances of his singles, with more frames of the band in action.",
         items: [
           { type: "video", src: "assets/media/events/Videos/PVNS%20Rohit/PVNS%20Rohit.mp4", poster: "assets/media/events/Videos/PVNS%20Rohit/PVNS%20Rohit.jpg", alt: "PVNS Rohit live, the film" },
           { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09105.jpg" },
@@ -659,8 +659,8 @@ window.EF = {
       {
         title: "Koh Foods",
         reels: true,
-        brief: "Koh wanted to make moringa feel approachable. The reels had to explain what makes it special and how easy it is to use, in plain language and without the wellness hype.",
-        vision: "We shot among the trees and in the kitchen, let Koh's team explain it in their own words, and edited it all into quick vertical reels with clear text on screen.",
+        brief: "Koh wanted to make moringa feel approachable. The reels had to explain what makes it special and how easy it is to use, in simple language and without the wellness hype.",
+        vision: "We shot among the trees and on the factory floor, let Koh's team explain their processes, and edited it all into quick vertical reels with clear text on screen.",
         items: [
           { type: "video", src: "assets/media/lifestyle/Videos/Koh%20Foods/Moringa%20reel%201.mp4", poster: "assets/media/lifestyle/Videos/Koh%20Foods/Moringa%20reel%201.jpg" },
           { type: "video", src: "assets/media/lifestyle/Videos/Koh%20Foods/Koh%20Reel%202.mp4", poster: "assets/media/lifestyle/Videos/Koh%20Foods/Koh%20Reel%202.jpg" },
