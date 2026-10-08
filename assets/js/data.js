@@ -100,8 +100,8 @@ window.EF = {
       heading: 'From first guest to final <em>frame</em>.',
       note: "Coverage by the day or the event. Photo, film, or both.",
       items: [
-        { name: "Brand Launches &amp; Activations", desc: "Product drops, pop-ups, and experiential moments, captured for the recap and the archive." },
-        { name: "Corporate &amp; Conferences",      desc: "Summits, offsites, and conferences, documented with the polish stakeholders expect and the detail that makes people actually watch the recap." },
+        { name: "Concerts &amp; Festivals",         desc: "Headline sets, festival stages and the crowds in front of them, shot from the pit to the back of the field." },
+        { name: "Brand &amp; Corporate Events",     desc: "Launches, activations, summits and conferences, captured with the polish stakeholders expect and the detail that makes people actually watch the recap." },
         { name: "Cultural &amp; Editorial Events",  desc: "Exhibitions, showcases, panels, and press previews, shot with the eye for detail that makes for a strong story afterward." },
         { name: "Social &amp; Community Events",    desc: "Community gatherings, cultural moments, and shared experiences, framed with the warmth and energy that hold a room together." }
       ]
