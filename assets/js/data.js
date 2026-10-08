@@ -698,7 +698,8 @@ window.EF = {
       "assets/media/products/Photos/Numour/DSC05057.jpg",
       "assets/media/products/Photos/Numour/DSC05039.jpg",
       "assets/media/products/Photos/Numour/DSC09979.jpg",
-      "assets/media/products/Photos/Numour/DSC00110.jpg"
+      "assets/media/products/Photos/Numour/DSC00110.jpg",
+      "assets/media/products/Photos/Numour/DSC05488.jpg"
     ],
     collections: [
       {
