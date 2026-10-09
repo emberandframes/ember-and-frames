@@ -704,8 +704,8 @@ window.EF = {
     collections: [
       {
         title: "Numour",
-        brief: "Numour needed stills for a whole skincare range at once: the Collagen Barrier and Dewy Mist &amp; Go sunscreens, the Damn Dewy pressed serum, the Collagen Bombshell jelly and the Lit Happens serum. Each one had to look like itself and still sit comfortably beside the others on a feed.",
-        vision: "We gave every product a setting that hints at what it does. Water and splash for the hydrating serum, ice for the jelly, low sun and a fine spray for the sunscreens, and real hands for texture and scale. Shot as one set, the range reads as a family.",
+        brief: "We ordered a few products from Numour to try their skincare range: the Collagen Bombshell with its red LED sonic massager, Damn Dewy, the Collagen Barrier and Dewy Mist &amp; Go sunscreens, and the Lit Happens serum. With a free day at home, we wanted to shoot them our way.",
+        vision: "We worked with props that were already at home or easy to find, like plants, rice, water and chart paper, and got creative with them. Everything was shot in natural light, and we made the most of golden hour.",
         items: [
           { type: "photo", src: "assets/media/products/Photos/Numour/DSC05017.jpg" },
           { type: "photo", src: "assets/media/products/Photos/Numour/DSC00340.jpg" },
