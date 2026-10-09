@@ -35,6 +35,11 @@ Guidelines*/
 .claude/
 CLAUDE.local.md
 
+# Lifestyle and Products placeholders, kept locally for reference now that both
+# pages are live. Hospitality's placeholders are still in use, so they stay tracked.
+assets/media/placeholders/lifestyle*.svg
+assets/media/placeholders/products*.svg
+
 # Backups and scratch
 *.bak
 *.orig
