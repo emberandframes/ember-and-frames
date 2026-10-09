@@ -962,7 +962,7 @@
     }
 
     if (PAGE === "lifestyle") {
-      var duo = teasers();
+      var duo = tiles();
       each(duo, function (el) { el.classList.add("duo"); fxOverlay(el, "tint"); });
       observeReplay(duo, addIn, rmIn);
       return;
@@ -976,7 +976,7 @@
     }
 
     if (PAGE === "products") {
-      each(teasers(), function (el) {
+      each(tiles(), function (el) {
         el.classList.add("torch");
         fxOverlay(el, "mask");
         function moveTorch(clientX, clientY) {
@@ -990,8 +990,9 @@
           el.style.setProperty("--my", "50%");
         });
         /* Touch: no cursor, so drag the spotlight instead. The .is-touching
-           class lights the mask up (see the touch media query) and each move
-           tracks the finger. */
+           class marks the drag and each move tracks the finger. On the
+           gallery the touch media query keeps the mask hidden, so scrolling
+           past a tile never darkens it. */
         function touchTorch(e) {
           var t = e.touches && e.touches[0]; if (!t) return;
           moveTorch(t.clientX, t.clientY);

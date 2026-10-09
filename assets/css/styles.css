@@ -704,18 +704,18 @@ body[data-page="events"] .grid .item.dev-tile.developing .sheen { animation: dev
   100% { opacity: 0; transform: translateX(360%) rotate(9deg); }
 }
 
-/* --- Duotone to colour. Lifestyle teasers, on scroll-in (replays) --- */
-body[data-page="lifestyle"] .coming-teaser .t.duo img {
+/* --- Duotone to colour. Lifestyle gallery, on scroll-in (replays) --- */
+body[data-page="lifestyle"] .grid .item.duo img {
   filter: sepia(.85) saturate(1.9) hue-rotate(-12deg) brightness(.92) contrast(1.06);
   transition: filter 2.2s ease;
 }
-body[data-page="lifestyle"] .coming-teaser .t.duo.in img { filter: none; }
-body[data-page="lifestyle"] .coming-teaser .t.duo .tint {
+body[data-page="lifestyle"] .grid .item.duo.in img { filter: none; }
+body[data-page="lifestyle"] .grid .item.duo .tint {
   position: absolute; inset: 0; z-index: 1; pointer-events: none;
   background: linear-gradient(160deg, rgba(201,123,58,.35), rgba(30,20,12,.28));
   mix-blend-mode: multiply; opacity: 1; transition: opacity 2.2s ease;
 }
-body[data-page="lifestyle"] .coming-teaser .t.duo.in .tint { opacity: 0; }
+body[data-page="lifestyle"] .grid .item.duo.in .tint { opacity: 0; }
 
 /* --- Film Grain Dissolve. Hospitality teasers, on scroll-in (replays) --- */
 body[data-page="hospitality"] .coming-teaser .t.grain img {
@@ -730,22 +730,20 @@ body[data-page="hospitality"] .coming-teaser .t.grain .noise {
 }
 body[data-page="hospitality"] .coming-teaser .t.grain.in .noise { opacity: 0; }
 
-/* --- Cursor Spotlight. Products teasers, warm torch follows the pointer --- */
-body[data-page="products"] .coming-teaser .t.torch { cursor: crosshair; }
-body[data-page="products"] .coming-teaser .t.torch .mask {
+/* --- Cursor Spotlight. Products gallery, a warm torch follows the pointer.
+   Every tile sits clean at rest and the dark mask only comes up while the
+   pointer is over that tile, so the gallery is never hidden behind it. --- */
+body[data-page="products"] .grid .item.torch .mask {
   position: absolute; inset: 0; z-index: 2; pointer-events: none;
   background: radial-gradient(circle 110px at var(--mx, 50%) var(--my, 50%),
     rgba(20,16,12,0) 0, rgba(20,16,12,0) 62px, rgba(18,14,10,0.86) 150px);
-  transition: background 0.12s ease;
+  opacity: 0; transition: background 0.12s ease, opacity 0.3s ease;
 }
-/* On touch devices there is no pointer to follow, so the torch becomes a
-   drag-to-reveal spotlight: the teaser sits clean at rest and the dark mask
-   only lights up while a finger drags across it (paired with the products
-   touch handlers in site.js). */
+body[data-page="products"] .grid .item.torch:hover .mask { opacity: 1; }
+/* On touch devices there is no pointer to follow, and a finger on the gallery
+   is usually scrolling, so the mask stays off there. */
 @media (hover: none) and (pointer: coarse) {
-  body[data-page="products"] .coming-teaser .t.torch { cursor: default; }
-  body[data-page="products"] .coming-teaser .t.torch .mask { opacity: 0; transition: background 0.12s ease, opacity 0.25s ease; }
-  body[data-page="products"] .coming-teaser .t.torch.is-touching .mask { opacity: 1; }
+  body[data-page="products"] .grid .item.torch .mask { display: none; }
 }
 
 /* --- Film Sprocket Pan. Ember filmstrips: charcoal reel panel that hugs
@@ -803,7 +801,7 @@ body.motion-on .nav-logo .brand-amp { animation: ampGlow 3.2s ease-in-out infini
   body[data-page] .grid .item img,
   body[data-page] .coming-teaser .t img { filter: none !important; transform: none !important; animation: none !important; }
   .dev-tile .bath, .dev-tile .cast, .dev-tile .sheen,
-  .coming-teaser .t.duo .tint, .coming-teaser .t.grain .noise { opacity: 0 !important; }
+  .grid .item.duo .tint, .coming-teaser .t.grain .noise { opacity: 0 !important; }
   .nav .spark { animation: none !important; opacity: 0 !important; }
   .torch .mask { background: transparent !important; }
 }

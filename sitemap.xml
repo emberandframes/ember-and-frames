@@ -28,7 +28,7 @@
   <url>
     <loc>https://emberandframes.com/events.html</loc>
     <image:image>
-      <image:loc>https://emberandframes.com/assets/media/events/Photos/Arti%20Sonthalia/DSC02840.jpg</image:loc>
+      <image:loc>https://emberandframes.com/assets/media/events/Photos/The%20Local%20Train/DSC_4440.jpg</image:loc>
       <image:title>Event photography by Ember &amp; Frames</image:title>
     </image:image>
   </url>
@@ -37,8 +37,16 @@
   </url>
   <url>
     <loc>https://emberandframes.com/lifestyle.html</loc>
+    <image:image>
+      <image:loc>https://emberandframes.com/assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02840.jpg</image:loc>
+      <image:title>Lifestyle photography by Ember &amp; Frames</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://emberandframes.com/products.html</loc>
+    <image:image>
+      <image:loc>https://emberandframes.com/assets/media/products/Photos/Numour/DSC09967.jpg</image:loc>
+      <image:title>Product photography by Ember &amp; Frames</image:title>
+    </image:image>
   </url>
 </urlset>

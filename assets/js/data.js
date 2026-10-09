@@ -24,10 +24,10 @@ window.EF = {
   nav: [
     { key: "fnb",         label: "F&B",                       short: "F&B",         href: "fnb.html",         live: true  },
     { key: "interiors",   label: "Interiors & Architecture",  short: "Interiors",   href: "interiors.html",   live: true  },
+    { key: "products",    label: "Products",                  short: "Products",    href: "products.html",    live: true  },
+    { key: "lifestyle",   label: "Lifestyle",                 short: "Lifestyle",   href: "lifestyle.html",   live: true  },
     { key: "events",      label: "Events",                    short: "Events",      href: "events.html",      live: true  },
-    { key: "hospitality", label: "Hospitality",               short: "Hospitality", href: "hospitality.html", live: false },
-    { key: "lifestyle",   label: "Lifestyle",                 short: "Lifestyle",   href: "lifestyle.html",   live: false },
-    { key: "products",    label: "Products",                  short: "Products",    href: "products.html",    live: false }
+    { key: "hospitality", label: "Hospitality",               short: "Hospitality", href: "hospitality.html", live: false }
   ],
 
   /* ---------- Shared: ABOUT ---------- */
@@ -58,10 +58,10 @@ window.EF = {
     pills: [
       { label: "Food &amp; Beverage", key: "fnb" },
       { label: "Interiors &amp; Architecture", key: "interiors" },
+      { label: "Products", key: "products" },
+      { label: "Lifestyle", key: "lifestyle" },
       { label: "Events", key: "events" },
       { label: "Hospitality", key: "hospitality" },
-      { label: "Lifestyle", key: "lifestyle" },
-      { label: "Products", key: "products" },
       "Branding &amp; Strategy",
       "Social Media Management",
       "Brand Campaign",
@@ -100,8 +100,8 @@ window.EF = {
       heading: 'From first guest to final <em>frame</em>.',
       note: "Coverage by the day or the event. Photo, film, or both.",
       items: [
-        { name: "Brand Launches &amp; Activations", desc: "Product drops, pop-ups, and experiential moments, captured for the recap and the archive." },
-        { name: "Corporate &amp; Conferences",      desc: "Summits, offsites, and conferences, documented with the polish stakeholders expect and the detail that makes people actually watch the recap." },
+        { name: "Concerts &amp; Festivals",         desc: "Headline sets, festival stages and the crowds in front of them, shot from the pit to the back of the field." },
+        { name: "Brand &amp; Corporate Events",     desc: "Launches, activations, summits and conferences, captured with the polish stakeholders expect and the detail that makes people actually watch the recap." },
         { name: "Cultural &amp; Editorial Events",  desc: "Exhibitions, showcases, panels, and press previews, shot with the eye for detail that makes for a strong story afterward." },
         { name: "Social &amp; Community Events",    desc: "Community gatherings, cultural moments, and shared experiences, framed with the warmth and energy that hold a room together." }
       ]
@@ -422,47 +422,18 @@ window.EF = {
      ===================================================================== */
   events: {
     filmstrip: [
-      "assets/media/events/Photos/Arti%20Sonthalia/DSC02835.jpg",
+      "assets/media/events/Photos/The%20Local%20Train/DSC_4440.jpg",
       "assets/media/events/Photos/Festival%20of%20Play/DSC00744.JPG",
-      "assets/media/events/Photos/Arti%20Sonthalia/DSC02801.jpg",
+      "assets/media/events/Photos/Benny%20Dayal/DSC_6183.jpg",
       "assets/media/events/Photos/Festival%20of%20Play/DSC00510.JPG",
-      "assets/media/events/Photos/Arti%20Sonthalia/DSC02817.jpg",
+      "assets/media/events/Photos/Lagori/DSC_5978.jpg",
       "assets/media/events/Photos/Festival%20of%20Play/DSC00922.JPG",
-      "assets/media/events/Photos/Arti%20Sonthalia/DSC02788.jpg",
-      "assets/media/events/Photos/Festival%20of%20Play/DSC00342.JPG"
+      "assets/media/events/Photos/Sunburn/DSC_0304.jpg",
+      "assets/media/events/Photos/Festival%20of%20Play/DSC00342.JPG",
+      "assets/media/events/Photos/PVNS%20Rohit/DSC09141.jpg",
+      "assets/media/events/Photos/Festival%20of%20Play/DSC00228.JPG"
     ],
     collections: [
-      {
-        title: "Arti Sonthalia",
-        brief: "Arti wanted her time with the students captured as it happened, and a steady stream of content for her personal Instagram, the kind of frames she could post to show parents and children why a reading habit matters early.",
-        vision: "We followed her across school visits and award ceremonies, then went closer and quieter, documenting her writing process, her favourite books, and the inspirations and motivations that keep her at the page.",
-        videos: [
-          { src: "assets/media/events/Videos/Arti%20Sonthalia/Arti%20Reel%201%20final.mp4", poster: "assets/media/events/Videos/Arti%20Sonthalia/Arti%20Reel%201%20final.jpg", alt: "Arti Sonthalia reel" },
-          { src: "assets/media/events/Videos/Arti%20Sonthalia/Discoveri%20Oaks%201.mp4", poster: "assets/media/events/Videos/Arti%20Sonthalia/Discoveri%20Oaks%201.jpg", alt: "Discoveri Oaks session" },
-          { src: "assets/media/events/Videos/Arti%20Sonthalia/Discoveri%20Oaks%202.mp4", poster: "assets/media/events/Videos/Arti%20Sonthalia/Discoveri%20Oaks%202.jpg", alt: "Discoveri Oaks session" }
-        ],
-        items: [
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02765.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02772.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02781.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02770.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02785.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02795.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02804.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02797.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02820.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02806.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02831.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02810.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02823.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02776.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02840.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02835.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02817.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02801.jpg" },
-          { type: "photo", src: "assets/media/events/Photos/Arti%20Sonthalia/DSC02788.jpg" }
-        ]
-      },
       {
         title: "Festival of Play",
         note: "",
@@ -490,6 +461,214 @@ window.EF = {
           { type: "video", src: "assets/media/events/Videos/You%20Can%20Sit%20With%20Us/%F0%9F%8F%AEFor%20one%20night%2C%20a%20South%20Indian%20tiffin%20center%20vanished%20and%20in%20its%20place%2C%20a%20Japanese%20yatai%20appear.mp4", poster: "assets/media/events/Videos/You%20Can%20Sit%20With%20Us/%F0%9F%8F%AEFor%20one%20night%2C%20a%20South%20Indian%20tiffin%20center%20vanished%20and%20in%20its%20place%2C%20a%20Japanese%20yatai%20appear.jpg" },
           { type: "video", src: "assets/media/events/Videos/You%20Can%20Sit%20With%20Us/%F0%9F%92%9B%20The%20air%20was%20alive%20with%20a%20symphony%20of%20flavors%2C%20each%20note%20harmonizing%20with%20the%20hum%20of%20hands%20at%20.mp4", poster: "assets/media/events/Videos/You%20Can%20Sit%20With%20Us/%F0%9F%92%9B%20The%20air%20was%20alive%20with%20a%20symphony%20of%20flavors%2C%20each%20note%20harmonizing%20with%20the%20hum%20of%20hands%20at%20.jpg" }
         ]
+      },
+      {
+        title: "PVNS Rohit",
+        brief: "PVNS Rohit was playing an evening set at Odeum with his band, planned as an intimate, seated show built around his voice. He wanted vlog-style videos from the night, with a set of photos alongside.",
+        vision: "We stayed close to Rohit and the band through sound check to capture their candid moments and the raw energy in between. Later that night we switched to recording full performances of his singles, with more frames of the band in action.",
+        items: [
+          { type: "video", src: "assets/media/events/Videos/PVNS%20Rohit/PVNS%20Rohit.mp4", poster: "assets/media/events/Videos/PVNS%20Rohit/PVNS%20Rohit.jpg", alt: "PVNS Rohit live, the film" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09105.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09242.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09284.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09130.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09064.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09290.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09245.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09295.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09257.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09206.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC08950.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09236.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09151.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC08906.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC08946.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09213.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09279.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09035.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09102.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC08993.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09298.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09170.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09221.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09169.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09281.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09216.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09141.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09212.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09091.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09227.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09052.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC08983.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09076.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09286.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC08953.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09233.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09062.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09187.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09241.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09230.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09272.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09285.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09246.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09201.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09266.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09292.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC08973.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09130-2.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/PVNS%20Rohit/DSC09224.jpg" }
+        ]
+      },
+      {
+        title: "Benny Dayal",
+        brief: "Benny Dayal was headlining a festival show, and the brief was editorial-style concert coverage of him in both stills and video.",
+        vision: "We used the stage lights and his energy to catch the fun of the show. Alongside Benny, we shot every member of the band and the crowd in front of them, so the coverage shows the whole experience.",
+        items: [
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6183.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6273.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6251.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6196.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6271.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6253.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6219.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6114.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6229.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6207.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6269.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6281.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6088.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6264.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6103.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6230.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Benny%20Dayal/DSC_6268.jpg" }
+        ]
+      },
+      {
+        title: "The Local Train",
+        brief: "The Local Train played to a packed crowd who knew every word. We had to get the smoke, colour and noise of the night into the frames, and still give each band member their own shot.",
+        vision: "We moved from the sides of the stage to the pit and out into the crowd to take in the full energy of the concert, and used every light that coloured the smoke to give each band member frames of their own.",
+        items: [
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_4440.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_4497.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_0044.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_0137.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_0079.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_0131.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_4448.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_4475.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_0103.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_4485.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_0173.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_0115.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_0097.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_0124.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_0127.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_0055.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/The%20Local%20Train/DSC_0119.jpg" }
+        ]
+      },
+      {
+        title: "Sunburn",
+        brief: "Two artists shared one Sunburn set. We had to capture the energy they built together while keeping the focus on each performance, the mixes and the moves that kept the crowd going.",
+        vision: "We went into the crowd and shot from the very back to show the scale of the set, then stayed close to the decks for frames of each artist on their own.",
+        items: [
+          { type: "photo", src: "assets/media/events/Photos/Sunburn/DSC_0304.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Sunburn/DSC_0175.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Sunburn/DSC_2403.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Sunburn/DSC_2367.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Sunburn/DSC_2356.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Sunburn/WhatsApp%20Image%202026-09-13%20at%2019.40.17.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Sunburn/DSC_0152.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Sunburn/DSC_0043%20(2).jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Sunburn/DSC_0205.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Sunburn/DSC_0069.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Sunburn/DSC_2423.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Sunburn/DSC_2365.jpg" }
+        ]
+      },
+      {
+        title: "Lagori",
+        brief: "Lagori played with six members on stage. The brief was simple: give each of them their own focus, and catch the band's back-and-forth with the crowd.",
+        vision: "Every band member got their own moment, each frame carefully composed to show how they felt the music.",
+        items: [
+          { type: "photo", src: "assets/media/events/Photos/Lagori/DSC_5978.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Lagori/DSC_6067.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Lagori/DSC_5962.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Lagori/DSC_5882.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Lagori/IMG_0975.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Lagori/DSC_5934.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Lagori/DSC_5860.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Lagori/DSC_5929.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Lagori/DSC_6053.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Lagori/DSC_5982.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Lagori/DSC_6037.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Lagori/DSC_6047.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Lagori/DSC_5946.jpg" },
+          { type: "photo", src: "assets/media/events/Photos/Lagori/DSC_6055.jpg" }
+        ]
+      }
+    ]
+  },
+
+  /* =====================================================================
+     LIFESTYLE, filmstrip and collections
+     ===================================================================== */
+  lifestyle: {
+    filmstrip: [
+      "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02835.jpg",
+      "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02801.jpg",
+      "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02817.jpg",
+      "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02788.jpg",
+      "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02840.jpg",
+      "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02765.jpg",
+      "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02810.jpg",
+      "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02823.jpg"
+    ],
+    collections: [
+      {
+        title: "Arti Sonthalia",
+        brief: "Arti wanted her time with the students captured as it happened, and a steady stream of content for her personal Instagram, the kind of frames she could post to show parents and children why a reading habit matters early.",
+        vision: "We followed her across school visits and award ceremonies, then went closer and quieter, documenting her writing process, her favourite books, and the inspirations and motivations that keep her at the page.",
+        videos: [
+          { src: "assets/media/lifestyle/Videos/Arti%20Sonthalia/Arti%20Reel%201%20final.mp4", poster: "assets/media/lifestyle/Videos/Arti%20Sonthalia/Arti%20Reel%201%20final.jpg", alt: "Arti Sonthalia reel" },
+          { src: "assets/media/lifestyle/Videos/Arti%20Sonthalia/Discoveri%20Oaks%201.mp4", poster: "assets/media/lifestyle/Videos/Arti%20Sonthalia/Discoveri%20Oaks%201.jpg", alt: "Discoveri Oaks session" },
+          { src: "assets/media/lifestyle/Videos/Arti%20Sonthalia/Discoveri%20Oaks%202.mp4", poster: "assets/media/lifestyle/Videos/Arti%20Sonthalia/Discoveri%20Oaks%202.jpg", alt: "Discoveri Oaks session" }
+        ],
+        items: [
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02765.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02772.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02781.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02770.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02785.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02795.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02804.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02797.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02820.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02806.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02831.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02810.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02823.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02776.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02840.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02835.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02817.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02801.jpg" },
+          { type: "photo", src: "assets/media/lifestyle/Photos/Arti%20Sonthalia/DSC02788.jpg" }
+        ]
+      },
+      {
+        title: "Koh Foods",
+        reels: true,
+        brief: "Koh wanted to make moringa feel approachable. The reels had to explain what makes it special and how easy it is to use, in simple language and without the wellness hype.",
+        vision: "We shot among the trees and on the factory floor, let Koh's team explain their processes, and edited it all into quick vertical reels with clear text on screen.",
+        items: [
+          { type: "video", src: "assets/media/lifestyle/Videos/Koh%20Foods/Moringa%20reel%201.mp4", poster: "assets/media/lifestyle/Videos/Koh%20Foods/Moringa%20reel%201.jpg" },
+          { type: "video", src: "assets/media/lifestyle/Videos/Koh%20Foods/Koh%20Reel%202.mp4", poster: "assets/media/lifestyle/Videos/Koh%20Foods/Koh%20Reel%202.jpg" },
+          { type: "video", src: "assets/media/lifestyle/Videos/Koh%20Foods/Koh%20Reel%203.mp4", poster: "assets/media/lifestyle/Videos/Koh%20Foods/Koh%20Reel%203.jpg" },
+          { type: "video", src: "assets/media/lifestyle/Videos/Koh%20Foods/KOH%20Reel%204.mp4", poster: "assets/media/lifestyle/Videos/Koh%20Foods/KOH%20Reel%204.jpg" },
+          { type: "video", src: "assets/media/lifestyle/Videos/Koh%20Foods/Koh%20reel%206.mp4", poster: "assets/media/lifestyle/Videos/Koh%20Foods/Koh%20reel%206.jpg" },
+          { type: "video", src: "assets/media/lifestyle/Videos/Koh%20Foods/Koh%20Reel%207.mp4", poster: "assets/media/lifestyle/Videos/Koh%20Foods/Koh%20Reel%207.jpg" }
+        ]
       }
     ]
   },
@@ -505,18 +684,69 @@ window.EF = {
       "assets/media/placeholders/hospitality-3.svg"
     ]
   },
-  lifestyle: {
-    teasers: [
-      "assets/media/placeholders/lifestyle-1.svg",
-      "assets/media/placeholders/lifestyle-2.svg",
-      "assets/media/placeholders/lifestyle-3.svg"
-    ]
-  },
+  /* =====================================================================
+     PRODUCTS, filmstrip and collections
+     ===================================================================== */
   products: {
-    teasers: [
-      "assets/media/placeholders/products-1.svg",
-      "assets/media/placeholders/products-2.svg",
-      "assets/media/placeholders/products-3.svg"
+    filmstrip: [
+      "assets/media/products/Photos/Numour/DSC05017.jpg",
+      "assets/media/products/Photos/Numour/DSC00340.jpg",
+      "assets/media/products/Photos/Numour/DSC00137.jpg",
+      "assets/media/products/Photos/Numour/DSC05488.jpg",
+      "assets/media/products/Photos/Numour/DSC00153.jpg",
+      "assets/media/products/Photos/Numour/DSC05057.jpg",
+      "assets/media/products/Photos/Numour/DSC09979.jpg",
+      "assets/media/products/Photos/Numour/DSC00090.jpg",
+      "assets/media/products/Photos/Numour/DSC05039.jpg",
+      "assets/media/products/Photos/Numour/DSC05089.jpg",
+      "assets/media/products/Photos/Numour/DSC00110.jpg"
+    ],
+    collections: [
+      {
+        title: "Numour",
+        brief: "Numour needed stills for a whole skincare range at once: the Collagen Barrier and Dewy Mist &amp; Go sunscreens, the Damn Dewy pressed serum, the Collagen Bombshell jelly and the Lit Happens serum. Each one had to look like itself and still sit comfortably beside the others on a feed.",
+        vision: "We gave every product a setting that hints at what it does. Water and splash for the hydrating serum, ice for the jelly, low sun and a fine spray for the sunscreens, and real hands for texture and scale. Shot as one set, the range reads as a family.",
+        items: [
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC05017.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00340.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00137.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC05089.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC05039.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00110.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00090.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00153.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC09979.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC05057.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC05198.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC05065.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC05036.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00263.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00095.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00131.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00003.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC05046.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00029.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00223.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC09967.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00087.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00066.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC05142.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC05064.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00011.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC09996.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00353.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00016.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00052.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC05030.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC05488.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00124.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00166.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC09975.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC05494.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC00038.jpg" },
+          { type: "photo", src: "assets/media/products/Photos/Numour/DSC04999.jpg" }
+        ]
+      }
     ]
   }
 };
